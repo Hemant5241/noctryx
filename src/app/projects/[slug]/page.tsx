@@ -1,8 +1,23 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowLeft, ArrowRight, ShieldAlert, Terminal, CheckCircle2 } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ShieldAlert,
+  Terminal,
+  CheckCircle2,
+  Cpu,
+  Scale,
+  Wrench,
+  AlertTriangle,
+  Lightbulb,
+  Layers,
+  Activity,
+} from "lucide-react";
 import { projectsData } from "@/data/projects";
+import { caseStudiesBySlug } from "@/data/caseStudies";
+import { CaseStudyArchitectureDiagram } from "@/components/projects/CaseStudyArchitectureDiagram";
 import { NeuralSearchDemo } from "@/components/demos/NeuralSearchDemo";
 import { VisionAiDemo } from "@/components/demos/VisionAiDemo";
 import { AgenticWorkflowDemo } from "@/components/demos/AgenticWorkflowDemo";
@@ -26,7 +41,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   if (!project) return {};
 
   return {
-    title: `${project.title} // Case Study // Om Shinde`,
+    title: `${project.title} // Technical Case Study // Om Shinde`,
     description: project.shortSummary,
   };
 }
@@ -40,6 +55,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   }
 
   const project = projectsData[projectIndex];
+  const caseStudy = caseStudiesBySlug[slug];
   const prevProject = projectIndex > 0 ? projectsData[projectIndex - 1] : null;
   const nextProject = projectIndex < projectsData.length - 1 ? projectsData[projectIndex + 1] : null;
 
@@ -50,7 +66,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 text-xs font-bold hover:text-[#FF3B00] transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-bold hover:text-[#FF3B00] transition-colors focus-visible:ring-2 focus-visible:ring-[#FF3B00]"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>RETURN TO PROJECTS CATALOG</span>
@@ -115,7 +131,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             </strong>{" "}
             This project is an architectural demonstration conceived by Om Shinde to showcase
             end-to-end systems design, pipeline modeling, and deployment strategies. Performance
-            metrics are illustrative simulated benchmarks. The interactive module below runs an
+            metrics are illustrative simulated benchmarks on synthetic datasets. The interactive module below runs an
             in-browser simulation.
           </div>
         </div>
@@ -123,7 +139,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
 
       {/* Main Architecture & Deep Dive Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
-        {/* Problem & Proposed Solution Dual Cards */}
+        {/* 1. Problem & Proposed Solution Dual Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Problem */}
           <div className="p-6 sm:p-8 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
@@ -152,13 +168,97 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           </div>
         </div>
 
-        {/* Phase 3: Embedded Interactive AI Demonstration Module */}
+        {/* 2. Engineering Objectives */}
+        {caseStudy && (
+          <div className="p-6 sm:p-10 border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
+            <div className="text-xs font-bold text-[#FF3B00] uppercase tracking-wider mb-2 flex items-center gap-2">
+              <Cpu className="w-4 h-4" />
+              <span>03 // ENGINEERING OBJECTIVES & SLA TARGETS</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black text-black uppercase mb-6">
+              DESIGN SPECIFICATIONS & CONSTRAINTS
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {caseStudy.engineeringObjectives.map((obj, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 border-2 border-black bg-[#F4F1EA] flex items-start gap-3"
+                >
+                  <span className="w-6 h-6 rounded-none bg-black text-[#F4F1EA] text-xs font-bold flex items-center justify-center shrink-0">
+                    {idx + 1}
+                  </span>
+                  <p className="text-xs sm:text-sm font-sans text-black/85 leading-relaxed font-medium">
+                    {obj}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* 3. System Architecture Diagram */}
+        {caseStudy && (
+          <div className="space-y-4">
+            <div className="text-xs font-bold text-[#FF3B00] uppercase tracking-wider">
+              04 // SYSTEM TOPOLOGY & EXECUTION GRAPH
+            </div>
+            <CaseStudyArchitectureDiagram
+              type={caseStudy.diagramType}
+              projectTitle={project.title}
+            />
+          </div>
+        )}
+
+        {/* 4. Core System Components & Responsibilities */}
+        {caseStudy && (
+          <div className="p-6 sm:p-10 border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
+            <div className="text-xs font-bold text-[#FF3B00] uppercase tracking-wider mb-2 flex items-center gap-2">
+              <Layers className="w-4 h-4" />
+              <span>05 // COMPONENT ARCHITECTURE & RESPONSIBILITIES</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black text-black uppercase mb-6">
+              SUBSYSTEM DECOMPOSITION
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {caseStudy.components.map((comp, idx) => (
+                <div
+                  key={idx}
+                  className="p-5 border-2 border-black bg-[#F4F1EA]/60 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center justify-between text-[10px] text-black/60 font-bold uppercase mb-2">
+                      <span>MODULE 0{idx + 1}</span>
+                      {comp.isSimulatedDemoPart && (
+                        <span className="px-1.5 py-0.2 bg-[#CCFF00] border border-black text-black font-bold">
+                          CLIENT DEMO ENGINE
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-base font-black text-black uppercase mb-1">
+                      {comp.name}
+                    </h3>
+                    <div className="text-[11px] font-bold text-[#FF3B00] mb-3">
+                      ROLE: {comp.role}
+                    </div>
+                    <p className="text-xs font-sans text-black/80 leading-relaxed">
+                      {comp.details}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* 5. Embedded Interactive AI Demonstration Module */}
         <div className="space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-black pb-3">
             <div className="flex items-center gap-2">
               <Terminal className="w-5 h-5 text-[#FF3B00]" />
               <h2 className="text-xl sm:text-2xl font-black text-black uppercase tracking-tight">
-                INTERACTIVE DEMONSTRATION & RUNTIME
+                06 // INTERACTIVE IN-BROWSER DEMONSTRATION
               </h2>
             </div>
             <span className="text-xs text-black/60 font-bold">
@@ -174,45 +274,204 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           {slug === "llm-knowledge-system" && <LlmKnowledgeSystemDemo />}
         </div>
 
-        {/* Technical Approach & Pipeline */}
-        <div className="p-6 sm:p-10 border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
-          <div className="text-xs font-bold text-[#FF3B00] uppercase tracking-wider mb-2">
-            03 // ENGINEERING METHODOLOGY
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-black text-black uppercase mb-6">
-            TECHNICAL APPROACH & PIPELINE
-          </h2>
+        {/* 6. Technology Choices & Justification */}
+        {caseStudy && (
+          <div className="p-6 sm:p-10 border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
+            <div className="text-xs font-bold text-[#FF3B00] uppercase tracking-wider mb-2 flex items-center gap-2">
+              <Wrench className="w-4 h-4" />
+              <span>07 // TECHNOLOGY CHOICES & ARCHITECTURAL RATIONALE</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black text-black uppercase mb-6">
+              WHY THESE SPECIFIC TOOLS WERE SELECTED
+            </h2>
 
-          <div className="space-y-4 mb-8">
-            {project.technicalApproach.map((step, idx) => (
-              <div key={idx} className="flex items-start gap-3 p-3 border border-black/15 bg-[#F4F1EA]/60">
-                <span className="px-2 py-0.5 bg-black text-[#F4F1EA] text-xs font-bold shrink-0">
-                  0{idx + 1}
-                </span>
-                <p className="text-xs sm:text-sm text-black/80 font-sans leading-relaxed">
-                  {step}
-                </p>
+            <div className="space-y-4">
+              {caseStudy.technologyChoices.map((choice, idx) => (
+                <div
+                  key={idx}
+                  className="p-5 border-2 border-black bg-[#F4F1EA]/60 grid grid-cols-1 md:grid-cols-12 gap-4 items-start"
+                >
+                  <div className="md:col-span-4">
+                    <span className="text-[10px] text-black/60 font-bold uppercase block">
+                      {choice.category}
+                    </span>
+                    <h3 className="text-lg font-black text-black uppercase">
+                      {choice.tech}
+                    </h3>
+                    <div className="text-xs text-[#FF3B00] font-bold mt-1">
+                      REJECTED ALTERNATIVE: {choice.alternativeRejected}
+                    </div>
+                  </div>
+                  <div className="md:col-span-8">
+                    <p className="text-xs sm:text-sm font-sans text-black/85 leading-relaxed font-medium">
+                      {choice.rationale}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* 7. Data Flow & Execution Lifecycle */}
+        {caseStudy && (
+          <div className="p-6 sm:p-10 border-2 border-black bg-[#0D0D0D] text-[#F4F1EA] shadow-[8px_8px_0px_0px_rgba(255,59,0,1)] crosshair-corner">
+            <div className="text-xs font-bold text-[#CCFF00] uppercase tracking-wider mb-2 flex items-center gap-2">
+              <Activity className="w-4 h-4" />
+              <span>08 // DATA FLOW & EXECUTION LIFECYCLE</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black text-white uppercase mb-6">
+              END-TO-END EXECUTION SEQUENCE
+            </h2>
+
+            <div className="space-y-3 font-mono">
+              {caseStudy.dataFlowLifecycle.map((step, idx) => (
+                <div
+                  key={idx}
+                  className="p-3.5 border border-[#262626] bg-[#141414] text-xs text-[#F4F1EA] leading-relaxed flex items-start gap-3"
+                >
+                  <span className="text-[#FF3B00] font-black shrink-0">↳</span>
+                  <span>{step}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* 8. Engineering Decisions & Trade-Offs */}
+        {caseStudy && (
+          <div className="p-6 sm:p-10 border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
+            <div className="text-xs font-bold text-[#FF3B00] uppercase tracking-wider mb-2 flex items-center gap-2">
+              <Scale className="w-4 h-4" />
+              <span>09 // ARCHITECTURAL DECISIONS & TRADE-OFFS</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-black text-black uppercase mb-6">
+              KEY SYSTEM DECISIONS & ALTERNATIVES EVALUATED
+            </h2>
+
+            <div className="space-y-6">
+              {caseStudy.engineeringDecisions.map((dec, idx) => (
+                <div key={idx} className="p-6 border-2 border-black bg-[#F4F1EA]/60 space-y-3">
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-black/15 pb-2">
+                    <h3 className="text-base font-black text-black uppercase">
+                      {dec.title}
+                    </h3>
+                    <span className="text-[10px] bg-black text-[#F4F1EA] px-2 py-0.5 font-bold">
+                      DECISION #{idx + 1}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+                    <div>
+                      <span className="text-[10px] text-black/60 font-bold uppercase block mb-1">
+                        SELECTED ARCHITECTURAL PATH:
+                      </span>
+                      <p className="text-xs font-bold text-black font-sans leading-relaxed">
+                        {dec.decision}
+                      </p>
+                    </div>
+
+                    <div>
+                      <span className="text-[10px] text-[#FF3B00] font-bold uppercase block mb-1">
+                        ALTERNATIVE CONSIDERED:
+                      </span>
+                      <p className="text-xs text-black/70 font-sans leading-relaxed">
+                        {dec.alternativeConsidered}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="border-t border-black/15 pt-3">
+                    <span className="text-[10px] text-black/60 font-bold uppercase block mb-1">
+                      TRADE-OFF RATIONALE & JUSTIFICATION:
+                    </span>
+                    <p className="text-xs font-sans text-black/80 leading-relaxed">
+                      {dec.tradeoffRationale}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Tradeoff Dimension Summary Table */}
+            <div className="mt-8 border-2 border-black overflow-x-auto">
+              <table className="w-full text-left font-mono text-xs border-collapse min-w-[600px]">
+                <thead>
+                  <tr className="border-b-2 border-black bg-black text-[#F4F1EA]">
+                    <th className="p-3 font-bold">DIMENSION</th>
+                    <th className="p-3 font-bold text-[#CCFF00]">CHOSEN APPROACH</th>
+                    <th className="p-3 font-bold text-[#FF3B00]">SACRIFICED ALTERNATIVE</th>
+                    <th className="p-3 font-bold">RATIONALE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {caseStudy.tradeoffsSummary.map((t, idx) => (
+                    <tr
+                      key={idx}
+                      className="border-b border-black/20 bg-white hover:bg-[#F4F1EA]/60"
+                    >
+                      <td className="p-3 font-bold">{t.dimension}</td>
+                      <td className="p-3 text-black font-bold">{t.chosenApproach}</td>
+                      <td className="p-3 text-black/60">{t.sacrificedAlternative}</td>
+                      <td className="p-3 text-xs font-sans text-black/80">{t.justification}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* 9. Limitations & Future Roadmap */}
+        {caseStudy && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Limitations */}
+            <div className="p-6 sm:p-8 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
+              <div className="text-xs font-bold text-[#FF3B00] uppercase tracking-wider mb-2 flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4" />
+                <span>10 // KNOWN CONSTRAINTS & LIMITATIONS</span>
               </div>
-            ))}
-          </div>
-
-          <div className="p-4 border-2 border-black bg-[#0D0D0D] text-[#F4F1EA]">
-            <div className="text-[10px] text-[#FF3B00] font-bold uppercase mb-1">
-              PIPELINE FLOW GRAPH:
+              <h3 className="text-lg font-black text-black uppercase mb-4">
+                SYSTEM BOUNDARIES
+              </h3>
+              <ul className="space-y-3 text-xs font-sans text-black/80">
+                {caseStudy.limitations.map((lim, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5">
+                    <span className="text-[#FF3B00] font-bold font-mono shrink-0">!</span>
+                    <span className="leading-relaxed">{lim}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="text-xs text-[#CCFF00] font-mono leading-relaxed">
-              {project.architectureOverview}
+
+            {/* Future Roadmap */}
+            <div className="p-6 sm:p-8 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
+              <div className="text-xs font-bold text-[#CCFF00] bg-black px-2 py-0.5 inline-flex items-center gap-1.5 uppercase tracking-wider mb-2">
+                <Lightbulb className="w-3.5 h-3.5 text-[#CCFF00]" />
+                <span>11 // FUTURE IMPROVEMENT ROADMAP</span>
+              </div>
+              <h3 className="text-lg font-black text-black uppercase mb-4">
+                NEXT-GEN ARCHITECTURAL PHASES
+              </h3>
+              <ul className="space-y-3 text-xs font-sans text-black/80">
+                {caseStudy.futureRoadmap.map((road, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5">
+                    <span className="text-[#FF3B00] font-bold font-mono shrink-0">→</span>
+                    <span className="leading-relaxed">{road}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-        </div>
+        )}
 
-        {/* Key Features & Simulated Metrics */}
+        {/* 10. Key Features & Simulated Metrics */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Key Features */}
           <div className="lg:col-span-6 p-6 sm:p-8 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
             <h3 className="text-lg font-black text-black uppercase mb-4 flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-[#FF3B00]" />
-              <span>CORE CAPABILITIES</span>
+              <span>CORE CAPABILITIES & GUARANTEES</span>
             </h3>
             <ul className="space-y-3 text-xs sm:text-sm text-black/80 font-sans">
               {project.keyFeatures.map((feat, idx) => (
@@ -227,9 +486,9 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           {/* Benchmark Metrics */}
           <div className="lg:col-span-6 p-6 sm:p-8 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
             <h3 className="text-lg font-black text-black uppercase mb-4 flex items-center justify-between">
-              <span>SIMULATED BENCHMARKS</span>
+              <span>12 // SIMULATED BENCHMARK LOGS</span>
               <span className="text-[10px] text-[#FF3B00] font-normal font-mono">
-                [ILLUSTRATIVE TARGETS]
+                [SYNTHETIC TEST STREAM]
               </span>
             </h3>
             <div className="space-y-4">
@@ -256,7 +515,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           {prevProject ? (
             <Link
               href={`/projects/${prevProject.slug}`}
-              className="p-4 border-2 border-black bg-white hover:border-[#FF3B00] hover:bg-black hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group"
+              className="p-4 border-2 border-black bg-white hover:border-[#FF3B00] hover:bg-black hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group focus-visible:ring-2 focus-visible:ring-[#FF3B00]"
             >
               <div className="text-[10px] text-[#FF3B00] font-bold mb-1 flex items-center gap-1">
                 <ArrowLeft className="w-3.5 h-3.5" />
@@ -271,7 +530,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           {nextProject ? (
             <Link
               href={`/projects/${nextProject.slug}`}
-              className="p-4 border-2 border-black bg-white hover:border-[#FF3B00] hover:bg-black hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-right group sm:col-start-2"
+              className="p-4 border-2 border-black bg-white hover:border-[#FF3B00] hover:bg-black hover:text-white transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-right group sm:col-start-2 focus-visible:ring-2 focus-visible:ring-[#FF3B00]"
             >
               <div className="text-[10px] text-[#FF3B00] font-bold mb-1 flex items-center justify-end gap-1">
                 <span>NEXT CASE STUDY</span>
