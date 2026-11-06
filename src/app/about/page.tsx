@@ -4,6 +4,7 @@ import { profileData } from "@/data/profile";
 import { experienceData, educationData } from "@/data/experience";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 import { OmMonogram } from "@/components/brand/OmMonogram";
+import { GitHubActivitySection } from "@/components/github/GitHubActivitySection";
 
 export const metadata: Metadata = {
   title: "About // Engineering Philosophy // Om Shinde",
@@ -240,6 +241,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* 05 // Real Public GitHub Integration */}
+      <GitHubActivitySection />
 
       {/* Closing Contact CTA */}
       <ContactCTASection />

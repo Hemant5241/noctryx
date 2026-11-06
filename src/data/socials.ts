@@ -72,3 +72,20 @@ export const contactDetails = {
   currentLocation: "Mumbai / Pune, Maharashtra, India (Candidate Region)",
   timezone: "IST (UTC +5:30)",
 };
+
+/**
+ * Verified Public GitHub Configuration
+ * 
+ * IMPORTANT:
+ * Never assume developer / repository owner accounts (such as Hemant5241)
+ * are Om Shinde.
+ * When Om's verified username is provided, set verifiedUsername below
+ * or configure NEXT_PUBLIC_GITHUB_USERNAME in environment variables.
+ */
+export const gitHubIntegrationConfig = {
+  verifiedUsername: process.env.NEXT_PUBLIC_GITHUB_USERNAME || null,
+  isVerified: false,
+  requiresManualVerification: true,
+  documentationNotice:
+    "To display live public repositories and open-source commit telemetry, provide Om's verified GitHub username in NEXT_PUBLIC_GITHUB_USERNAME or src/data/socials.ts.",
+};
