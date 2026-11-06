@@ -64,10 +64,10 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-[#F4F1EA] text-[#0D0D0D] selection:bg-[#FF3B00] selection:text-white">
         <ThemeProvider>
-          <OmOrbitCursor />
           <Header />
           <main className="flex-1 w-full flex flex-col">{children}</main>
           <Footer />
+          <OmOrbitCursor />
         </ThemeProvider>
       </body>
     </html>

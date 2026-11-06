@@ -99,7 +99,7 @@
   
   --fg-dark-primary: #fff0d1;
   --fg-dark-muted: #d5c5d8;
-  --fg-dark-subtle: #a38da6;
+  --fg-dark-subtle: #b9a3be;
 
   --accent-orange: #ff4fa3;
   --accent-orange-hover: #e63c8e;
@@ -146,17 +146,11 @@ body {
 /* Custom Cursor Desktop Fine-Pointer Integration */
 @media (hover: hover) and (pointer: fine) {
   body.has-custom-cursor,
-  body.has-custom-cursor a,
-  body.has-custom-cursor button,
-  body.has-custom-cursor [role="button"],
-  body.has-custom-cursor [role="tab"],
-  body.has-custom-cursor select,
-  body.has-custom-cursor summary,
-  body.has-custom-cursor .cursor-pointer {
+  body.has-custom-cursor * {
     cursor: none !important;
   }
 
-  body.has-custom-cursor input,
+  body.has-custom-cursor input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]),
   body.has-custom-cursor textarea,
   body.has-custom-cursor [contenteditable="true"] {
     cursor: text !important;
@@ -433,7 +427,7 @@ dialog::backdrop {
 }
 
 [data-theme="signal-studio"] .text-\[\#FF3B00\] {
-  color: #FF4FA3 !important;
+  color: #6938FF !important;
 }
 
 /* High-contrast Hot Pink & Acid Lime on dark elements in Signal Studio */
@@ -443,7 +437,9 @@ dialog::backdrop {
 [data-theme="signal-studio"] .bg-\[\#0D0D0D\] .text-\[\#FF3B00\],
 [data-theme="signal-studio"] .bg-\[\#141414\] .text-\[\#FF3B00\],
 [data-theme="signal-studio"] .bg-\[\#1B1020\] .text-\[\#FF3B00\],
-[data-theme="signal-studio"] .bg-\[\#1C1D20\] .text-\[\#FF3B00\] {
+[data-theme="signal-studio"] .bg-\[\#1C1D20\] .text-\[\#FF3B00\],
+[data-theme="signal-studio"] [role="dialog"] .text-\[\#FF3B00\],
+[data-theme="signal-studio"] dialog .text-\[\#FF3B00\] {
   color: #FF4FA3 !important;
 }
 
@@ -487,7 +483,9 @@ dialog::backdrop {
 [data-theme="signal-studio"] .bg-\[\#0D0D0D\] .text-\[\#CCFF00\],
 [data-theme="signal-studio"] .bg-\[\#141414\] .text-\[\#CCFF00\],
 [data-theme="signal-studio"] .bg-\[\#1B1020\] .text-\[\#CCFF00\],
-[data-theme="signal-studio"] .bg-\[\#1C1D20\] .text-\[\#CCFF00\] {
+[data-theme="signal-studio"] .bg-\[\#1C1D20\] .text-\[\#CCFF00\],
+[data-theme="signal-studio"] [role="dialog"] .text-\[\#CCFF00\],
+[data-theme="signal-studio"] dialog .text-\[\#CCFF00\] {
   color: #C6FF00 !important;
 }
 
@@ -516,19 +514,67 @@ dialog::backdrop {
   border-color: var(--border-dark) !important;
 }
 
-[data-theme="crimson-noir"] .text-\[\#F4F1EA\],
-[data-theme="signal-studio"] .text-\[\#F4F1EA\] {
+[data-theme="crimson-noir"] .text-\[\#F4F1EA\] {
   color: var(--fg-dark-primary) !important;
 }
 
-[data-theme="crimson-noir"] .text-\[\#A39F94\],
-[data-theme="signal-studio"] .text-\[\#A39F94\] {
+[data-theme="crimson-noir"] .text-\[\#A39F94\] {
   color: var(--fg-dark-muted) !important;
 }
 
-[data-theme="crimson-noir"] .text-\[\#6E6A61\],
-[data-theme="signal-studio"] .text-\[\#6E6A61\] {
+[data-theme="crimson-noir"] .text-\[\#6E6A61\] {
   color: var(--fg-dark-subtle) !important;
+}
+
+/* Signal Studio Context-Aware Typography Contrast */
+/* Default on light surfaces (Warm Vanilla / Cream): Deep Ink & high-contrast plum */
+[data-theme="signal-studio"] .text-\[\#F4F1EA\] {
+  color: #1B1020 !important;
+}
+
+[data-theme="signal-studio"] .text-\[\#A39F94\] {
+  color: #543D5B !important;
+}
+
+[data-theme="signal-studio"] .text-\[\#6E6A61\] {
+  color: #6D5275 !important;
+}
+
+/* Dark surfaces in Signal Studio: Warm Vanilla & high-contrast lavender */
+[data-theme="signal-studio"] header .text-\[\#F4F1EA\],
+[data-theme="signal-studio"] footer .text-\[\#F4F1EA\],
+[data-theme="signal-studio"] .bg-black .text-\[\#F4F1EA\],
+[data-theme="signal-studio"] .bg-\[\#0D0D0D\] .text-\[\#F4F1EA\],
+[data-theme="signal-studio"] .bg-\[\#141414\] .text-\[\#F4F1EA\],
+[data-theme="signal-studio"] .bg-\[\#1B1020\] .text-\[\#F4F1EA\],
+[data-theme="signal-studio"] .bg-\[\#1C1D20\] .text-\[\#F4F1EA\],
+[data-theme="signal-studio"] [role="dialog"] .text-\[\#F4F1EA\],
+[data-theme="signal-studio"] dialog .text-\[\#F4F1EA\] {
+  color: #FFF0D1 !important;
+}
+
+[data-theme="signal-studio"] header .text-\[\#A39F94\],
+[data-theme="signal-studio"] footer .text-\[\#A39F94\],
+[data-theme="signal-studio"] .bg-black .text-\[\#A39F94\],
+[data-theme="signal-studio"] .bg-\[\#0D0D0D\] .text-\[\#A39F94\],
+[data-theme="signal-studio"] .bg-\[\#141414\] .text-\[\#A39F94\],
+[data-theme="signal-studio"] .bg-\[\#1B1020\] .text-\[\#A39F94\],
+[data-theme="signal-studio"] .bg-\[\#1C1D20\] .text-\[\#A39F94\],
+[data-theme="signal-studio"] [role="dialog"] .text-\[\#A39F94\],
+[data-theme="signal-studio"] dialog .text-\[\#A39F94\] {
+  color: #D5C5D8 !important;
+}
+
+[data-theme="signal-studio"] header .text-\[\#6E6A61\],
+[data-theme="signal-studio"] footer .text-\[\#6E6A61\],
+[data-theme="signal-studio"] .bg-black .text-\[\#6E6A61\],
+[data-theme="signal-studio"] .bg-\[\#0D0D0D\] .text-\[\#6E6A61\],
+[data-theme="signal-studio"] .bg-\[\#141414\] .text-\[\#6E6A61\],
+[data-theme="signal-studio"] .bg-\[\#1B1020\] .text-\[\#6E6A61\],
+[data-theme="signal-studio"] .bg-\[\#1C1D20\] .text-\[\#6E6A61\],
+[data-theme="signal-studio"] [role="dialog"] .text-\[\#6E6A61\],
+[data-theme="signal-studio"] dialog .text-\[\#6E6A61\] {
+  color: #B9A3BE !important;
 }
 
 /* Contrast cards & buttons in Crimson Noir */
@@ -821,6 +867,111 @@ dialog::backdrop {
 [data-theme="signal-studio"] .crosshair-corner::after {
   border-bottom: 2.5px solid #00E5D4 !important;
   border-right: 2.5px solid #00E5D4 !important;
+}
+
+/* Ensure project card taglines and highlights on light cards maintain strong contrast */
+[data-theme="signal-studio"] .crosshair-corner .text-\[\#FF3B00\] {
+  color: #6938FF !important;
+}
+
+/* Signal Studio Typography: Crisp Deep Ink derived hierarchy for text-black opacity tokens */
+[data-theme="signal-studio"] .text-black {
+  color: #1B1020 !important;
+}
+
+[data-theme="signal-studio"] .text-black\/85,
+[data-theme="signal-studio"] .text-black\/80,
+[data-theme="signal-studio"] .text-black\/70 {
+  color: #3F2746 !important;
+}
+
+[data-theme="signal-studio"] .text-black\/60,
+[data-theme="signal-studio"] .text-black\/50 {
+  color: #543D5B !important;
+}
+
+[data-theme="signal-studio"] .text-black\/40 {
+  color: #6D5275 !important;
+}
+
+/* Header System Status Badge in Signal Studio: High-contrast Acid Lime pill */
+[data-theme="signal-studio"] header div[aria-label^="System status"] {
+  background-color: #C6FF00 !important;
+  border: 2px solid #1B1020 !important;
+  box-shadow: 2px 2px 0px 0px #1B1020 !important;
+}
+
+[data-theme="signal-studio"] header div[aria-label^="System status"] span {
+  color: #1B1020 !important;
+}
+
+[data-theme="signal-studio"] header div[aria-label^="System status"] .bg-\[\#CCFF00\] {
+  background-color: #1B1020 !important;
+  box-shadow: none !important;
+}
+
+/* Contact CTA Section in Signal Studio: Bold, readable light-on-dark or dark-on-light contrast */
+[data-theme="signal-studio"] section.bg-\[\#0D0D0D\] .crosshair-corner {
+  background-color: #FFFAEC !important;
+  border: 3px solid #1B1020 !important;
+  box-shadow: 8px 8px 0px 0px #1B1020, 12px 12px 0px 0px #FF4FA3 !important;
+}
+
+[data-theme="signal-studio"] section.bg-\[\#0D0D0D\] .crosshair-corner h2,
+[data-theme="signal-studio"] section.bg-\[\#0D0D0D\] .crosshair-corner .text-\[\#F4F1EA\] {
+  color: #1B1020 !important;
+}
+
+[data-theme="signal-studio"] section.bg-\[\#0D0D0D\] .crosshair-corner .text-\[\#A39F94\] {
+  color: #543D5B !important;
+}
+
+[data-theme="signal-studio"] section.bg-\[\#0D0D0D\] .crosshair-corner .text-\[\#6E6A61\] {
+  color: #6D5275 !important;
+}
+
+[data-theme="signal-studio"] section.bg-\[\#0D0D0D\] .crosshair-corner .text-\[\#CCFF00\] {
+  color: #6938FF !important;
+}
+
+[data-theme="signal-studio"] section.bg-\[\#0D0D0D\] .crosshair-corner a[href^="http"] {
+  color: #6938FF !important;
+  font-weight: 700;
+}
+
+[data-theme="signal-studio"] section.bg-\[\#0D0D0D\] .crosshair-corner a[href^="http"]:hover {
+  color: #FF4FA3 !important;
+}
+
+[data-theme="signal-studio"] section.bg-\[\#0D0D0D\] .crosshair-corner a[href^="http"] svg {
+  color: #6938FF !important;
+}
+
+[data-theme="signal-studio"] section.bg-\[\#0D0D0D\] .crosshair-corner button[aria-label="Copy Email Address"] {
+  background-color: #C6FF00 !important;
+  border: 2px solid #1B1020 !important;
+  color: #1B1020 !important;
+  box-shadow: 2px 2px 0px 0px #1B1020 !important;
+  font-weight: 900;
+}
+
+[data-theme="signal-studio"] section.bg-\[\#0D0D0D\] .crosshair-corner button[aria-label="Copy Email Address"]:hover {
+  background-color: #FF4FA3 !important;
+  color: #1B1020 !important;
+  box-shadow: 4px 4px 0px 0px #1B1020 !important;
+}
+
+[data-theme="signal-studio"] section.bg-\[\#0D0D0D\] .crosshair-corner .bg-black {
+  background-color: #1B1020 !important;
+  border: 2px solid #1B1020 !important;
+}
+
+[data-theme="signal-studio"] section.bg-\[\#0D0D0D\] .crosshair-corner .bg-black .text-\[\#F4F1EA\] {
+  color: #FFF0D1 !important;
+}
+
+[data-theme="signal-studio"] section.bg-\[\#0D0D0D\] .crosshair-corner .bg-black .text-\[\#FF3B00\] {
+  color: #FF4FA3 !important;
 }
 
 /* Headings in Signal Studio: Bold High-contrast Deep Ink */

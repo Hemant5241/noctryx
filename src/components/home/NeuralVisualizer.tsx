@@ -367,6 +367,7 @@ export function NeuralVisualizer() {
   return (
     <div
       ref={containerRef}
+      data-neural-visualizer="true"
       className="relative w-full h-[400px] sm:h-[480px] lg:h-[540px] border-2 border-black bg-white overflow-hidden shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] crosshair-corner"
     >
       {/* Canvas */}
