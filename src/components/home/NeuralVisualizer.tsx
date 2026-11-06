@@ -133,7 +133,6 @@ export function NeuralVisualizer() {
       // Theme-specific colors
       let gridStroke = "rgba(13, 13, 13, 0.05)";
       let edgeStrokeNormal = "rgba(13, 13, 13, ";
-      let edgeStrokeHighlight = "rgba(255, 59, 0, ";
       let anchorFill = "#FF3B00";
       let anchorStroke = "#0D0D0D";
       let nodeFill = "#0D0D0D";
@@ -142,7 +141,6 @@ export function NeuralVisualizer() {
       if (theme === "crimson-noir") {
         gridStroke = "rgba(205, 203, 202, 0.05)";
         edgeStrokeNormal = "rgba(205, 203, 202, ";
-        edgeStrokeHighlight = "rgba(212, 21, 20, ";
         anchorFill = "#D41514";
         anchorStroke = "#CDCBCA";
         nodeFill = "#CDCBCA";
@@ -150,7 +148,6 @@ export function NeuralVisualizer() {
       } else if (theme === "signal-studio") {
         gridStroke = "rgba(28, 29, 32, 0.05)";
         edgeStrokeNormal = "rgba(28, 29, 32, ";
-        edgeStrokeHighlight = "rgba(78, 80, 222, ";
         anchorFill = "#FFC928";
         anchorStroke = "#1C1D20";
         nodeFill = "#1C1D20";
@@ -196,13 +193,24 @@ export function NeuralVisualizer() {
             ctx.lineTo(nodes[j].x, nodes[j].y);
 
             if (isHighlight) {
-              ctx.strokeStyle = `${edgeStrokeHighlight}${alpha * 0.85})`;
-              ctx.lineWidth = 1.5;
+              if (theme === "crimson-noir") {
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = "#D41514";
+                ctx.strokeStyle = `rgba(212, 21, 20, ${alpha * 0.95})`;
+                ctx.lineWidth = 1.8;
+              } else if (theme === "signal-studio") {
+                ctx.strokeStyle = `rgba(78, 80, 222, ${alpha * 0.95})`;
+                ctx.lineWidth = 2;
+              } else {
+                ctx.strokeStyle = `rgba(255, 59, 0, ${alpha * 0.85})`;
+                ctx.lineWidth = 1.5;
+              }
             } else {
               ctx.strokeStyle = `${edgeStrokeNormal}${alpha * 0.22})`;
               ctx.lineWidth = 0.8;
             }
             ctx.stroke();
+            ctx.shadowBlur = 0;
           }
         }
       }
@@ -233,13 +241,38 @@ export function NeuralVisualizer() {
           }
         }
 
+        // Theme-specific node decorations
+        if (theme === "crimson-noir" && node.isAnchor) {
+          // Atmospheric pulse ring
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, node.radius * 2.5, 0, Math.PI * 2);
+          ctx.strokeStyle = "rgba(212, 21, 20, 0.3)";
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+        } else if (theme === "signal-studio" && node.isAnchor) {
+          // Studio architectural crosshairs
+          ctx.beginPath();
+          ctx.moveTo(node.x - 7, node.y);
+          ctx.lineTo(node.x + 7, node.y);
+          ctx.moveTo(node.x, node.y - 7);
+          ctx.lineTo(node.x, node.y + 7);
+          ctx.strokeStyle = "#4E50DE";
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        }
+
         // Draw node body
         ctx.beginPath();
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
 
         if (node.isAnchor) {
+          if (theme === "crimson-noir") {
+            ctx.shadowBlur = 18;
+            ctx.shadowColor = "#D41514";
+          }
           ctx.fillStyle = anchorFill;
           ctx.fill();
+          ctx.shadowBlur = 0;
           ctx.lineWidth = 1.5;
           ctx.strokeStyle = anchorStroke;
           ctx.stroke();
@@ -249,8 +282,20 @@ export function NeuralVisualizer() {
           ctx.fillStyle = labelFill;
           ctx.fillText(`[${node.dimension}]`, node.x + 8, node.y - 6);
         } else {
-          ctx.fillStyle = nodeFill;
-          ctx.fill();
+          // Non-anchor nodes
+          if (theme === "signal-studio" && i % 4 === 0) {
+            // Studio secondary hub node in indigo
+            ctx.fillStyle = "#4E50DE";
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, node.radius * 1.6, 0, Math.PI * 2);
+            ctx.strokeStyle = "rgba(78, 80, 222, 0.4)";
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          } else {
+            ctx.fillStyle = nodeFill;
+            ctx.fill();
+          }
         }
       }
 

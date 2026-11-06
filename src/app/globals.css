@@ -471,25 +471,27 @@ dialog::backdrop {
 
 /* Contrast cards & buttons in Crimson Noir */
 [data-theme="crimson-noir"] .bg-black {
-  background-color: #161616 !important;
+  background-color: #121214 !important;
 }
 
 [data-theme="crimson-noir"] button.bg-black {
-  background-color: #1a1a1a !important;
+  background-color: #161619 !important;
   color: #cdcbca !important;
+  border-color: #2a2a30 !important;
 }
 
 [data-theme="crimson-noir"] input,
 [data-theme="crimson-noir"] textarea {
-  background-color: #101010 !important;
-  color: #cdcbca !important;
-  border-color: #2a2a2a !important;
+  background-color: #0d0d0f !important;
+  color: #ffffff !important;
+  border-color: #26262e !important;
 }
 
 [data-theme="crimson-noir"] input:focus,
 [data-theme="crimson-noir"] textarea:focus {
-  background-color: #151515 !important;
+  background-color: #121216 !important;
   border-color: #d41514 !important;
+  box-shadow: 0 0 15px rgba(212, 21, 20, 0.35) !important;
 }
 
 /* Contrast cards & buttons in Signal Studio */
@@ -497,17 +499,328 @@ dialog::backdrop {
   background-color: #1c1d20 !important;
 }
 
+[data-theme="signal-studio"] button.bg-black {
+  background-color: #1c1d20 !important;
+  color: #ffffff !important;
+  border-radius: 4px;
+}
+
 [data-theme="signal-studio"] input,
 [data-theme="signal-studio"] textarea {
   background-color: #ffffff !important;
   color: #1c1d20 !important;
   border-color: #1c1d20 !important;
+  border-radius: 4px;
 }
 
 [data-theme="signal-studio"] input:focus,
 [data-theme="signal-studio"] textarea:focus {
   background-color: #ffffff !important;
   border-color: #4e50de !important;
+  box-shadow: 0 0 0 3px rgba(78, 80, 222, 0.2) !important;
+}
+
+/* =============================================================================
+ * THEME 2 — CRIMSON NOIR: CINEMATIC LUXURY VISUAL SYSTEM
+ * ============================================================================= */
+[data-theme="crimson-noir"] body {
+  background-color: #080808 !important;
+  background-image: 
+    radial-gradient(ellipse 90% 50% at 50% -10%, rgba(212, 21, 20, 0.14), transparent 75%),
+    linear-gradient(to right, rgba(205, 203, 202, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(205, 203, 202, 0.03) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 32px 32px, 32px 32px !important;
+}
+
+/* Atmospheric Hero Section in Crimson Noir */
+[data-theme="crimson-noir"] .bg-grid-paper {
+  background-image: 
+    radial-gradient(ellipse 90% 55% at 50% -10%, rgba(212, 21, 20, 0.18), transparent 75%),
+    radial-gradient(ellipse 60% 40% at 90% 40%, rgba(212, 21, 20, 0.06), transparent 60%),
+    linear-gradient(to right, rgba(205, 203, 202, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(205, 203, 202, 0.03) 1px, transparent 1px) !important;
+  background-color: #080808 !important;
+  border-bottom-color: rgba(212, 21, 20, 0.3) !important;
+}
+
+/* Header in Crimson Noir: Frosted Obsidian Glass with Crimson Specular Line */
+[data-theme="crimson-noir"] header {
+  background-color: rgba(8, 8, 8, 0.92) !important;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(212, 21, 20, 0.35) !important;
+}
+
+[data-theme="crimson-noir"] header .text-black {
+  color: #CDCBCA !important;
+}
+
+[data-theme="crimson-noir"] header .text-black\/60 {
+  color: #8A8887 !important;
+}
+
+[data-theme="crimson-noir"] header nav a:hover {
+  background-color: #141418 !important;
+  border-color: #D41514 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 15px rgba(212, 21, 20, 0.35);
+}
+
+/* Volumetric Depth Shadows for Crimson Noir (replacing flat brutalist blocks) */
+[data-theme="crimson-noir"] .shadow-\[4px_4px_0px_0px_rgba\(0\,0\,0\,1\)\],
+[data-theme="crimson-noir"] .shadow-\[5px_5px_0px_0px_rgba\(0\,0\,0\,1\)\] {
+  box-shadow: 0 8px 24px -2px rgba(0, 0, 0, 0.8), 0 0 12px -2px rgba(212, 21, 20, 0.12) !important;
+  border-radius: 2px !important;
+}
+
+[data-theme="crimson-noir"] .shadow-\[6px_6px_0px_0px_rgba\(0\,0\,0\,1\)\],
+[data-theme="crimson-noir"] .shadow-\[8px_8px_0px_0px_rgba\(0\,0\,0\,1\)\] {
+  box-shadow: 0 12px 36px -4px rgba(0, 0, 0, 0.9), 0 0 20px -2px rgba(212, 21, 20, 0.18) !important;
+  border-radius: 3px !important;
+}
+
+[data-theme="crimson-noir"] .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\],
+[data-theme="crimson-noir"] .shadow-\[2px_2px_0px_0px_rgba\(255\,59\,0\,1\)\] {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6), 0 0 8px rgba(212, 21, 20, 0.25) !important;
+  border-radius: 2px !important;
+}
+
+/* Hover Cards Bloom in Crimson Noir */
+[data-theme="crimson-noir"] .crosshair-corner {
+  background: #111114 !important;
+  border: 1px solid #26262c !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 16px rgba(212, 21, 20, 0.14) !important;
+  border-radius: 2px !important;
+}
+
+[data-theme="crimson-noir"] .crosshair-corner:hover {
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.95), 0 0 30px rgba(212, 21, 20, 0.35) !important;
+  border-color: rgba(212, 21, 20, 0.6) !important;
+  transform: translateY(-2px);
+}
+
+[data-theme="crimson-noir"] .crosshair-corner::before,
+[data-theme="crimson-noir"] .crosshair-corner::after {
+  border-color: #D41514 !important;
+  filter: drop-shadow(0 0 4px #D41514);
+}
+
+/* Headings in Crimson Noir: Silvery Chrome Gleam */
+[data-theme="crimson-noir"] h1,
+[data-theme="crimson-noir"] h2,
+[data-theme="crimson-noir"] h3 {
+  color: #FFFFFF !important;
+  letter-spacing: -0.01em;
+}
+
+[data-theme="crimson-noir"] h1 span.text-\[\#FF3B00\] {
+  color: #D41514 !important;
+  text-shadow: 0 0 25px rgba(212, 21, 20, 0.7);
+}
+
+[data-theme="crimson-noir"] h1 span.bg-\[\#CCFF00\] {
+  background-color: transparent !important;
+  box-shadow: 0 4px 20px rgba(212, 21, 20, 0.5);
+}
+
+/* Buttons in Crimson Noir: Sleek Obsidian Glass Bevel with Crimson Halo */
+[data-theme="crimson-noir"] .brutalist-button {
+  background: linear-gradient(180deg, #18181c 0%, #101012 100%) !important;
+  color: #CDCBCA !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  border-radius: 2px !important;
+}
+
+[data-theme="crimson-noir"] .brutalist-button:hover {
+  background: #1c1c22 !important;
+  border-color: #D41514 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 25px rgba(212, 21, 20, 0.45), 0 8px 25px rgba(0,0,0,0.8) !important;
+  transform: translateY(-2px);
+}
+
+[data-theme="crimson-noir"] .brutalist-button-primary {
+  background: linear-gradient(180deg, #E01E1D 0%, #B8100F 100%) !important;
+  color: #FFFFFF !important;
+  border: 1px solid #FF3B3A !important;
+  box-shadow: 0 0 25px rgba(212, 21, 20, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+  border-radius: 2px !important;
+}
+
+[data-theme="crimson-noir"] .brutalist-button-primary:hover {
+  background: #FF2423 !important;
+  box-shadow: 0 0 35px rgba(212, 21, 20, 0.8), 0 8px 25px rgba(0,0,0,0.8) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px);
+}
+
+/* Footer in Crimson Noir */
+[data-theme="crimson-noir"] footer {
+  background-color: #050505 !important;
+  border-top: 2px solid rgba(212, 21, 20, 0.35) !important;
+}
+
+[data-theme="crimson-noir"] footer .text-\[\#CCFF00\] {
+  color: #D41514 !important;
+}
+
+/* =============================================================================
+ * THEME 3 — SIGNAL STUDIO: CREATIVE TECHNOLOGY VISUAL SYSTEM
+ * ============================================================================= */
+/* Deep Graphite Architectural Header in Signal Studio */
+[data-theme="signal-studio"] header {
+  background-color: #1C1D20 !important;
+  border-bottom: 2px solid #1C1D20 !important;
+  color: #F2F4F1 !important;
+  box-shadow: 0 4px 0px 0px #4E50DE !important;
+}
+
+[data-theme="signal-studio"] header .text-black {
+  color: #F2F4F1 !important;
+}
+
+[data-theme="signal-studio"] header .text-black\/60 {
+  color: #A3A6B4 !important;
+}
+
+[data-theme="signal-studio"] header .bg-black\/\[0\.02\] {
+  background-color: #242529 !important;
+  border-bottom-color: #373940 !important;
+}
+
+[data-theme="signal-studio"] header nav a {
+  color: #F2F4F1 !important;
+}
+
+[data-theme="signal-studio"] header nav a:hover {
+  background-color: #4E50DE !important;
+  border-color: #4E50DE !important;
+  color: #FFFFFF !important;
+  border-radius: 4px;
+}
+
+[data-theme="signal-studio"] header .bg-\[\#FF3B00\] {
+  background-color: #FFC928 !important;
+  color: #1C1D20 !important;
+}
+
+/* Creative Graph Atmosphere for Signal Studio */
+[data-theme="signal-studio"] .bg-grid-paper {
+  background-image: 
+    linear-gradient(to right, rgba(78, 80, 222, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(78, 80, 222, 0.08) 1px, transparent 1px) !important;
+  background-size: 24px 24px !important;
+  background-color: #F2F4F1 !important;
+}
+
+/* Studio Tactile Drop Shadows & Rounded Geometry */
+[data-theme="signal-studio"] .shadow-\[4px_4px_0px_0px_rgba\(0\,0\,0\,1\)\],
+[data-theme="signal-studio"] .shadow-\[5px_5px_0px_0px_rgba\(0\,0\,0\,1\)\] {
+  box-shadow: 4px 4px 0px 0px #1C1D20 !important;
+  border-radius: 6px !important;
+}
+
+[data-theme="signal-studio"] .shadow-\[6px_6px_0px_0px_rgba\(0\,0\,0\,1\)\],
+[data-theme="signal-studio"] .shadow-\[8px_8px_0px_0px_rgba\(0\,0\,0\,1\)\] {
+  box-shadow: 6px 6px 0px 0px #1C1D20 !important;
+  border-radius: 8px !important;
+}
+
+[data-theme="signal-studio"] .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
+  box-shadow: 2px 2px 0px 0px #1C1D20 !important;
+  border-radius: 4px !important;
+}
+
+/* Studio Project Cards with Indigo Hover Snaps */
+[data-theme="signal-studio"] .crosshair-corner {
+  background: #FFFFFF !important;
+  border: 2px solid #1C1D20 !important;
+  box-shadow: 6px 6px 0px 0px #1C1D20 !important;
+  border-radius: 8px !important;
+}
+
+[data-theme="signal-studio"] .crosshair-corner:hover {
+  box-shadow: 8px 8px 0px 0px #4E50DE !important;
+  transform: translate(-2px, -2px) !important;
+  border-color: #1C1D20 !important;
+}
+
+[data-theme="signal-studio"] .crosshair-corner::before,
+[data-theme="signal-studio"] .crosshair-corner::after {
+  border-color: #4E50DE !important;
+}
+
+/* Headings in Signal Studio: High-contrast Graphite with Sunshine Highlight */
+[data-theme="signal-studio"] h1,
+[data-theme="signal-studio"] h2,
+[data-theme="signal-studio"] h3 {
+  color: #1C1D20 !important;
+}
+
+[data-theme="signal-studio"] h1 span.text-\[\#FF3B00\] {
+  color: #1C1D20 !important;
+}
+
+[data-theme="signal-studio"] h1 span.bg-\[\#CCFF00\] {
+  background-color: #FFC928 !important;
+  height: 14px !important;
+  bottom: -2px !important;
+  opacity: 0.95;
+}
+
+/* Studio Tactile Buttons with Rounded Edges & High-Contrast Fill */
+[data-theme="signal-studio"] .brutalist-button {
+  background-color: #FFFFFF !important;
+  color: #1C1D20 !important;
+  border: 2px solid #1C1D20 !important;
+  border-radius: 4px !important;
+  box-shadow: 4px 4px 0px 0px #1C1D20 !important;
+}
+
+[data-theme="signal-studio"] .brutalist-button:hover {
+  background-color: #1C1D20 !important;
+  color: #FFC928 !important;
+  border-color: #1C1D20 !important;
+  box-shadow: 6px 6px 0px 0px #4E50DE !important;
+  transform: translate(-2px, -2px);
+}
+
+[data-theme="signal-studio"] .brutalist-button-primary {
+  background-color: #FFC928 !important;
+  color: #1C1D20 !important;
+  border: 2px solid #1C1D20 !important;
+  border-radius: 4px !important;
+  box-shadow: 4px 4px 0px 0px #1C1D20 !important;
+  font-weight: 800;
+}
+
+[data-theme="signal-studio"] .brutalist-button-primary:hover {
+  background-color: #4E50DE !important;
+  color: #FFFFFF !important;
+  border-color: #1C1D20 !important;
+  box-shadow: 6px 6px 0px 0px #FFC928 !important;
+  transform: translate(-2px, -2px);
+}
+
+/* Footer in Signal Studio: Deep Graphite with Indigo Accents */
+[data-theme="signal-studio"] footer {
+  background-color: #1C1D20 !important;
+  border-top: 4px solid #4E50DE !important;
+  color: #F2F4F1 !important;
+}
+
+[data-theme="signal-studio"] footer .text-\[\#CCFF00\] {
+  color: #FFC928 !important;
+}
+
+[data-theme="signal-studio"] footer .border-\[\#262626\] {
+  border-color: #373940 !important;
+}
+
+[data-theme="signal-studio"] footer .bg-\[\#141414\] {
+  background-color: #242529 !important;
 }
 
 /* Dynamic SVG diagram styling across themes */

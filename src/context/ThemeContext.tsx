@@ -8,6 +8,7 @@ export interface ThemeMeta {
   id: Theme;
   name: string;
   tagline: string;
+  pill: string;
   bgPreview: string;
   fgPreview: string;
   accentPreview: string;
@@ -17,8 +18,9 @@ export interface ThemeMeta {
 export const THEMES: ThemeMeta[] = [
   {
     id: "original",
-    name: "ORIGINAL (DEFAULT)",
-    tagline: "Industrial Paper & Electric Orange",
+    name: "ORIGINAL — BRUTALIST",
+    tagline: "Technical blueprint paper & heavy industrial grids",
+    pill: "BRUTALISM",
     bgPreview: "#F4F1EA",
     fgPreview: "#0D0D0D",
     accentPreview: "#FF3B00",
@@ -26,8 +28,9 @@ export const THEMES: ThemeMeta[] = [
   },
   {
     id: "crimson-noir",
-    name: "CRIMSON NOIR",
-    tagline: "Obsidian Black & Laser Crimson",
+    name: "CRIMSON NOIR — CINEMATIC",
+    tagline: "Obsidian luxury, chrome silver & atmospheric laser glow",
+    pill: "CINEMATIC LUXURY",
     bgPreview: "#080808",
     fgPreview: "#CDCBCA",
     accentPreview: "#D41514",
@@ -35,8 +38,9 @@ export const THEMES: ThemeMeta[] = [
   },
   {
     id: "signal-studio",
-    name: "SIGNAL STUDIO",
-    tagline: "Deep Graphite, Sunshine & Indigo",
+    name: "SIGNAL STUDIO — CREATIVE",
+    tagline: "Deep graphite, cloud white, sunshine & electric indigo",
+    pill: "CREATIVE STUDIO",
     bgPreview: "#F2F4F1",
     fgPreview: "#1C1D20",
     accentPreview: "#FFC928",

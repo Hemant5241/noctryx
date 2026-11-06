@@ -100,6 +100,32 @@ export function ThemeSelector({ compact = false, className = "" }: ThemeSelector
 
           {THEMES.map((t) => {
             const isSelected = t.id === theme;
+
+            // Distinctive styling per theme personality
+            let cardClass = "";
+            let checkColor = "text-[#CCFF00]";
+            let badgeClass = "";
+
+            if (t.id === "original") {
+              cardClass = isSelected
+                ? "bg-[#0D0D0D] text-[#F4F1EA] border-2 border-black shadow-[3px_3px_0px_0px_rgba(255,59,0,1)]"
+                : "bg-[#F4F1EA] text-[#0D0D0D] border-2 border-black/25 hover:border-black hover:bg-white";
+              checkColor = "text-[#CCFF00]";
+              badgeClass = "text-[#FF3B00] border border-[#FF3B00]/40 bg-[#FF3B00]/10";
+            } else if (t.id === "crimson-noir") {
+              cardClass = isSelected
+                ? "bg-[#141418] text-[#FFFFFF] border border-[#D41514] shadow-[0_0_18px_rgba(212,21,20,0.35)]"
+                : "bg-[#0C0C0E] text-[#CDCBCA] border border-[#26262c] hover:border-[#D41514]/60 hover:bg-[#121216]";
+              checkColor = "text-[#D41514]";
+              badgeClass = "text-[#D41514] border border-[#D41514]/50 bg-[#D41514]/10 shadow-[0_0_8px_rgba(212,21,20,0.3)]";
+            } else if (t.id === "signal-studio") {
+              cardClass = isSelected
+                ? "bg-[#1C1D20] text-[#F2F4F1] border-2 border-[#1C1D20] shadow-[3px_3px_0px_0px_#4E50DE] rounded-md"
+                : "bg-[#FFFFFF] text-[#1C1D20] border-2 border-[#1C1D20]/30 hover:border-[#1C1D20] rounded-md";
+              checkColor = "text-[#FFC928]";
+              badgeClass = "text-[#1C1D20] bg-[#FFC928] border border-[#1C1D20] rounded-full";
+            }
+
             return (
               <button
                 key={t.id}
@@ -107,22 +133,24 @@ export function ThemeSelector({ compact = false, className = "" }: ThemeSelector
                 role="option"
                 aria-selected={isSelected}
                 onClick={() => handleSelect(t.id)}
-                className={`w-full text-left p-2.5 border transition-all flex items-start justify-between gap-3 cursor-pointer ${
-                  isSelected
-                    ? "bg-black text-[#F4F1EA] border-black shadow-[2px_2px_0px_0px_rgba(255,59,0,1)]"
-                    : "bg-[#F4F1EA] text-black border-black/20 hover:border-black hover:bg-white"
-                }`}
+                className={`w-full text-left p-2.5 transition-all flex items-start justify-between gap-3 cursor-pointer ${cardClass}`}
               >
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
                     <span className="text-xs font-black uppercase tracking-tight">
                       {t.name}
                     </span>
-                    {isSelected && <Check className="w-3.5 h-3.5 text-[#CCFF00]" />}
+                    {isSelected && <Check className={`w-3.5 h-3.5 ${checkColor}`} />}
                   </div>
                   <div
                     className={`text-[10px] ${
-                      isSelected ? "text-[#A39F94]" : "text-black/60"
+                      isSelected
+                        ? t.id === "crimson-noir"
+                          ? "text-[#A39F94]"
+                          : t.id === "signal-studio"
+                          ? "text-[#C2C5D0]"
+                          : "text-[#A39F94]"
+                        : "opacity-75"
                     }`}
                   >
                     {t.tagline}
@@ -131,22 +159,22 @@ export function ThemeSelector({ compact = false, className = "" }: ThemeSelector
                   {/* Swatch palette row */}
                   <div className="flex items-center gap-1.5 pt-1">
                     <span
-                      className="w-3 h-3 border border-black/50"
+                      className="w-3.5 h-3.5 border border-black/40 shadow-xs"
                       style={{ backgroundColor: t.bgPreview }}
                       title="Canvas Background"
                     />
                     <span
-                      className="w-3 h-3 border border-black/50"
+                      className="w-3.5 h-3.5 border border-black/40 shadow-xs"
                       style={{ backgroundColor: t.fgPreview }}
                       title="Primary Ink"
                     />
                     <span
-                      className="w-3 h-3 border border-black/50"
+                      className="w-3.5 h-3.5 border border-black/40 shadow-xs"
                       style={{ backgroundColor: t.accentPreview }}
                       title="Primary Accent"
                     />
                     <span
-                      className="w-3 h-3 border border-black/50"
+                      className="w-3.5 h-3.5 border border-black/40 shadow-xs"
                       style={{ backgroundColor: t.secondaryPreview }}
                       title="Secondary Accent"
                     />
@@ -154,21 +182,9 @@ export function ThemeSelector({ compact = false, className = "" }: ThemeSelector
                 </div>
 
                 <div className="text-[9px] font-mono font-bold shrink-0">
-                  {t.id === "original" && (
-                    <span className="text-[#FF3B00] border border-[#FF3B00]/40 px-1 py-0.2">
-                      DEFAULT
-                    </span>
-                  )}
-                  {t.id === "crimson-noir" && (
-                    <span className="text-[#D41514] border border-[#D41514]/40 px-1 py-0.2">
-                      DARK
-                    </span>
-                  )}
-                  {t.id === "signal-studio" && (
-                    <span className="text-[#4E50DE] border border-[#4E50DE]/40 px-1 py-0.2">
-                      STUDIO
-                    </span>
-                  )}
+                  <span className={`px-1.5 py-0.5 tracking-wider ${badgeClass}`}>
+                    {t.pill}
+                  </span>
                 </div>
               </button>
             );
