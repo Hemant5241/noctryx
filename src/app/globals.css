@@ -54,6 +54,12 @@ body {
   color: #ffffff;
 }
 
+/* Explicit high-visibility focus indicator for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--accent-orange);
+  outline-offset: 2px;
+}
+
 /* Accessible dialog and backdrop handling per modern web guidance */
 dialog:modal {
   overscroll-behavior: contain;

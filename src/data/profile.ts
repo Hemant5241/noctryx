@@ -24,6 +24,7 @@ export interface ProfileData {
     timezone: string;
     utcOffset: string;
     coordinates: string;
+    isVerifiedRegion: boolean;
   };
   availability: {
     status: "available" | "limited" | "unavailable";
@@ -47,18 +48,19 @@ export const profileData: ProfileData = {
   tagline: "ARCHITECTING ROBUST INTELLIGENCE & EXPERIMENTAL COMPUTING SYSTEMS",
   headline: "Engineering intelligent architectures where statistical models meet deterministic reliability.",
   shortBio:
-    "AI Engineer specializing in autonomous agent workflows, neural information retrieval, high-throughput model inference, and multimodal computer vision. Building scalable infrastructure that transforms generative probabilistic models into mission-critical production software.",
+    "AI Engineer specializing in autonomous agent workflows, neural information retrieval, high-throughput model inference, and multimodal computer vision. Building scalable infrastructure that transforms generative probabilistic models into mission-critical software.",
   manifesto: [
     "I do not merely experiment with AI models in isolated notebooks. I engineer end-to-end cognitive architectures that bridge speculative intelligence with battle-tested systems engineering.",
     "True intelligence in production demands low-latency vector indexes, strict grounding guarantees, deterministic guardrails, and real-time observability.",
     "Brutal simplicity beats fragile abstraction. Every token generated, tensor evaluated, and millisecond spent must serve an unambiguous purpose.",
   ],
   location: {
-    city: "Mumbai / Pune",
+    city: "Mumbai / Pune (Candidate Region)",
     country: "India",
     timezone: "Asia/Kolkata",
     utcOffset: "UTC+05:30",
     coordinates: "18.5204° N, 73.8567° E",
+    isVerifiedRegion: false,
   },
   availability: {
     status: "available",
@@ -70,28 +72,28 @@ export const profileData: ProfileData = {
       label: "CORE DISCIPLINES",
       value: "05",
       unit: "AREAS",
-      description: "Agents, RAG, Computer Vision, Predictive ML, Low-Latency Inference",
+      description: "Agents, Neural RAG, Computer Vision, Predictive ML, Low-Latency Inference",
     },
     {
       label: "CASE STUDIES",
       value: "05",
-      unit: "PROJECTS",
+      unit: "CONCEPTS",
       isSimulated: true,
-      description: "Full-stack architectural demonstrations designed to evaluate production viability",
+      description: "Full-stack architectural demonstration concepts evaluating production viability",
     },
     {
-      label: "AVG INFERENCE TARGET",
+      label: "TARGET LATENCY",
       value: "<42",
       unit: "MS",
       isSimulated: true,
-      description: "Illustrative SLA target benchmarked on optimized quantized pipelines",
+      description: "Illustrative simulation benchmark target on quantized pipelines (not a commercial SLA)",
     },
     {
-      label: "SYSTEM AVAILABILITY",
+      label: "SIMULATED RELIABILITY",
       value: "99.98",
       unit: "%",
       isSimulated: true,
-      description: "Illustrative high-availability fault-tolerance target in multi-agent routing",
+      description: "Illustrative fault-tolerance benchmark target in multi-agent routing simulations",
     },
   ],
   editorialTags: [

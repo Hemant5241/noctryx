@@ -193,7 +193,7 @@ export function ProjectsCatalogView() {
               <th className="p-3 font-black text-black">SPEC #</th>
               <th className="p-3 font-black text-black">ARCHITECTURE</th>
               <th className="p-3 font-black text-black">PRIMARY ENGINE</th>
-              <th className="p-3 font-black text-black">LATENCY SLA</th>
+              <th className="p-3 font-black text-black">SIMULATED BENCHMARK TARGET</th>
               <th className="p-3 font-black text-black">RELIABILITY GUARD</th>
             </tr>
           </thead>
@@ -202,39 +202,42 @@ export function ProjectsCatalogView() {
               <td className="p-3 font-bold text-[#FF3B00]">SPEC 01</td>
               <td className="p-3 font-bold">Neural Search Engine</td>
               <td className="p-3">Qdrant HNSW + PyTorch</td>
-              <td className="p-3 text-[#CCFF00] bg-black font-bold">14.2ms</td>
+              <td className="p-3 text-[#CCFF00] bg-black font-bold">~14.2ms [Simulated]</td>
               <td className="p-3">PQ8 Vector Compression</td>
             </tr>
             <tr className="border-b border-black/20 hover:bg-[#F4F1EA]/60">
               <td className="p-3 font-bold text-[#FF3B00]">SPEC 02</td>
               <td className="p-3 font-bold">Vision AI Pipeline</td>
               <td className="p-3">TensorRT INT8 + ONNX</td>
-              <td className="p-3 text-[#CCFF00] bg-black font-bold">8.6ms (64 FPS)</td>
+              <td className="p-3 text-[#CCFF00] bg-black font-bold">~8.6ms [Synthetic Stream]</td>
               <td className="p-3">ByteTrack Kalman State</td>
             </tr>
             <tr className="border-b border-black/20 hover:bg-[#F4F1EA]/60">
               <td className="p-3 font-bold text-[#FF3B00]">SPEC 03</td>
               <td className="p-3 font-bold">Agentic Workflow</td>
               <td className="p-3">LangGraph + Pydantic</td>
-              <td className="p-3 text-[#CCFF00] bg-black font-bold">Async DAG</td>
+              <td className="p-3 text-[#CCFF00] bg-black font-bold">Async DAG Simulation</td>
               <td className="p-3">Cyclical Self-Healing</td>
             </tr>
             <tr className="border-b border-black/20 hover:bg-[#F4F1EA]/60">
               <td className="p-3 font-bold text-[#FF3B00]">SPEC 04</td>
               <td className="p-3 font-bold">Predictive Intelligence</td>
               <td className="p-3">Temporal Transformer</td>
-              <td className="p-3 text-[#CCFF00] bg-black font-bold">32ms</td>
+              <td className="p-3 text-[#CCFF00] bg-black font-bold">~32ms [Synthetic Series]</td>
               <td className="p-3">Wasserstein Drift Alerting</td>
             </tr>
             <tr className="border-b border-black/20 hover:bg-[#F4F1EA]/60">
               <td className="p-3 font-bold text-[#FF3B00]">SPEC 05</td>
               <td className="p-3 font-bold">LLM Knowledge System</td>
               <td className="p-3">LlamaIndex + ChromaDB</td>
-              <td className="p-3 text-[#CCFF00] bg-black font-bold">Streamed</td>
+              <td className="p-3 text-[#CCFF00] bg-black font-bold">Streamed Chunks [Demo]</td>
               <td className="p-3">NLI Sentence Verification</td>
             </tr>
           </tbody>
         </table>
+        <div className="mt-4 text-[10px] text-black/60 font-mono">
+          * NOTE: All performance figures reflect simulated benchmark targets measured on synthetic datasets and do not represent contractual commercial client SLAs.
+        </div>
       </div>
     </div>
   );

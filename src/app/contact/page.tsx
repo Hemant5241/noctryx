@@ -92,10 +92,18 @@ export default function ContactPage() {
             <span className="text-[#FF3B00]">CONNECTION.</span>
           </h1>
 
-          <p className="font-sans text-base sm:text-xl font-bold text-black/80 max-w-2xl leading-relaxed">
+          <p className="font-sans text-base sm:text-xl font-bold text-black/80 max-w-2xl leading-relaxed mb-6">
             Interested in high-throughput AI engineering, agentic architecture, or research collaborations?
-            Dispatch a message through the terminal or reach out directly.
+            Dispatch a simulated packet through the terminal or reach out directly via verified channels.
           </p>
+
+          {/* Demonstration Notice */}
+          <div className="p-3 border-2 border-black bg-white inline-flex items-center gap-2 text-xs font-mono text-black/70 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+            <span className="font-black text-[#FF3B00]">[LOCAL SIMULATION]</span>
+            <span>
+              This terminal provides an interactive client-side simulation. Direct email remains the primary channel.
+            </span>
+          </div>
         </div>
       </section>
 
@@ -165,46 +173,67 @@ export default function ContactPage() {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   {formError && (
-                    <div className="p-3 border-2 border-[#FF3B00] bg-[#FF3B00]/10 text-xs font-bold text-[#FF3B00]">
+                    <div
+                      role="alert"
+                      aria-live="assertive"
+                      className="p-3 border-2 border-[#FF3B00] bg-[#FF3B00]/10 text-xs font-bold text-[#FF3B00]"
+                    >
                       {formError}
                     </div>
                   )}
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="text-[10px] text-black/60 font-bold uppercase block mb-1">
+                      <label
+                        htmlFor="sender-name"
+                        className="text-[10px] text-black/60 font-bold uppercase block mb-1"
+                      >
                         YOUR NAME *:
                       </label>
                       <input
+                        id="sender-name"
                         type="text"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. Alex Vance"
-                        className="w-full p-3 border-2 border-black bg-[#F4F1EA] text-xs font-bold text-black focus:outline-none focus:bg-white"
+                        className="w-full p-3 border-2 border-black bg-[#F4F1EA] text-xs font-bold text-black focus:outline-none focus:bg-white focus-visible:ring-2 focus-visible:ring-[#FF3B00]"
                         required
+                        aria-required="true"
                       />
                     </div>
 
                     <div>
-                      <label className="text-[10px] text-black/60 font-bold uppercase block mb-1">
+                      <label
+                        htmlFor="sender-email"
+                        className="text-[10px] text-black/60 font-bold uppercase block mb-1"
+                      >
                         EMAIL ADDRESS *:
                       </label>
                       <input
+                        id="sender-email"
                         type="email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="name@organization.com"
-                        className="w-full p-3 border-2 border-black bg-[#F4F1EA] text-xs font-bold text-black focus:outline-none focus:bg-white"
+                        className="w-full p-3 border-2 border-black bg-[#F4F1EA] text-xs font-bold text-black focus:outline-none focus:bg-white focus-visible:ring-2 focus-visible:ring-[#FF3B00]"
                         required
+                        aria-required="true"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="text-[10px] text-black/60 font-bold uppercase block mb-1">
+                    <label
+                      id="inquiry-category-label"
+                      className="text-[10px] text-black/60 font-bold uppercase block mb-1"
+                    >
                       INQUIRY CLASSIFICATION:
                     </label>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <div
+                      role="radiogroup"
+                      aria-labelledby="inquiry-category-label"
+                      className="grid grid-cols-2 sm:grid-cols-4 gap-2"
+                    >
                       {[
                         "Full-Time Role",
                         "Research Collab",
@@ -214,8 +243,10 @@ export default function ContactPage() {
                         <button
                           key={cat}
                           type="button"
+                          role="radio"
+                          aria-checked={formData.category === cat}
                           onClick={() => setFormData({ ...formData, category: cat })}
-                          className={`py-2 px-2 text-[10px] font-bold border transition-colors cursor-pointer ${
+                          className={`py-2 px-2 text-[10px] font-bold border transition-colors cursor-pointer focus-visible:ring-2 focus-visible:ring-[#FF3B00] ${
                             formData.category === cat
                               ? "bg-black text-[#F4F1EA] border-black shadow-[2px_2px_0px_0px_rgba(255,59,0,1)]"
                               : "bg-[#F4F1EA] text-black border-black/30 hover:border-black"
@@ -228,36 +259,45 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="text-[10px] text-black/60 font-bold uppercase block mb-1">
+                    <label
+                      htmlFor="message-subject"
+                      className="text-[10px] text-black/60 font-bold uppercase block mb-1"
+                    >
                       SUBJECT / TOPIC:
                     </label>
                     <input
+                      id="message-subject"
                       type="text"
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       placeholder="e.g. AI Systems Architect Role — Q4 Pipeline"
-                      className="w-full p-3 border-2 border-black bg-[#F4F1EA] text-xs font-bold text-black focus:outline-none focus:bg-white"
+                      className="w-full p-3 border-2 border-black bg-[#F4F1EA] text-xs font-bold text-black focus:outline-none focus:bg-white focus-visible:ring-2 focus-visible:ring-[#FF3B00]"
                     />
                   </div>
 
                   <div>
-                    <label className="text-[10px] text-black/60 font-bold uppercase block mb-1">
+                    <label
+                      htmlFor="message-body"
+                      className="text-[10px] text-black/60 font-bold uppercase block mb-1"
+                    >
                       MESSAGE BODY *:
                     </label>
                     <textarea
+                      id="message-body"
                       rows={5}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       placeholder="Outline technical requirements, problem statement, team structure, or inquiry details..."
-                      className="w-full p-3 border-2 border-black bg-[#F4F1EA] text-xs font-sans text-black focus:outline-none focus:bg-white"
+                      className="w-full p-3 border-2 border-black bg-[#F4F1EA] text-xs font-sans text-black focus:outline-none focus:bg-white focus-visible:ring-2 focus-visible:ring-[#FF3B00]"
                       required
+                      aria-required="true"
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="brutalist-button brutalist-button-primary w-full cursor-pointer flex items-center justify-center gap-2"
+                    className="brutalist-button brutalist-button-primary w-full cursor-pointer flex items-center justify-center gap-2 focus-visible:ring-2 focus-visible:ring-[#FF3B00]"
                   >
                     <Send className="w-4 h-4" />
                     <span>{isSubmitting ? "DISPATCHING PACKETS..." : "SEND DISPATCH TRANSMISSION"}</span>
@@ -281,14 +321,14 @@ export default function ContactPage() {
                 For urgent communications, recruitment inquiries, or research discussions:
               </p>
 
-              <div className="p-3 border border-black bg-[#F4F1EA] flex items-center justify-between gap-2 mb-4">
+              <div className="p-3 border border-black bg-[#F4F1EA] flex items-center justify-between gap-2 mb-2">
                 <span className="text-xs font-bold text-black truncate">
                   {contactDetails.primaryEmail}
                 </span>
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  className="px-2.5 py-1 border border-black bg-white hover:bg-black hover:text-white transition-colors text-[10px] font-bold flex items-center gap-1 shrink-0 cursor-pointer"
+                  className="px-2.5 py-1 border border-black bg-white hover:bg-black hover:text-white transition-colors text-[10px] font-bold flex items-center gap-1 shrink-0 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#FF3B00]"
                   aria-label="Copy Direct Email"
                 >
                   {copied ? (
@@ -303,6 +343,9 @@ export default function ContactPage() {
                     </>
                   )}
                 </button>
+              </div>
+              <div className="text-[10px] text-black/50 uppercase font-mono mb-4">
+                [DEMONSTRATION PLACEHOLDER // EDITABLE VIA SRC/DATA/SOCIALS.TS]
               </div>
 
               <div className="text-[11px] text-black/60 flex items-center gap-2">

@@ -16,42 +16,47 @@ export interface SocialLink {
   isPlaceholder: boolean;
   category: "code" | "professional" | "contact" | "research";
   iconName: "Github" | "Linkedin" | "Mail" | "Twitter" | "Terminal" | "FileText";
+  verificationStatus: "placeholder" | "verified";
 }
 
 export const socialsData: SocialLink[] = [
   {
     id: "github",
     label: "GITHUB",
-    handle: "@omshinde-ai (Placeholder)",
-    url: "https://github.com/placeholder-om-shinde",
+    handle: "[AWAITING USER CONFIGURATION]",
+    url: "https://github.com",
     isPlaceholder: true,
+    verificationStatus: "placeholder",
     category: "code",
     iconName: "Github",
   },
   {
     id: "linkedin",
     label: "LINKEDIN",
-    handle: "in/om-shinde (Placeholder)",
-    url: "https://linkedin.com/in/placeholder-om-shinde",
+    handle: "[AWAITING USER CONFIGURATION]",
+    url: "https://linkedin.com",
     isPlaceholder: true,
+    verificationStatus: "placeholder",
     category: "professional",
     iconName: "Linkedin",
   },
   {
     id: "email",
     label: "EMAIL DIRECT",
-    handle: "omshinde.ai.engineer@example.com",
+    handle: "omshinde.ai.engineer@example.com (Placeholder)",
     url: "mailto:omshinde.ai.engineer@example.com",
     isPlaceholder: true,
+    verificationStatus: "placeholder",
     category: "contact",
     iconName: "Mail",
   },
   {
     id: "resume",
     label: "CURRICULUM VITAE",
-    handle: "OM_SHINDE_AI_RESUME.PDF",
+    handle: "OM_SHINDE_AI_RESUME.PDF (Specimen)",
     url: "#contact",
     isPlaceholder: true,
+    verificationStatus: "placeholder",
     category: "research",
     iconName: "FileText",
   },
@@ -59,9 +64,11 @@ export const socialsData: SocialLink[] = [
 
 export const contactDetails = {
   primaryEmail: "omshinde.ai.engineer@example.com",
-  secondaryContact: "Available via Contact Terminal",
-  gpgKeyFingerprint: "4A9F 1B2C 3D4E 5F60 7A8B 9C0D 1E2F 3A4B 5C6D 7E8F (Simulated)",
-  responseExpectation: "Typical response time: < 24 hours for engineering inquiries",
-  currentLocation: "Mumbai / Pune, Maharashtra, India",
+  isEmailVerified: false,
+  secondaryContact: "Available via Client-Side Contact Terminal",
+  gpgKeyFingerprint: "AWAITING VERIFIED KEY // NO GPG KEY REGISTERED",
+  isGpgVerified: false,
+  responseExpectation: "Standard engineering inbox — Inquiries reviewed periodically (Specimen Policy)",
+  currentLocation: "Mumbai / Pune, Maharashtra, India (Candidate Region)",
   timezone: "IST (UTC +5:30)",
 };

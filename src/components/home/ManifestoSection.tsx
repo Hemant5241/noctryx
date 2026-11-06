@@ -9,9 +9,11 @@ export function ManifestoSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Top Section Header */}
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#262626] pb-4 mb-12">
-          <div className="flex items-center gap-2 text-xs font-bold text-[#FF3B00] tracking-widest">
-            <Terminal className="w-4 h-4" />
-            <span>01 {"//"} ENGINEERING MANIFESTO</span>
+          <div className="flex items-center gap-2">
+            <Terminal className="w-4 h-4 text-[#FF3B00]" />
+            <h2 className="text-xs font-bold text-[#FF3B00] tracking-widest uppercase">
+              01 {"//"} ENGINEERING MANIFESTO
+            </h2>
           </div>
           <div className="text-[11px] text-[#A39F94] font-medium">
             PHILOSOPHY & SYSTEM PRINCIPLES

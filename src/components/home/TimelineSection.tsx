@@ -25,11 +25,17 @@ export function TimelineSection() {
           </div>
 
           {/* Tab selector */}
-          <div className="flex items-center border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div
+            role="tablist"
+            aria-label="Timeline Categories"
+            className="flex items-center border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+          >
             <button
               type="button"
+              role="tab"
+              aria-selected={activeTab === "experience"}
               onClick={() => setActiveTab("experience")}
-              className={`px-4 py-2 text-xs font-bold transition-colors cursor-pointer flex items-center gap-2 ${
+              className={`px-4 py-2 text-xs font-bold transition-colors cursor-pointer flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-[#FF3B00] ${
                 activeTab === "experience"
                   ? "bg-black text-[#F4F1EA]"
                   : "bg-white text-black hover:bg-black/5"
@@ -40,8 +46,10 @@ export function TimelineSection() {
             </button>
             <button
               type="button"
+              role="tab"
+              aria-selected={activeTab === "education"}
               onClick={() => setActiveTab("education")}
-              className={`px-4 py-2 text-xs font-bold transition-colors cursor-pointer flex items-center gap-2 border-l-2 border-black ${
+              className={`px-4 py-2 text-xs font-bold transition-colors cursor-pointer flex items-center gap-2 border-l-2 border-black focus-visible:ring-2 focus-visible:ring-[#FF3B00] ${
                 activeTab === "education"
                   ? "bg-black text-[#F4F1EA]"
                   : "bg-white text-black hover:bg-black/5"

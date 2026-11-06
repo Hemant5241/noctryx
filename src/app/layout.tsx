@@ -15,9 +15,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: process.env.NEXT_PUBLIC_SITE_URL
+    ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
+    : undefined,
   title: "Om Shinde // AI Systems Engineer & Architect",
   description:
-    "Experimental digital portfolio of Om Shinde. AI Systems Engineer specializing in autonomous agent workflows, neural vector search, edge computer vision, and low-latency inference systems.",
+    "Engineering portfolio of Om Shinde. AI Systems Engineer specializing in autonomous agent workflows, neural vector search, edge computer vision, and low-latency inference systems.",
   keywords: [
     "Om Shinde",
     "AI Engineer",

@@ -131,12 +131,12 @@ export function Footer() {
           <ShieldAlert className="w-5 h-5 text-[#CCFF00] shrink-0 mt-0.5" />
           <div className="text-[11px] text-[#A39F94] space-y-1">
             <p className="font-bold text-[#F4F1EA]">
-              DEMO CASE STUDIES & METRICS TRANSPARENCY NOTICE:
+              PORTFOLIO SUBJECT & METRICS TRANSPARENCY NOTICE:
             </p>
             <p>
-              The 5 AI case studies presented in this portfolio represent architectural demonstration
-              concepts. All performance benchmarks, latency SLAs, and throughput metrics are simulated
-              illustrative specifications designed to demonstrate AI systems engineering capabilities.
+              Portfolio Subject: Om Shinde. The 5 AI case studies presented in this portfolio represent architectural demonstration
+              concepts. All performance benchmarks, latency numbers, and throughput metrics are simulated
+              illustrative specifications designed to demonstrate AI systems engineering capabilities. Repository maintenance and developer attribution are strictly decoupled from the portfolio subject.
             </p>
           </div>
         </div>

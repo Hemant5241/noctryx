@@ -41,18 +41,22 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Portrait Viewfinder Placeholder */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="relative aspect-square w-full border-4 border-black bg-[#0D0D0D] p-6 text-[#F4F1EA] shadow-[10px_10px_0px_0px_rgba(255,59,0,1)] crosshair-corner flex flex-col justify-between overflow-hidden">
+            <div
+              role="img"
+              aria-label="Portrait viewfinder placeholder for Om Shinde"
+              className="relative aspect-square w-full border-4 border-black bg-[#0D0D0D] p-6 text-[#F4F1EA] shadow-[10px_10px_0px_0px_rgba(255,59,0,1)] crosshair-corner flex flex-col justify-between overflow-hidden"
+            >
               {/* Camera HUD Grid */}
-              <div className="absolute inset-0 bg-dots-pattern opacity-25 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-dots-pattern opacity-25 pointer-events-none" aria-hidden="true"></div>
 
               {/* Viewfinder crosshairs */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
                 <div className="w-20 h-20 border-t border-b border-l border-r border-[#FF3B00]/40"></div>
                 <div className="absolute w-2 h-2 bg-[#CCFF00]"></div>
               </div>
 
               {/* Top Viewfinder Telemetry */}
-              <div className="flex items-center justify-between text-[10px] text-[#A39F94] relative z-10">
+              <div className="flex items-center justify-between text-[10px] text-[#A39F94] relative z-10" aria-hidden="true">
                 <span className="flex items-center gap-1.5">
                   <Camera className="w-3.5 h-3.5 text-[#FF3B00]" />
                   <span>ISO 100 // f/2.8 // 50MM</span>
@@ -69,13 +73,13 @@ export default function AboutPage() {
                   REPLACEABLE PORTRAIT PLACEHOLDER
                 </p>
                 <p className="text-[10px] text-[#A39F94] leading-relaxed">
-                  Om Shinde can drop a portrait photograph here by placing an image file in the public
+                  Om Shinde can drop a verified portrait photograph here by placing an image file in the public
                   assets directory.
                 </p>
               </div>
 
               {/* Bottom HUD */}
-              <div className="flex items-center justify-between text-[10px] text-[#A39F94] relative z-10 border-t border-[#262626] pt-2">
+              <div className="flex items-center justify-between text-[10px] text-[#A39F94] relative z-10 border-t border-[#262626] pt-2" aria-hidden="true">
                 <span>COORD: {profileData.location.coordinates}</span>
                 <span className="text-[#FF3B00]">OM_SHINDE_AI_PORTRAIT.RAW</span>
               </div>
