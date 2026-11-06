@@ -22,7 +22,7 @@ export function CaseStudyArchitectureDiagram({
     <figure
       role="figure"
       aria-label={`System Architecture Flow Diagram for ${projectTitle}`}
-      className="p-6 sm:p-8 border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner overflow-hidden"
+      className="architecture-diagram p-6 sm:p-8 border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner overflow-hidden"
     >
       <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-black pb-4 mb-6">
         <div>

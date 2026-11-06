@@ -7,6 +7,7 @@ import { LiveClock } from "./LiveClock";
 import { SystemStatusBadge } from "./SystemStatusBadge";
 import { CommandMenu } from "./CommandMenu";
 import { OmMonogram } from "@/components/brand/OmMonogram";
+import { ThemeSelector } from "./ThemeSelector";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -79,11 +80,14 @@ export function Header() {
               <LiveClock />
             </div>
 
+            {/* Theme Selector */}
+            <ThemeSelector />
+
             {/* Menu trigger button */}
             <button
               type="button"
               onClick={() => setMenuOpen(true)}
-              className="inline-flex items-center gap-2 font-mono text-xs font-bold px-3 py-2 border-2 border-black bg-white hover:bg-black hover:text-white transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none"
+              className="inline-flex items-center gap-2 font-mono text-xs font-bold px-3 py-2 border-2 border-black bg-white hover:bg-black hover:text-white transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none focus-visible:ring-2 focus-visible:ring-[#FF3B00]"
               aria-label="Open System Command Menu"
             >
               <Menu className="w-4 h-4 text-[#FF3B00]" />

@@ -5,6 +5,7 @@ import { ArrowUp, Terminal, ShieldAlert, Compass } from "lucide-react";
 import { profileData } from "@/data/profile";
 import { socialsData } from "@/data/socials";
 import { OmMonogram } from "@/components/brand/OmMonogram";
+import { ThemeSelector } from "@/components/layout/ThemeSelector";
 
 export function Footer() {
   const scrollToTop = () => {
@@ -22,6 +23,7 @@ export function Footer() {
           <span className="hidden sm:inline">COORDINATES: {profileData.location.coordinates}</span>
         </div>
         <div className="flex items-center gap-4 text-[10px]">
+          <ThemeSelector compact className="text-black" />
           <span>TIMEZONE: {profileData.location.timezone}</span>
           <button
             onClick={scrollToTop}

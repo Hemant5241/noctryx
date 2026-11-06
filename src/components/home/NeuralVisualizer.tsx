@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Activity } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
 
 interface Node {
   x: number;
@@ -35,6 +36,7 @@ export function NeuralVisualizer() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const isReducedMotion = useSyncExternalStore(subscribeMotion, getMotionSnapshot, getServerMotionSnapshot);
+  const { theme } = useTheme();
 
   const [telemetry, setTelemetry] = useState({
     nodeCount: 38,
@@ -128,8 +130,35 @@ export function NeuralVisualizer() {
 
       ctx.clearRect(0, 0, width, height);
 
+      // Theme-specific colors
+      let gridStroke = "rgba(13, 13, 13, 0.05)";
+      let edgeStrokeNormal = "rgba(13, 13, 13, ";
+      let edgeStrokeHighlight = "rgba(255, 59, 0, ";
+      let anchorFill = "#FF3B00";
+      let anchorStroke = "#0D0D0D";
+      let nodeFill = "#0D0D0D";
+      let labelFill = "#0D0D0D";
+
+      if (theme === "crimson-noir") {
+        gridStroke = "rgba(205, 203, 202, 0.05)";
+        edgeStrokeNormal = "rgba(205, 203, 202, ";
+        edgeStrokeHighlight = "rgba(212, 21, 20, ";
+        anchorFill = "#D41514";
+        anchorStroke = "#CDCBCA";
+        nodeFill = "#CDCBCA";
+        labelFill = "#CDCBCA";
+      } else if (theme === "signal-studio") {
+        gridStroke = "rgba(28, 29, 32, 0.05)";
+        edgeStrokeNormal = "rgba(28, 29, 32, ";
+        edgeStrokeHighlight = "rgba(78, 80, 222, ";
+        anchorFill = "#FFC928";
+        anchorStroke = "#1C1D20";
+        nodeFill = "#1C1D20";
+        labelFill = "#1C1D20";
+      }
+
       // Draw subtle coordinate background grid
-      ctx.strokeStyle = "rgba(13, 13, 13, 0.05)";
+      ctx.strokeStyle = gridStroke;
       ctx.lineWidth = 1;
       const gridSize = 40;
       for (let x = 0; x < width; x += gridSize) {
@@ -167,10 +196,10 @@ export function NeuralVisualizer() {
             ctx.lineTo(nodes[j].x, nodes[j].y);
 
             if (isHighlight) {
-              ctx.strokeStyle = `rgba(255, 59, 0, ${alpha * 0.8})`;
+              ctx.strokeStyle = `${edgeStrokeHighlight}${alpha * 0.85})`;
               ctx.lineWidth = 1.5;
             } else {
-              ctx.strokeStyle = `rgba(13, 13, 13, ${alpha * 0.22})`;
+              ctx.strokeStyle = `${edgeStrokeNormal}${alpha * 0.22})`;
               ctx.lineWidth = 0.8;
             }
             ctx.stroke();
@@ -209,18 +238,18 @@ export function NeuralVisualizer() {
         ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
 
         if (node.isAnchor) {
-          ctx.fillStyle = "#FF3B00";
+          ctx.fillStyle = anchorFill;
           ctx.fill();
           ctx.lineWidth = 1.5;
-          ctx.strokeStyle = "#0D0D0D";
+          ctx.strokeStyle = anchorStroke;
           ctx.stroke();
 
           // Anchor coordinate label
           ctx.font = "9px monospace";
-          ctx.fillStyle = "#0D0D0D";
+          ctx.fillStyle = labelFill;
           ctx.fillText(`[${node.dimension}]`, node.x + 8, node.y - 6);
         } else {
-          ctx.fillStyle = "#0D0D0D";
+          ctx.fillStyle = nodeFill;
           ctx.fill();
         }
       }
@@ -243,7 +272,7 @@ export function NeuralVisualizer() {
       canvas.removeEventListener("mouseleave", handleMouseLeave);
       window.removeEventListener("resize", handleResize);
     };
-  }, [isReducedMotion]);
+  }, [isReducedMotion, theme]);
 
   return (
     <div

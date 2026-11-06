@@ -1,11 +1,27 @@
 @import "tailwindcss";
 
-:root {
+/* =============================================================================
+ * THREE-THEME DESIGN SYSTEM ARCHITECTURE — OM SHINDE PORTFOLIO
+ * =============================================================================
+ * Theme 1 — Original (Default):
+ *   Warm paper white (#F4F1EA) + Deep black (#0D0D0D) + Electric Orange (#FF3B00) + Acid Yellow (#CCFF00)
+ *
+ * Theme 2 — Crimson Noir:
+ *   Obsidian Black (#080808) + Chrome Silver (#CDCBCA) + Laser Crimson (#D41514)
+ *
+ * Theme 3 — Signal Studio:
+ *   Deep Graphite (#1C1D20) + Soft Cloud White (#F2F4F1) + Sunshine Yellow (#FFC928) + Indigo (#4E50DE)
+ * ============================================================================= */
+
+:root,
+[data-theme="original"] {
   --bg-paper: #f4f1ea;
   --bg-paper-subtle: #eae6dc;
+  --bg-card: #ffffff;
   --bg-dark: #0d0d0d;
   --bg-dark-surface: #171717;
   --bg-dark-elevated: #212121;
+  --bg-dark-card: #141414;
   
   --fg-primary: #0d0d0d;
   --fg-muted: #595650;
@@ -25,8 +41,82 @@
   --border-dark: #262626;
   --border-dark-subtle: #333333;
 
-  --grid-line-light: rgba(13, 13, 13, 0.08);
-  --grid-line-dark: rgba(244, 241, 234, 0.08);
+  --grid-line-light: rgba(13, 13, 13, 0.06);
+  --grid-line-dark: rgba(244, 241, 234, 0.07);
+  --dots-color: rgba(13, 13, 13, 0.15);
+
+  --shadow-color: rgba(0, 0, 0, 1);
+  --shadow-accent: rgba(255, 59, 0, 1);
+}
+
+[data-theme="crimson-noir"] {
+  --bg-paper: #080808;
+  --bg-paper-subtle: #121212;
+  --bg-card: #121212;
+  --bg-dark: #040404;
+  --bg-dark-surface: #141414;
+  --bg-dark-elevated: #1a1a1a;
+  --bg-dark-card: #161616;
+  
+  --fg-primary: #cdcbca;
+  --fg-muted: #9e9c9a;
+  --fg-subtle: #6f6d6c;
+  
+  --fg-dark-primary: #ffffff;
+  --fg-dark-muted: #cdcbca;
+  --fg-dark-subtle: #8a8887;
+
+  --accent-orange: #d41514;
+  --accent-orange-hover: #b0100f;
+  --accent-yellow: #cdcbca;
+  --accent-yellow-dark: #a8a6a5;
+
+  --border-light: #262626;
+  --border-strong: #333333;
+  --border-dark: #202020;
+  --border-dark-subtle: #3a3a3a;
+
+  --grid-line-light: rgba(205, 203, 202, 0.06);
+  --grid-line-dark: rgba(212, 21, 20, 0.08);
+  --dots-color: rgba(205, 203, 202, 0.15);
+
+  --shadow-color: rgba(0, 0, 0, 0.95);
+  --shadow-accent: rgba(212, 21, 20, 0.85);
+}
+
+[data-theme="signal-studio"] {
+  --bg-paper: #f2f4f1;
+  --bg-paper-subtle: #e3e6e1;
+  --bg-card: #ffffff;
+  --bg-dark: #1c1d20;
+  --bg-dark-surface: #242529;
+  --bg-dark-elevated: #2e3037;
+  --bg-dark-card: #26282e;
+  
+  --fg-primary: #1c1d20;
+  --fg-muted: #535660;
+  --fg-subtle: #797c88;
+  
+  --fg-dark-primary: #f2f4f1;
+  --fg-dark-muted: #c2c5d0;
+  --fg-dark-subtle: #8a8d9a;
+
+  --accent-orange: #ffc928;
+  --accent-orange-hover: #e5b31e;
+  --accent-yellow: #4e50de;
+  --accent-yellow-dark: #3e40be;
+
+  --border-light: #d1d6ce;
+  --border-strong: #1c1d20;
+  --border-dark: #373940;
+  --border-dark-subtle: #4a4d56;
+
+  --grid-line-light: rgba(28, 29, 32, 0.06);
+  --grid-line-dark: rgba(242, 244, 241, 0.07);
+  --dots-color: rgba(78, 80, 222, 0.15);
+
+  --shadow-color: rgba(28, 29, 32, 1);
+  --shadow-accent: rgba(78, 80, 222, 0.85);
 }
 
 * {
@@ -72,20 +162,20 @@ dialog::backdrop {
 /* Brutalist Grid and Blueprint Utilities */
 .bg-grid-paper {
   background-image: 
-    linear-gradient(to right, rgba(13, 13, 13, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(13, 13, 13, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-line-light) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-light) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
 .bg-grid-dark {
   background-image: 
-    linear-gradient(to right, rgba(244, 241, 234, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(244, 241, 234, 0.07) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-line-dark) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-dark) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
 .bg-dots-pattern {
-  background-image: radial-gradient(rgba(13, 13, 13, 0.15) 1px, transparent 1px);
+  background-image: radial-gradient(var(--dots-color) 1px, transparent 1px);
   background-size: 16px 16px;
 }
 
@@ -137,9 +227,9 @@ dialog::backdrop {
 .brutalist-button:hover {
   transform: translate(-2px, -2px);
   box-shadow: 6px 6px 0px 0px var(--accent-orange);
-  background-color: #0d0d0d;
-  color: #f4f1ea;
-  border-color: #0d0d0d;
+  background-color: var(--border-strong);
+  color: var(--bg-paper);
+  border-color: var(--border-strong);
 }
 
 .brutalist-button:active {
@@ -150,12 +240,12 @@ dialog::backdrop {
 .brutalist-button-primary {
   background-color: var(--accent-orange);
   color: #ffffff;
-  border: 2px solid #0d0d0d;
-  box-shadow: 4px 4px 0px 0px #0d0d0d;
+  border: 2px solid var(--border-strong);
+  box-shadow: 4px 4px 0px 0px var(--border-strong);
 }
 
 .brutalist-button-primary:hover {
-  background-color: #0d0d0d;
+  background-color: var(--border-strong);
   color: var(--accent-yellow);
   box-shadow: 6px 6px 0px 0px var(--accent-orange);
 }
@@ -163,12 +253,12 @@ dialog::backdrop {
 .brutalist-button-acid {
   background-color: var(--accent-yellow);
   color: #0d0d0d;
-  border: 2px solid #0d0d0d;
-  box-shadow: 4px 4px 0px 0px #0d0d0d;
+  border: 2px solid var(--border-strong);
+  box-shadow: 4px 4px 0px 0px var(--border-strong);
 }
 
 .brutalist-button-acid:hover {
-  background-color: #0d0d0d;
+  background-color: var(--border-strong);
   color: #ffffff;
   box-shadow: 6px 6px 0px 0px var(--accent-yellow);
 }
@@ -176,7 +266,7 @@ dialog::backdrop {
 /* Brutalist Card Frame */
 .brutalist-card {
   border: 2px solid var(--border-strong);
-  background-color: #ffffff;
+  background-color: var(--bg-card);
   box-shadow: 5px 5px 0px 0px var(--border-strong);
   transition: all 150ms ease-out;
 }
@@ -215,5 +305,345 @@ dialog::backdrop {
   .animate-marquee {
     animation: none;
     transform: none;
+  }
+}
+
+/* =============================================================================
+ * SCOPED OVERRIDES FOR CRIMSON NOIR & SIGNAL STUDIO
+ * ============================================================================= */
+
+[data-theme="crimson-noir"] .bg-\[\#F4F1EA\],
+[data-theme="signal-studio"] .bg-\[\#F4F1EA\] {
+  background-color: var(--bg-paper) !important;
+}
+
+[data-theme="crimson-noir"] .bg-\[\#F4F1EA\]\/60,
+[data-theme="signal-studio"] .bg-\[\#F4F1EA\]\/60 {
+  background-color: color-mix(in srgb, var(--bg-paper) 60%, transparent) !important;
+}
+
+[data-theme="crimson-noir"] .bg-\[\#F4F1EA\]\/70,
+[data-theme="signal-studio"] .bg-\[\#F4F1EA\]\/70 {
+  background-color: color-mix(in srgb, var(--bg-paper) 70%, transparent) !important;
+}
+
+[data-theme="crimson-noir"] .bg-\[\#F4F1EA\]\/95,
+[data-theme="signal-studio"] .bg-\[\#F4F1EA\]\/95 {
+  background-color: color-mix(in srgb, var(--bg-paper) 95%, transparent) !important;
+}
+
+[data-theme="crimson-noir"] .bg-white,
+[data-theme="signal-studio"] .bg-white {
+  background-color: var(--bg-card) !important;
+}
+
+[data-theme="crimson-noir"] .bg-white\/90,
+[data-theme="signal-studio"] .bg-white\/90 {
+  background-color: color-mix(in srgb, var(--bg-card) 90%, transparent) !important;
+}
+
+[data-theme="crimson-noir"] .bg-white\/95,
+[data-theme="signal-studio"] .bg-white\/95 {
+  background-color: color-mix(in srgb, var(--bg-card) 95%, transparent) !important;
+}
+
+[data-theme="crimson-noir"] .bg-black\/5,
+[data-theme="crimson-noir"] .bg-black\/10,
+[data-theme="crimson-noir"] .bg-black\/15,
+[data-theme="crimson-noir"] .bg-black\/\[0\.02\],
+[data-theme="crimson-noir"] .bg-black\/\[0\.03\] {
+  background-color: rgba(205, 203, 202, 0.08) !important;
+}
+
+[data-theme="crimson-noir"] .hover\:bg-black\/5:hover {
+  background-color: rgba(205, 203, 202, 0.12) !important;
+}
+
+[data-theme="crimson-noir"] .text-\[\#0D0D0D\],
+[data-theme="crimson-noir"] .text-black,
+[data-theme="signal-studio"] .text-\[\#0D0D0D\],
+[data-theme="signal-studio"] .text-black {
+  color: var(--fg-primary) !important;
+}
+
+[data-theme="crimson-noir"] .text-black\/80,
+[data-theme="crimson-noir"] .text-black\/85,
+[data-theme="signal-studio"] .text-black\/80,
+[data-theme="signal-studio"] .text-black\/85 {
+  color: color-mix(in srgb, var(--fg-primary) 85%, transparent) !important;
+}
+
+[data-theme="crimson-noir"] .text-black\/60,
+[data-theme="crimson-noir"] .text-black\/70,
+[data-theme="signal-studio"] .text-black\/60,
+[data-theme="signal-studio"] .text-black\/70 {
+  color: var(--fg-muted) !important;
+}
+
+[data-theme="crimson-noir"] .text-black\/40,
+[data-theme="crimson-noir"] .text-black\/50,
+[data-theme="signal-studio"] .text-black\/40,
+[data-theme="signal-studio"] .text-black\/50 {
+  color: var(--fg-subtle) !important;
+}
+
+[data-theme="crimson-noir"] .border-black,
+[data-theme="signal-studio"] .border-black {
+  border-color: var(--border-strong) !important;
+}
+
+[data-theme="crimson-noir"] .border-black\/15,
+[data-theme="crimson-noir"] .border-black\/20,
+[data-theme="crimson-noir"] .border-black\/25,
+[data-theme="crimson-noir"] .border-black\/30,
+[data-theme="signal-studio"] .border-black\/15,
+[data-theme="signal-studio"] .border-black\/20,
+[data-theme="signal-studio"] .border-black\/25,
+[data-theme="signal-studio"] .border-black\/30 {
+  border-color: var(--border-light) !important;
+}
+
+[data-theme="crimson-noir"] .text-\[\#FF3B00\],
+[data-theme="signal-studio"] .text-\[\#FF3B00\] {
+  color: var(--accent-orange) !important;
+}
+
+[data-theme="crimson-noir"] .bg-\[\#FF3B00\],
+[data-theme="signal-studio"] .bg-\[\#FF3B00\] {
+  background-color: var(--accent-orange) !important;
+}
+
+[data-theme="crimson-noir"] .bg-\[\#FF3B00\]\/10,
+[data-theme="signal-studio"] .bg-\[\#FF3B00\]\/10 {
+  background-color: color-mix(in srgb, var(--accent-orange) 15%, transparent) !important;
+}
+
+[data-theme="crimson-noir"] .border-\[\#FF3B00\],
+[data-theme="signal-studio"] .border-\[\#FF3B00\] {
+  border-color: var(--accent-orange) !important;
+}
+
+[data-theme="crimson-noir"] .text-\[\#CCFF00\],
+[data-theme="signal-studio"] .text-\[\#CCFF00\] {
+  color: var(--accent-yellow) !important;
+}
+
+[data-theme="crimson-noir"] .bg-\[\#CCFF00\],
+[data-theme="signal-studio"] .bg-\[\#CCFF00\] {
+  background-color: var(--accent-yellow) !important;
+  color: #080808 !important;
+}
+
+[data-theme="signal-studio"] .bg-\[\#CCFF00\] {
+  background-color: var(--accent-yellow) !important;
+  color: #ffffff !important;
+}
+
+[data-theme="crimson-noir"] .bg-\[\#0D0D0D\],
+[data-theme="signal-studio"] .bg-\[\#0D0D0D\] {
+  background-color: var(--bg-dark) !important;
+}
+
+[data-theme="crimson-noir"] .bg-\[\#141414\],
+[data-theme="signal-studio"] .bg-\[\#141414\] {
+  background-color: var(--bg-dark-card) !important;
+}
+
+[data-theme="crimson-noir"] .border-\[\#262626\],
+[data-theme="signal-studio"] .border-\[\#262626\] {
+  border-color: var(--border-dark) !important;
+}
+
+[data-theme="crimson-noir"] .text-\[\#F4F1EA\],
+[data-theme="signal-studio"] .text-\[\#F4F1EA\] {
+  color: var(--fg-dark-primary) !important;
+}
+
+[data-theme="crimson-noir"] .text-\[\#A39F94\],
+[data-theme="signal-studio"] .text-\[\#A39F94\] {
+  color: var(--fg-dark-muted) !important;
+}
+
+[data-theme="crimson-noir"] .text-\[\#6E6A61\],
+[data-theme="signal-studio"] .text-\[\#6E6A61\] {
+  color: var(--fg-dark-subtle) !important;
+}
+
+/* Contrast cards & buttons in Crimson Noir */
+[data-theme="crimson-noir"] .bg-black {
+  background-color: #161616 !important;
+}
+
+[data-theme="crimson-noir"] button.bg-black {
+  background-color: #1a1a1a !important;
+  color: #cdcbca !important;
+}
+
+[data-theme="crimson-noir"] input,
+[data-theme="crimson-noir"] textarea {
+  background-color: #101010 !important;
+  color: #cdcbca !important;
+  border-color: #2a2a2a !important;
+}
+
+[data-theme="crimson-noir"] input:focus,
+[data-theme="crimson-noir"] textarea:focus {
+  background-color: #151515 !important;
+  border-color: #d41514 !important;
+}
+
+/* Contrast cards & buttons in Signal Studio */
+[data-theme="signal-studio"] .bg-black {
+  background-color: #1c1d20 !important;
+}
+
+[data-theme="signal-studio"] input,
+[data-theme="signal-studio"] textarea {
+  background-color: #ffffff !important;
+  color: #1c1d20 !important;
+  border-color: #1c1d20 !important;
+}
+
+[data-theme="signal-studio"] input:focus,
+[data-theme="signal-studio"] textarea:focus {
+  background-color: #ffffff !important;
+  border-color: #4e50de !important;
+}
+
+/* Dynamic SVG diagram styling across themes */
+[data-theme="crimson-noir"] .architecture-diagram svg rect[fill="#F4F1EA"] {
+  fill: var(--bg-paper-subtle) !important;
+}
+[data-theme="crimson-noir"] .architecture-diagram svg rect[fill="#FFFFFF"] {
+  fill: var(--bg-card) !important;
+}
+[data-theme="crimson-noir"] .architecture-diagram svg rect[fill="#0D0D0D"] {
+  fill: #1a1a1a !important;
+}
+[data-theme="crimson-noir"] .architecture-diagram svg rect[stroke="#0D0D0D"] {
+  stroke: var(--border-strong) !important;
+}
+[data-theme="crimson-noir"] .architecture-diagram svg text[fill="#0D0D0D"] {
+  fill: var(--fg-primary) !important;
+}
+[data-theme="crimson-noir"] .architecture-diagram svg text[fill="#595650"] {
+  fill: var(--fg-muted) !important;
+}
+[data-theme="crimson-noir"] .architecture-diagram svg line[stroke="#0D0D0D"],
+[data-theme="crimson-noir"] .architecture-diagram svg path[stroke="#0D0D0D"] {
+  stroke: var(--fg-primary) !important;
+}
+[data-theme="crimson-noir"] .architecture-diagram svg line[stroke="#FF3B00"],
+[data-theme="crimson-noir"] .architecture-diagram svg path[stroke="#FF3B00"] {
+  stroke: var(--accent-orange) !important;
+}
+[data-theme="crimson-noir"] .architecture-diagram svg marker polygon[fill="#FF3B00"] {
+  fill: var(--accent-orange) !important;
+}
+[data-theme="crimson-noir"] .architecture-diagram svg marker polygon[fill="#0D0D0D"] {
+  fill: var(--fg-primary) !important;
+}
+[data-theme="crimson-noir"] .architecture-diagram svg rect[fill="#CCFF00"] {
+  fill: var(--accent-orange) !important;
+}
+
+[data-theme="signal-studio"] .architecture-diagram svg rect[fill="#F4F1EA"] {
+  fill: var(--bg-paper-subtle) !important;
+}
+[data-theme="signal-studio"] .architecture-diagram svg rect[fill="#FFFFFF"] {
+  fill: var(--bg-card) !important;
+}
+[data-theme="signal-studio"] .architecture-diagram svg rect[fill="#0D0D0D"] {
+  fill: var(--bg-dark) !important;
+}
+[data-theme="signal-studio"] .architecture-diagram svg rect[stroke="#0D0D0D"] {
+  stroke: var(--border-strong) !important;
+}
+[data-theme="signal-studio"] .architecture-diagram svg text[fill="#0D0D0D"] {
+  fill: var(--fg-primary) !important;
+}
+[data-theme="signal-studio"] .architecture-diagram svg text[fill="#595650"] {
+  fill: var(--fg-muted) !important;
+}
+[data-theme="signal-studio"] .architecture-diagram svg line[stroke="#0D0D0D"],
+[data-theme="signal-studio"] .architecture-diagram svg path[stroke="#0D0D0D"] {
+  stroke: var(--fg-primary) !important;
+}
+[data-theme="signal-studio"] .architecture-diagram svg line[stroke="#FF3B00"],
+[data-theme="signal-studio"] .architecture-diagram svg path[stroke="#FF3B00"] {
+  stroke: var(--accent-yellow) !important;
+}
+[data-theme="signal-studio"] .architecture-diagram svg marker polygon[fill="#FF3B00"] {
+  fill: var(--accent-yellow) !important;
+}
+[data-theme="signal-studio"] .architecture-diagram svg marker polygon[fill="#0D0D0D"] {
+  fill: var(--fg-primary) !important;
+}
+[data-theme="signal-studio"] .architecture-diagram svg rect[fill="#CCFF00"] {
+  fill: var(--accent-orange) !important;
+}
+
+/* Monogram theme accent integration */
+[data-theme="crimson-noir"] .om-monogram-svg line[stroke="#FF3B00"] {
+  stroke: var(--accent-orange) !important;
+}
+[data-theme="crimson-noir"] .om-monogram-svg rect[fill="#FF3B00"],
+[data-theme="crimson-noir"] .om-monogram-svg polygon[fill="#FF3B00"] {
+  fill: var(--accent-orange) !important;
+}
+[data-theme="crimson-noir"] .om-monogram-svg line[stroke="#CCFF00"] {
+  stroke: var(--accent-yellow) !important;
+}
+[data-theme="crimson-noir"] .om-monogram-svg polygon[fill="#CCFF00"] {
+  fill: var(--accent-yellow) !important;
+}
+
+[data-theme="signal-studio"] .om-monogram-svg line[stroke="#FF3B00"] {
+  stroke: var(--accent-orange) !important;
+}
+[data-theme="signal-studio"] .om-monogram-svg rect[fill="#FF3B00"],
+[data-theme="signal-studio"] .om-monogram-svg polygon[fill="#FF3B00"] {
+  fill: var(--accent-orange) !important;
+}
+[data-theme="signal-studio"] .om-monogram-svg line[stroke="#CCFF00"] {
+  stroke: var(--accent-yellow) !important;
+}
+[data-theme="signal-studio"] .om-monogram-svg polygon[fill="#CCFF00"] {
+  fill: var(--accent-yellow) !important;
+}
+
+/* Subtle smooth theme transitions */
+html,
+body,
+header,
+footer,
+main,
+section,
+nav,
+div,
+button,
+a,
+input,
+textarea {
+  transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+              color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body,
+  header,
+  footer,
+  main,
+  section,
+  nav,
+  div,
+  button,
+  a,
+  input,
+  textarea {
+    transition: none !important;
   }
 }

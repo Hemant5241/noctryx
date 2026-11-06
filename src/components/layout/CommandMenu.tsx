@@ -2,10 +2,11 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { X, ArrowUpRight, Terminal, Layers, Compass, Mail, User } from "lucide-react";
+import { X, ArrowUpRight, Terminal, Layers, Compass, Mail, User, Palette } from "lucide-react";
 import { projectsData } from "@/data/projects";
 import { socialsData } from "@/data/socials";
 import { OmMonogram } from "@/components/brand/OmMonogram";
+import { useTheme, THEMES } from "@/context/ThemeContext";
 
 interface CommandMenuProps {
   isOpen: boolean;
@@ -14,6 +15,7 @@ interface CommandMenuProps {
 
 export function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
   const dialogRef = useRef<HTMLDialogElement | null>(null);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -174,8 +176,39 @@ export function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
               </div>
             </div>
 
+            {/* Theme switcher row */}
+            <div className="pt-4 border-t border-[#262626] mt-4">
+              <div className="text-[10px] text-[#FF3B00] mb-2 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                <Palette className="w-3.5 h-3.5" />
+                <span>VISUAL THEME PRESET</span>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                {THEMES.map((t) => {
+                  const isCurrent = theme === t.id;
+                  return (
+                    <button
+                      key={t.id}
+                      type="button"
+                      onClick={() => setTheme(t.id)}
+                      className={`p-2 border text-left transition-colors cursor-pointer ${
+                        isCurrent
+                          ? "bg-[#FF3B00] text-white border-[#FF3B00]"
+                          : "border-[#262626] bg-[#141414] text-[#A39F94] hover:text-white hover:border-[#FF3B00]"
+                      }`}
+                    >
+                      <div className="text-[9px] font-black uppercase truncate">{t.name.split(" ")[0]}</div>
+                      <div className="flex items-center gap-1 mt-1.5">
+                        <span className="w-2 h-2 border border-black/40" style={{ backgroundColor: t.bgPreview }} />
+                        <span className="w-2 h-2 border border-black/40" style={{ backgroundColor: t.accentPreview }} />
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
             {/* Socials & telemetry */}
-            <div className="pt-4 border-t border-[#262626] mt-6">
+            <div className="pt-4 border-t border-[#262626] mt-4">
               <div className="text-[10px] text-[#6E6A61] mb-2 font-bold uppercase tracking-wider">
                 COMMUNICATION CHANNELS
               </div>
