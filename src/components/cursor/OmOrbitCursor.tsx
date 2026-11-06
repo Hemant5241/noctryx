@@ -3,13 +3,7 @@
 import { useEffect, useRef, useSyncExternalStore } from "react";
 import { useTheme } from "@/context/ThemeContext";
 
-type CursorTargetType =
-  | "default"
-  | "interactive"
-  | "card"
-  | "neural"
-  | "text"
-  | "hidden";
+type CursorTargetType = "default" | "text" | "hidden";
 
 function subscribeFinePointer(callback: () => void) {
   if (typeof window === "undefined") return () => {};
@@ -29,46 +23,19 @@ function getServerFinePointerSnapshot() {
 
 /**
  * Determine contextual cursor state from DOM target element hierarchy.
- * Priority order ensures inputs get native I-beam, Neural Visualizer never enlarges,
- * and buttons/cards trigger appropriate scale feedback.
+ * Ensures text inputs and editable areas preserve the native text cursor.
+ * Custom cursor size remains constant across all other interactive elements.
  */
 function resolveTargetType(target: Element | null): CursorTargetType {
   if (!target) return "default";
 
-  // 1. Text input / editable area check -> restore native text cursor
+  // Text input / editable area check -> restore native text cursor
   if (
     target.closest(
       'input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]), textarea, [contenteditable="true"]'
     )
   ) {
     return "text";
-  }
-
-  // 2. Neural Visualizer check -> strictly keep standard cursor scale, NEVER enlarge
-  if (
-    target.closest(
-      '[data-neural-visualizer="true"], [data-neural-visualizer], canvas.cursor-crosshair'
-    )
-  ) {
-    return "neural";
-  }
-
-  // 3. High-priority interactive link / button check
-  if (
-    target.closest(
-      'a, button, [role="button"], [role="tab"], [role="option"], [data-cursor="interactive"], input[type="submit"], input[type="button"], select, summary, .cursor-pointer'
-    )
-  ) {
-    return "interactive";
-  }
-
-  // 4. Card / architectural container check
-  if (
-    target.closest(
-      '.crosshair-corner, .brutalist-card, [data-cursor="card"], article'
-    )
-  ) {
-    return "card";
   }
 
   return "default";
@@ -260,29 +227,14 @@ export function OmOrbitCursor() {
         dot.style.opacity = isHidden ? "0" : "1";
         ring.style.opacity = isHidden ? "0" : "1";
 
-        // Calculate target scale states
-        let targetDotScale = 1;
-        let targetRingScale = 1;
+        // Calculate target scale states:
+        // Main Requirement: Custom cursor must NEVER increase in size when hovering over any element.
+        // Size remains strictly constant (1.0) across all hover states.
+        // On pointerdown, subtle click compression (0.6 / 0.8) provides immediate tactile feedback without enlargement.
+        const targetDotScale = isMouseDown.current ? 0.6 : 1;
+        const targetRingScale = isMouseDown.current ? 0.8 : 1;
 
-        if (targetType.current === "neural") {
-          // Requirement: strictly NEVER enlarge or expand inside Neural Visualizer
-          targetDotScale = 1;
-          targetRingScale = 1;
-        } else if (isMouseDown.current) {
-          // Tactile click compression
-          targetDotScale = 0.6;
-          targetRingScale = 0.8;
-        } else if (targetType.current === "interactive") {
-          // Links, buttons, interactive controls
-          targetDotScale = 1.35;
-          targetRingScale = 1.45;
-        } else if (targetType.current === "card") {
-          // Architecture cards, brutalist containers
-          targetDotScale = 1.5;
-          targetRingScale = 1.85;
-        }
-
-        // Smoothly ease scale factors to avoid sudden pop
+        // Smoothly ease scale factors during click feedback
         if (isReducedMotion.current) {
           currentDotScale.current = targetDotScale;
           currentRingScale.current = targetRingScale;
