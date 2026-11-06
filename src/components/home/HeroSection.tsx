@@ -5,8 +5,10 @@ import { ArrowDownRight, ArrowUpRight, Cpu } from "lucide-react";
 import { profileData } from "@/data/profile";
 import { NeuralVisualizer } from "./NeuralVisualizer";
 import { OmMonogram } from "@/components/brand/OmMonogram";
+import { useTheme } from "@/context/ThemeContext";
 
 export function HeroSection() {
+  const { theme } = useTheme();
   return (
     <section className="relative w-full border-b-2 border-black bg-grid-paper pt-8 sm:pt-12 pb-16 sm:pb-24 overflow-hidden">
       {/* Decorative top coordinate tag */}
@@ -43,10 +45,23 @@ export function HeroSection() {
 
             <h1 className="font-mono font-black text-5xl sm:text-7xl xl:text-8xl tracking-tighter leading-[0.92] text-black uppercase">
               ARCHITECTING <br />
-              <span className="relative inline-block text-[#FF3B00]">
-                INTELLIGENT
-                <span className="absolute -bottom-2 left-0 w-full h-2 bg-[#CCFF00] -z-10"></span>
-              </span> <br />
+              {theme === "signal-studio" ? (
+                <span className="relative inline-block bg-[#FFC928] text-[#1C1D20] px-3 py-0.5 border-2 border-[#1C1D20] shadow-[4px_4px_0px_0px_#4E50DE] rounded my-1">
+                  <span className="relative z-10 font-black">INTELLIGENT</span>
+                </span>
+              ) : theme === "crimson-noir" ? (
+                <span className="relative inline-block text-[#FF3838] px-2.5 py-0.5 border border-[#CDCBCA]/30 bg-[#161214] shadow-[0_0_20px_rgba(212,21,20,0.35)] rounded-sm my-1">
+                  <span className="relative z-10 font-black drop-shadow-[0_0_8px_rgba(255,56,56,0.6)]">
+                    INTELLIGENT
+                  </span>
+                </span>
+              ) : (
+                <span className="relative inline-block text-[#FF3B00]">
+                  <span className="relative z-10">INTELLIGENT</span>
+                  <span className="absolute bottom-0 sm:bottom-1 left-0 w-full h-2.5 sm:h-3.5 bg-[#CCFF00] z-0 -rotate-0.5"></span>
+                </span>
+              )}{" "}
+              <br />
               SYSTEMS.
             </h1>
 

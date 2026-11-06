@@ -59,12 +59,12 @@
   --bg-dark-card: #161616;
   
   --fg-primary: #cdcbca;
-  --fg-muted: #9e9c9a;
-  --fg-subtle: #6f6d6c;
+  --fg-muted: #b8b6b4;
+  --fg-subtle: #989694;
   
   --fg-dark-primary: #ffffff;
   --fg-dark-muted: #cdcbca;
-  --fg-dark-subtle: #8a8887;
+  --fg-dark-subtle: #9e9c9a;
 
   --accent-orange: #d41514;
   --accent-orange-hover: #b0100f;
@@ -403,40 +403,75 @@ dialog::backdrop {
   border-color: var(--border-light) !important;
 }
 
-[data-theme="crimson-noir"] .text-\[\#FF3B00\],
+[data-theme="crimson-noir"] .text-\[\#FF3B00\] {
+  color: #FF453A !important;
+}
+
 [data-theme="signal-studio"] .text-\[\#FF3B00\] {
-  color: var(--accent-orange) !important;
+  color: #4E50DE !important;
 }
 
-[data-theme="crimson-noir"] .bg-\[\#FF3B00\],
+/* High-contrast Sunshine Yellow on dark elements in Signal Studio */
+[data-theme="signal-studio"] header .text-\[\#FF3B00\],
+[data-theme="signal-studio"] footer .text-\[\#FF3B00\],
+[data-theme="signal-studio"] .bg-black .text-\[\#FF3B00\],
+[data-theme="signal-studio"] .bg-\[\#0D0D0D\] .text-\[\#FF3B00\],
+[data-theme="signal-studio"] .bg-\[\#141414\] .text-\[\#FF3B00\],
+[data-theme="signal-studio"] .bg-\[\#1C1D20\] .text-\[\#FF3B00\] {
+  color: #FFC928 !important;
+}
+
+[data-theme="crimson-noir"] .bg-\[\#FF3B00\] {
+  background-color: #D41514 !important;
+  color: #FFFFFF !important;
+}
+
 [data-theme="signal-studio"] .bg-\[\#FF3B00\] {
-  background-color: var(--accent-orange) !important;
+  background-color: #FFC928 !important;
+  color: #1C1D20 !important;
 }
 
-[data-theme="crimson-noir"] .bg-\[\#FF3B00\]\/10,
+[data-theme="crimson-noir"] .bg-\[\#FF3B00\]\/10 {
+  background-color: rgba(212, 21, 20, 0.16) !important;
+}
+
 [data-theme="signal-studio"] .bg-\[\#FF3B00\]\/10 {
-  background-color: color-mix(in srgb, var(--accent-orange) 15%, transparent) !important;
+  background-color: rgba(78, 80, 222, 0.12) !important;
 }
 
-[data-theme="crimson-noir"] .border-\[\#FF3B00\],
+[data-theme="crimson-noir"] .border-\[\#FF3B00\] {
+  border-color: rgba(212, 21, 20, 0.75) !important;
+}
+
 [data-theme="signal-studio"] .border-\[\#FF3B00\] {
-  border-color: var(--accent-orange) !important;
+  border-color: #4E50DE !important;
 }
 
-[data-theme="crimson-noir"] .text-\[\#CCFF00\],
+[data-theme="crimson-noir"] .text-\[\#CCFF00\] {
+  color: #CDCBCA !important;
+}
+
 [data-theme="signal-studio"] .text-\[\#CCFF00\] {
-  color: var(--accent-yellow) !important;
+  color: #4E50DE !important;
 }
 
-[data-theme="crimson-noir"] .bg-\[\#CCFF00\],
-[data-theme="signal-studio"] .bg-\[\#CCFF00\] {
-  background-color: var(--accent-yellow) !important;
-  color: #080808 !important;
+[data-theme="signal-studio"] header .text-\[\#CCFF00\],
+[data-theme="signal-studio"] footer .text-\[\#CCFF00\],
+[data-theme="signal-studio"] .bg-black .text-\[\#CCFF00\],
+[data-theme="signal-studio"] .bg-\[\#0D0D0D\] .text-\[\#CCFF00\],
+[data-theme="signal-studio"] .bg-\[\#141414\] .text-\[\#CCFF00\],
+[data-theme="signal-studio"] .bg-\[\#1C1D20\] .text-\[\#CCFF00\] {
+  color: #FFC928 !important;
+}
+
+[data-theme="crimson-noir"] .bg-\[\#CCFF00\] {
+  background-color: #1A1A1E !important;
+  color: #CDCBCA !important;
 }
 
 [data-theme="signal-studio"] .bg-\[\#CCFF00\] {
-  background-color: var(--accent-yellow) !important;
-  color: #ffffff !important;
+  background-color: #4E50DE !important;
+  color: #FFFFFF !important;
 }
 
 [data-theme="crimson-noir"] .bg-\[\#0D0D0D\],
@@ -614,16 +649,6 @@ dialog::backdrop {
   letter-spacing: -0.01em;
 }
 
-[data-theme="crimson-noir"] h1 span.text-\[\#FF3B00\] {
-  color: #D41514 !important;
-  text-shadow: 0 0 25px rgba(212, 21, 20, 0.7);
-}
-
-[data-theme="crimson-noir"] h1 span.bg-\[\#CCFF00\] {
-  background-color: transparent !important;
-  box-shadow: 0 4px 20px rgba(212, 21, 20, 0.5);
-}
-
 /* Buttons in Crimson Noir: Sleek Obsidian Glass Bevel with Crimson Halo */
 [data-theme="crimson-noir"] .brutalist-button {
   background: linear-gradient(180deg, #18181c 0%, #101012 100%) !important;
@@ -757,17 +782,6 @@ dialog::backdrop {
 [data-theme="signal-studio"] h2,
 [data-theme="signal-studio"] h3 {
   color: #1C1D20 !important;
-}
-
-[data-theme="signal-studio"] h1 span.text-\[\#FF3B00\] {
-  color: #1C1D20 !important;
-}
-
-[data-theme="signal-studio"] h1 span.bg-\[\#CCFF00\] {
-  background-color: #FFC928 !important;
-  height: 14px !important;
-  bottom: -2px !important;
-  opacity: 0.95;
 }
 
 /* Studio Tactile Buttons with Rounded Edges & High-Contrast Fill */

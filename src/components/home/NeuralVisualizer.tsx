@@ -111,18 +111,27 @@ export function NeuralVisualizer() {
     window.addEventListener("resize", handleResize);
 
     // Animation Loop
-    let lastTime = performance.now();
+    let lastTime = typeof performance !== "undefined" ? performance.now() : Date.now();
     let frameCounter = 0;
     let edgeCount = 0;
 
-    const render = (time: number) => {
+    const render = (rawTime?: number) => {
+      const now = typeof performance !== "undefined" ? performance.now() : Date.now();
+      const time = typeof rawTime === "number" && !isNaN(rawTime) && rawTime > 0 ? rawTime : now;
+
       frameCounter++;
-      if (time - lastTime >= 1000) {
+      const delta = time - lastTime;
+      if (delta >= 1000) {
+        const measuredFps = Math.round((frameCounter * 1000) / delta);
+        const safeFps = Number.isFinite(measuredFps) && measuredFps > 0 && measuredFps <= 144
+          ? measuredFps
+          : 60;
+
         setTelemetry((prev) => ({
           ...prev,
           nodeCount: nodes.length,
           activeConnections: edgeCount,
-          fps: Math.round((frameCounter * 1000) / (time - lastTime)),
+          fps: safeFps,
         }));
         frameCounter = 0;
         lastTime = time;
@@ -196,7 +205,7 @@ export function NeuralVisualizer() {
               if (theme === "crimson-noir") {
                 ctx.shadowBlur = 10;
                 ctx.shadowColor = "#D41514";
-                ctx.strokeStyle = `rgba(212, 21, 20, ${alpha * 0.95})`;
+                ctx.strokeStyle = `rgba(255, 69, 58, ${alpha * 0.95})`;
                 ctx.lineWidth = 1.8;
               } else if (theme === "signal-studio") {
                 ctx.strokeStyle = `rgba(78, 80, 222, ${alpha * 0.95})`;
@@ -206,7 +215,8 @@ export function NeuralVisualizer() {
                 ctx.lineWidth = 1.5;
               }
             } else {
-              ctx.strokeStyle = `${edgeStrokeNormal}${alpha * 0.22})`;
+              const baseAlpha = theme === "crimson-noir" ? alpha * 0.32 : theme === "signal-studio" ? alpha * 0.26 : alpha * 0.22;
+              ctx.strokeStyle = `${edgeStrokeNormal}${baseAlpha})`;
               ctx.lineWidth = 0.8;
             }
             ctx.stroke();
@@ -243,10 +253,11 @@ export function NeuralVisualizer() {
 
         // Theme-specific node decorations
         if (theme === "crimson-noir" && node.isAnchor) {
-          // Atmospheric pulse ring
+          // Atmospheric animated pulse ring
+          const pulseRadius = node.radius * (2.0 + Math.sin(time / 280 + i) * 0.45);
           ctx.beginPath();
-          ctx.arc(node.x, node.y, node.radius * 2.5, 0, Math.PI * 2);
-          ctx.strokeStyle = "rgba(212, 21, 20, 0.3)";
+          ctx.arc(node.x, node.y, pulseRadius, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(255, 69, 58, ${0.35 + Math.sin(time / 280 + i) * 0.15})`;
           ctx.lineWidth = 1.2;
           ctx.stroke();
         } else if (theme === "signal-studio" && node.isAnchor) {
@@ -319,6 +330,30 @@ export function NeuralVisualizer() {
     };
   }, [isReducedMotion, theme]);
 
+  // Dynamic HUD classes per theme
+  let hudBadgeClass = "bg-white/95 border-black text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]";
+  let hudBottomClass = "bg-white/95 border-black text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]";
+  let hudAccentColor = "text-[#FF3B00]";
+  let hudDotColor = "bg-[#CCFF00]";
+  let strongColor = "text-black";
+  let subColor = "text-black/70";
+
+  if (theme === "crimson-noir") {
+    hudBadgeClass = "bg-[#111115]/95 border-[#2e2e38] text-[#CDCBCA] shadow-[0_4px_12px_rgba(0,0,0,0.8)] rounded-[2px]";
+    hudBottomClass = "bg-[#111115]/95 border-[#2e2e38] text-[#CDCBCA] shadow-[0_6px_20px_rgba(0,0,0,0.9)] rounded-[2px]";
+    hudAccentColor = "text-[#FF453A]";
+    hudDotColor = "bg-[#FF453A]";
+    strongColor = "text-white";
+    subColor = "text-[#9A9896]";
+  } else if (theme === "signal-studio") {
+    hudBadgeClass = "bg-[#FFFFFF]/95 border-2 border-[#1C1D20] text-[#1C1D20] shadow-[2px_2px_0px_0px_#1C1D20] rounded-sm";
+    hudBottomClass = "bg-[#FFFFFF]/95 border-2 border-[#1C1D20] text-[#1C1D20] shadow-[3px_3px_0px_0px_#1C1D20] rounded-sm";
+    hudAccentColor = "text-[#4E50DE]";
+    hudDotColor = "bg-[#FFC928]";
+    strongColor = "text-[#1C1D20]";
+    subColor = "text-[#535660]";
+  }
+
   return (
     <div
       ref={containerRef}
@@ -332,35 +367,35 @@ export function NeuralVisualizer() {
       />
 
       {/* Top Left Status Annotation */}
-      <div className="absolute top-3 left-3 flex items-center gap-2 font-mono text-[10px] tracking-wider bg-white/90 border border-black px-2 py-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] pointer-events-none">
-        <Activity className="w-3.5 h-3.5 text-[#FF3B00] animate-pulse" />
+      <div className={`absolute top-3 left-3 flex items-center gap-2 font-mono text-[10px] tracking-wider border px-2 py-1 pointer-events-none ${hudBadgeClass}`}>
+        <Activity className={`w-3.5 h-3.5 animate-pulse ${hudAccentColor}`} />
         <span className="font-bold">TENSOR_GRAPH {"//"} NEURAL_LATTICE</span>
       </div>
 
       {/* Top Right Reduced Motion or Interactivity Badge */}
-      <div className="absolute top-3 right-3 flex items-center gap-2 font-mono text-[10px] tracking-wider bg-white/90 border border-black px-2 py-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-        <span className="h-1.5 w-1.5 rounded-full bg-[#CCFF00] border border-black"></span>
+      <div className={`absolute top-3 right-3 flex items-center gap-2 font-mono text-[10px] tracking-wider border px-2 py-1 ${hudBadgeClass}`}>
+        <span className={`h-1.5 w-1.5 rounded-full border border-black/40 ${hudDotColor}`}></span>
         <span>{isReducedMotion ? "STATIC PROJECTION [REDUCED MOTION]" : "INTERACTIVE EMBEDDINGS"}</span>
       </div>
 
       {/* Bottom Telemetry HUD */}
-      <div className="absolute bottom-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] bg-white/95 border border-black px-3 py-1.5 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-        <div className="flex items-center gap-3 text-black/80">
+      <div className={`absolute bottom-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] border px-3 py-1.5 ${hudBottomClass}`}>
+        <div className={`flex items-center gap-3 ${subColor}`}>
           <span>
-            NODES: <strong className="text-black">{telemetry.nodeCount}</strong>
+            NODES: <strong className={strongColor}>{telemetry.nodeCount}</strong>
           </span>
           <span>{"//"}</span>
           <span>
-            SYNAPSES: <strong className="text-[#FF3B00]">{telemetry.activeConnections}</strong>
+            SYNAPSES: <strong className={hudAccentColor}>{telemetry.activeConnections}</strong>
           </span>
           <span className="hidden sm:inline">{"//"}</span>
           <span className="hidden sm:inline">
-            SIMILARITY_MEAN: <strong className="text-black">{telemetry.cosineMean}</strong>
+            SIMILARITY_MEAN: <strong className={strongColor}>{telemetry.cosineMean}</strong>
           </span>
         </div>
-        <div className="flex items-center gap-3 text-black/60">
-          <span>FPS: {telemetry.fps}</span>
-          <span className="hidden sm:inline text-[#FF3B00] font-bold">DRAG / HOVER TO ROTATE</span>
+        <div className={`flex items-center gap-3 ${subColor}`}>
+          <span>FPS: {Number.isFinite(telemetry.fps) && telemetry.fps > 0 ? telemetry.fps : "--"}</span>
+          <span className={`hidden sm:inline font-bold ${hudAccentColor}`}>DRAG / HOVER TO ROTATE</span>
         </div>
       </div>
     </div>

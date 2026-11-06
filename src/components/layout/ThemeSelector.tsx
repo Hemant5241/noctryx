@@ -48,6 +48,30 @@ export function ThemeSelector({ compact = false, className = "" }: ThemeSelector
     setIsOpen(false);
   };
 
+  // Theme-tailored toggle trigger styles
+  let triggerBtnClass = "border-2 border-black bg-white text-black hover:bg-black hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]";
+  let triggerIconClass = "text-[#FF3B00]";
+  let dropdownClass = "border-2 border-black bg-white text-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]";
+  let dropdownTitleClass = "border-b border-black/15 text-black/60";
+  let dropdownTagClass = "text-[#FF3B00]";
+  let footerNoteClass = "border-t border-black/15 text-black/50";
+
+  if (theme === "crimson-noir") {
+    triggerBtnClass = "border border-[#33333d] bg-[#121216] text-[#CDCBCA] hover:border-[#D41514] hover:text-white shadow-[0_2px_10px_rgba(0,0,0,0.6)] rounded-[2px]";
+    triggerIconClass = "text-[#FF453A]";
+    dropdownClass = "border border-[#2a2a34] bg-[#0E0E12] text-[#CDCBCA] shadow-[0_12px_40px_rgba(0,0,0,0.9),0_0_20px_rgba(212,21,20,0.15)] rounded-[2px]";
+    dropdownTitleClass = "border-b border-[#202028] text-[#9A9896]";
+    dropdownTagClass = "text-[#FF453A]";
+    footerNoteClass = "border-t border-[#202028] text-[#9A9896]";
+  } else if (theme === "signal-studio") {
+    triggerBtnClass = "border-2 border-[#1C1D20] bg-[#FFFFFF] text-[#1C1D20] hover:bg-[#FFC928] hover:text-[#1C1D20] shadow-[2px_2px_0px_0px_#1C1D20] rounded-sm font-black";
+    triggerIconClass = "text-[#4E50DE]";
+    dropdownClass = "border-2 border-[#1C1D20] bg-[#FFFFFF] text-[#1C1D20] shadow-[6px_6px_0px_0px_#1C1D20] rounded-md";
+    dropdownTitleClass = "border-b border-[#1C1D20]/15 text-[#535660]";
+    dropdownTagClass = "text-[#4E50DE]";
+    footerNoteClass = "border-t border-[#1C1D20]/15 text-[#535660]";
+  }
+
   return (
     <div ref={containerRef} className={`relative font-mono select-none ${className}`}>
       {/* Toggle Button */}
@@ -57,9 +81,9 @@ export function ThemeSelector({ compact = false, className = "" }: ThemeSelector
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         aria-label={`Theme selector. Current theme: ${activeThemeMeta.name}`}
-        className="inline-flex items-center gap-2 px-2.5 py-1.5 border-2 border-black bg-white hover:bg-black hover:text-white transition-all text-xs font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#FF3B00]"
+        className={`inline-flex items-center gap-2 px-2.5 py-1.5 transition-all text-xs font-bold active:translate-x-0.5 active:translate-y-0.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#FF3B00] ${triggerBtnClass}`}
       >
-        <Palette className="w-3.5 h-3.5 text-[#FF3B00]" />
+        <Palette className={`w-3.5 h-3.5 ${triggerIconClass}`} />
 
         {/* Color preview swatch dots */}
         <span className="flex items-center gap-1 border border-black/30 p-0.5 bg-[#F4F1EA]">
@@ -76,13 +100,13 @@ export function ThemeSelector({ compact = false, className = "" }: ThemeSelector
         </span>
 
         {!compact && (
-          <span className="hidden lg:inline text-[10px] font-bold tracking-tight">
+          <span className="hidden lg:inline text-[10px] font-bold tracking-tight text-inherit">
             THEME: {activeThemeMeta.name}
           </span>
         )}
 
         <ChevronDown
-          className={`w-3 h-3 text-black/60 transition-transform ${isOpen ? "rotate-180" : ""}`}
+          className={`w-3 h-3 text-inherit opacity-75 transition-transform ${isOpen ? "rotate-180" : ""}`}
         />
       </button>
 
@@ -91,11 +115,11 @@ export function ThemeSelector({ compact = false, className = "" }: ThemeSelector
         <div
           role="listbox"
           aria-label="Available visual themes"
-          className="absolute right-0 mt-2 w-72 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] z-50 p-2 space-y-1.5 focus:outline-none"
+          className={`absolute right-0 mt-2 w-76 z-50 p-2 space-y-1.5 focus:outline-none ${dropdownClass}`}
         >
-          <div className="px-2 py-1.5 border-b border-black/15 text-[10px] font-bold text-black/60 uppercase flex items-center justify-between">
+          <div className={`px-2 py-1.5 text-[10px] font-bold uppercase flex items-center justify-between ${dropdownTitleClass}`}>
             <span>SELECT THEME PRESET</span>
-            <span className="text-[#FF3B00]">[03 THEMES]</span>
+            <span className={dropdownTagClass}>[03 THEMES]</span>
           </div>
 
           {THEMES.map((t) => {
@@ -105,6 +129,7 @@ export function ThemeSelector({ compact = false, className = "" }: ThemeSelector
             let cardClass = "";
             let checkColor = "text-[#CCFF00]";
             let badgeClass = "";
+            let taglineClass = "text-black/70";
 
             if (t.id === "original") {
               cardClass = isSelected
@@ -112,18 +137,21 @@ export function ThemeSelector({ compact = false, className = "" }: ThemeSelector
                 : "bg-[#F4F1EA] text-[#0D0D0D] border-2 border-black/25 hover:border-black hover:bg-white";
               checkColor = "text-[#CCFF00]";
               badgeClass = "text-[#FF3B00] border border-[#FF3B00]/40 bg-[#FF3B00]/10";
+              taglineClass = isSelected ? "text-[#A39F94]" : "text-black/70";
             } else if (t.id === "crimson-noir") {
               cardClass = isSelected
                 ? "bg-[#141418] text-[#FFFFFF] border border-[#D41514] shadow-[0_0_18px_rgba(212,21,20,0.35)]"
                 : "bg-[#0C0C0E] text-[#CDCBCA] border border-[#26262c] hover:border-[#D41514]/60 hover:bg-[#121216]";
-              checkColor = "text-[#D41514]";
-              badgeClass = "text-[#D41514] border border-[#D41514]/50 bg-[#D41514]/10 shadow-[0_0_8px_rgba(212,21,20,0.3)]";
+              checkColor = "text-[#FF453A]";
+              badgeClass = "text-[#FF453A] border border-[#D41514]/50 bg-[#D41514]/15 shadow-[0_0_8px_rgba(212,21,20,0.3)]";
+              taglineClass = isSelected ? "text-[#DCDAD8]" : "text-[#9E9C9A]";
             } else if (t.id === "signal-studio") {
               cardClass = isSelected
                 ? "bg-[#1C1D20] text-[#F2F4F1] border-2 border-[#1C1D20] shadow-[3px_3px_0px_0px_#4E50DE] rounded-md"
                 : "bg-[#FFFFFF] text-[#1C1D20] border-2 border-[#1C1D20]/30 hover:border-[#1C1D20] rounded-md";
               checkColor = "text-[#FFC928]";
-              badgeClass = "text-[#1C1D20] bg-[#FFC928] border border-[#1C1D20] rounded-full";
+              badgeClass = "text-[#1C1D20] bg-[#FFC928] border border-[#1C1D20] rounded-full font-black";
+              taglineClass = isSelected ? "text-[#C2C5D0]" : "text-[#535660]";
             }
 
             return (
@@ -142,17 +170,7 @@ export function ThemeSelector({ compact = false, className = "" }: ThemeSelector
                     </span>
                     {isSelected && <Check className={`w-3.5 h-3.5 ${checkColor}`} />}
                   </div>
-                  <div
-                    className={`text-[10px] ${
-                      isSelected
-                        ? t.id === "crimson-noir"
-                          ? "text-[#A39F94]"
-                          : t.id === "signal-studio"
-                          ? "text-[#C2C5D0]"
-                          : "text-[#A39F94]"
-                        : "opacity-75"
-                    }`}
-                  >
+                  <div className={`text-[10px] ${taglineClass}`}>
                     {t.tagline}
                   </div>
 
@@ -190,7 +208,7 @@ export function ThemeSelector({ compact = false, className = "" }: ThemeSelector
             );
           })}
 
-          <div className="pt-1 border-t border-black/15 px-2 text-[9px] text-black/50 font-mono">
+          <div className={`pt-1 px-2 text-[9px] font-mono ${footerNoteClass}`}>
             PERSISTED IN LOCALSTORAGE // ZERO FOUC
           </div>
         </div>

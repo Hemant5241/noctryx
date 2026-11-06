@@ -8,15 +8,53 @@ import { SystemStatusBadge } from "./SystemStatusBadge";
 import { CommandMenu } from "./CommandMenu";
 import { OmMonogram } from "@/components/brand/OmMonogram";
 import { ThemeSelector } from "./ThemeSelector";
+import { useTheme } from "@/context/ThemeContext";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme } = useTheme();
+
+  // Theme-tailored styling for 100% contrast & zero inheritance conflicts
+  let headerClass = "bg-[#F4F1EA]/95 border-black text-[#0D0D0D]";
+  let topStripClass = "bg-black/[0.02] border-black/15 text-black/60";
+  let brandTitleClass = "text-black";
+  let brandSubClass = "text-black/60";
+  let badgeClass = "bg-[#FF3B00] text-white";
+  let navLinkClass = "text-black hover:border-black hover:bg-black hover:text-[#F4F1EA]";
+  let navNumClass = "text-[#FF3B00]";
+  let commandBtnClass = "border-2 border-black bg-white text-black hover:bg-black hover:text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]";
+  let commandIconClass = "text-[#FF3B00]";
+  let commandTagClass = "bg-black/10 text-black/70";
+
+  if (theme === "crimson-noir") {
+    headerClass = "bg-[#080808]/95 border-[#22222a] text-[#CDCBCA] shadow-[0_4px_25px_rgba(0,0,0,0.9),0_1px_0_rgba(212,21,20,0.35)]";
+    topStripClass = "bg-[#0b0b0e] border-[#1e1e24] text-[#9A9896]";
+    brandTitleClass = "text-white";
+    brandSubClass = "text-[#9A9896]";
+    badgeClass = "bg-[#D41514] text-white shadow-[0_0_8px_rgba(212,21,20,0.5)]";
+    navLinkClass = "text-[#CDCBCA] hover:border-[#D41514] hover:bg-[#141418] hover:text-white";
+    navNumClass = "text-[#FF453A]";
+    commandBtnClass = "border border-[#33333d] bg-[#141418] text-[#CDCBCA] hover:border-[#D41514] hover:text-white shadow-[0_2px_8px_rgba(0,0,0,0.6)] rounded-[2px]";
+    commandIconClass = "text-[#FF453A]";
+    commandTagClass = "bg-[#D41514]/15 text-[#FF453A] border border-[#D41514]/30";
+  } else if (theme === "signal-studio") {
+    headerClass = "bg-[#1C1D20] border-[#1C1D20] text-[#F2F4F1] shadow-[0_4px_0px_0px_#4E50DE]";
+    topStripClass = "bg-[#242529] border-[#373940] text-[#C2C5D0]";
+    brandTitleClass = "text-[#F2F4F1]";
+    brandSubClass = "text-[#C2C5D0]";
+    badgeClass = "bg-[#FFC928] text-[#1C1D20] font-black";
+    navLinkClass = "text-[#F2F4F1] hover:border-[#4E50DE] hover:bg-[#4E50DE] hover:text-white rounded-sm";
+    navNumClass = "text-[#FFC928]";
+    commandBtnClass = "border-2 border-[#1C1D20] bg-[#FFC928] text-[#1C1D20] hover:bg-[#4E50DE] hover:text-white shadow-[2px_2px_0px_0px_#1C1D20] rounded-sm font-black";
+    commandIconClass = "text-[#1C1D20]";
+    commandTagClass = "bg-[#1C1D20]/20 text-[#1C1D20] font-mono";
+  }
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-[#F4F1EA]/95 backdrop-blur-md border-b-2 border-black">
+      <header className={`sticky top-0 z-40 w-full backdrop-blur-md border-b-2 transition-colors ${headerClass}`}>
         {/* Top industrial telemetry strip */}
-        <div className="hidden lg:flex items-center justify-between px-6 py-1 border-b border-black/15 bg-black/[0.02] text-[10px] font-mono text-black/60 tracking-wider">
+        <div className={`hidden lg:flex items-center justify-between px-6 py-1 border-b text-[10px] font-mono tracking-wider ${topStripClass}`}>
           <div className="flex items-center gap-4">
             <span>SYS_ID: OM-SHINDE-AI-SYS</span>
             <span>{"//"}</span>
@@ -40,13 +78,13 @@ export function Header() {
               className="border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-[3px_3px_0px_0px_rgba(255,59,0,1)] transition-all"
             />
             <div>
-              <div className="font-mono font-black text-base sm:text-lg tracking-tight text-black flex items-center gap-2">
+              <div className={`font-mono font-black text-base sm:text-lg tracking-tight flex items-center gap-2 ${brandTitleClass}`}>
                 <span>OM SHINDE</span>
-                <span className="hidden sm:inline-block text-[10px] font-bold px-1.5 py-0.5 bg-[#FF3B00] text-white tracking-widest">
+                <span className={`hidden sm:inline-block text-[10px] font-bold px-1.5 py-0.5 tracking-widest ${badgeClass}`}>
                   AI.ENG
                 </span>
               </div>
-              <p className="font-mono text-[10px] tracking-widest text-black/60 uppercase">
+              <p className={`font-mono text-[10px] tracking-widest uppercase ${brandSubClass}`}>
                 RESEARCH & SYSTEMS
               </p>
             </div>
@@ -56,21 +94,21 @@ export function Header() {
           <nav className="hidden md:flex items-center gap-1 font-mono text-xs font-bold" aria-label="Desktop Navigation">
             <Link
               href="/about"
-              className="px-3.5 py-2 border border-transparent hover:border-black hover:bg-black hover:text-[#F4F1EA] transition-all"
+              className={`px-3.5 py-2 border border-transparent transition-all ${navLinkClass}`}
             >
-              <span className="text-[#FF3B00] mr-1.5">01</span> ABOUT
+              <span className={`mr-1.5 ${navNumClass}`}>01</span> ABOUT
             </Link>
             <Link
               href="/projects"
-              className="px-3.5 py-2 border border-transparent hover:border-black hover:bg-black hover:text-[#F4F1EA] transition-all"
+              className={`px-3.5 py-2 border border-transparent transition-all ${navLinkClass}`}
             >
-              <span className="text-[#FF3B00] mr-1.5">02</span> PROJECTS
+              <span className={`mr-1.5 ${navNumClass}`}>02</span> PROJECTS
             </Link>
             <Link
               href="/contact"
-              className="px-3.5 py-2 border border-transparent hover:border-black hover:bg-black hover:text-[#F4F1EA] transition-all"
+              className={`px-3.5 py-2 border border-transparent transition-all ${navLinkClass}`}
             >
-              <span className="text-[#FF3B00] mr-1.5">03</span> CONTACT
+              <span className={`mr-1.5 ${navNumClass}`}>03</span> CONTACT
             </Link>
           </nav>
 
@@ -87,12 +125,12 @@ export function Header() {
             <button
               type="button"
               onClick={() => setMenuOpen(true)}
-              className="inline-flex items-center gap-2 font-mono text-xs font-bold px-3 py-2 border-2 border-black bg-white hover:bg-black hover:text-white transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none focus-visible:ring-2 focus-visible:ring-[#FF3B00]"
+              className={`inline-flex items-center gap-2 font-mono text-xs font-bold px-3 py-2 border-2 transition-all active:translate-x-0.5 active:translate-y-0.5 active:shadow-none focus-visible:ring-2 focus-visible:ring-[#FF3B00] cursor-pointer ${commandBtnClass}`}
               aria-label="Open System Command Menu"
             >
-              <Menu className="w-4 h-4 text-[#FF3B00]" />
+              <Menu className={`w-4 h-4 ${commandIconClass}`} />
               <span className="tracking-wider">COMMAND</span>
-              <span className="hidden sm:inline-block text-[10px] bg-black/10 px-1 py-0.2 text-black/70">
+              <span className={`hidden sm:inline-block text-[10px] px-1 py-0.2 ${commandTagClass}`}>
                 [MENU]
               </span>
             </button>

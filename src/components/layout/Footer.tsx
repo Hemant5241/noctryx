@@ -23,7 +23,7 @@ export function Footer() {
           <span className="hidden sm:inline">COORDINATES: {profileData.location.coordinates}</span>
         </div>
         <div className="flex items-center gap-4 text-[10px]">
-          <ThemeSelector compact className="text-black" />
+          <ThemeSelector compact />
           <span>TIMEZONE: {profileData.location.timezone}</span>
           <button
             onClick={scrollToTop}
