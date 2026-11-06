@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { OmOrbitCursor } from "@/components/cursor/OmOrbitCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,6 +64,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-[#F4F1EA] text-[#0D0D0D] selection:bg-[#FF3B00] selection:text-white">
         <ThemeProvider>
+          <OmOrbitCursor />
           <Header />
           <main className="flex-1 w-full flex flex-col">{children}</main>
           <Footer />
