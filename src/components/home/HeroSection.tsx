@@ -33,21 +33,35 @@ export function HeroSection() {
           {/* Left Column: Typographic Title & Positioning */}
           <div className="lg:col-span-7 space-y-6">
             <div className="flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-black text-[#F4F1EA] font-mono text-xs font-bold tracking-widest uppercase border border-black shadow-[2px_2px_0px_0px_rgba(255,59,0,1)]">
-                <Cpu className="w-3.5 h-3.5 text-[#FF3B00]" />
-                <span>{profileData.role}</span>
-              </div>
-              <div className="hidden sm:inline-flex items-center gap-2 px-2.5 py-1 bg-white border border-black/30 font-mono text-[10px] font-bold text-black/70 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                <OmMonogram size={16} />
-                <span>BRAND MARK: OM//SYS</span>
-              </div>
+              {theme === "signal-studio" ? (
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FF4FA3] text-[#1B1020] font-mono text-xs font-black tracking-widest uppercase border-2 border-[#1B1020] shadow-[3px_3px_0px_0px_#1B1020] -rotate-0.5">
+                  <Cpu className="w-3.5 h-3.5 text-[#1B1020]" />
+                  <span>{profileData.role}</span>
+                </div>
+              ) : (
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-black text-[#F4F1EA] font-mono text-xs font-bold tracking-widest uppercase border border-black shadow-[2px_2px_0px_0px_rgba(255,59,0,1)]">
+                  <Cpu className="w-3.5 h-3.5 text-[#FF3B00]" />
+                  <span>{profileData.role}</span>
+                </div>
+              )}
+              {theme === "signal-studio" ? (
+                <div className="hidden sm:inline-flex items-center gap-2 px-2.5 py-1 bg-[#C6FF00] border-2 border-[#1B1020] font-mono text-[10px] font-black text-[#1B1020] shadow-[3px_3px_0px_0px_#6938FF] rotate-0.5">
+                  <OmMonogram size={16} />
+                  <span>ATELIER // ACID POP LAB</span>
+                </div>
+              ) : (
+                <div className="hidden sm:inline-flex items-center gap-2 px-2.5 py-1 bg-white border border-black/30 font-mono text-[10px] font-bold text-black/70 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                  <OmMonogram size={16} />
+                  <span>BRAND MARK: OM//SYS</span>
+                </div>
+              )}
             </div>
 
             <h1 className="font-mono font-black text-5xl sm:text-7xl xl:text-8xl tracking-tighter leading-[0.92] text-black uppercase">
               ARCHITECTING <br />
               {theme === "signal-studio" ? (
-                <span className="relative inline-block bg-[#FFC928] text-[#1C1D20] px-3 py-0.5 border-2 border-[#1C1D20] shadow-[4px_4px_0px_0px_#4E50DE] rounded my-1">
-                  <span className="relative z-10 font-black">INTELLIGENT</span>
+                <span className="relative inline-block bg-[#6938FF] text-[#C6FF00] px-4 py-1 border-3 border-[#1B1020] shadow-[6px_6px_0px_0px_#FF4FA3] -rotate-1 rounded-sm my-1.5 transition-transform hover:rotate-0 hover:scale-105">
+                  <span className="relative z-10 font-black tracking-tight">INTELLIGENT</span>
                 </span>
               ) : theme === "crimson-noir" ? (
                 <span className="relative inline-block text-[#FF3838] px-2.5 py-0.5 border border-[#CDCBCA]/30 bg-[#161214] shadow-[0_0_20px_rgba(212,21,20,0.35)] rounded-sm my-1">

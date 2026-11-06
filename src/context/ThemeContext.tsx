@@ -38,13 +38,13 @@ export const THEMES: ThemeMeta[] = [
   },
   {
     id: "signal-studio",
-    name: "SIGNAL STUDIO — CREATIVE",
-    tagline: "Deep graphite, cloud white, sunshine & electric indigo",
-    pill: "CREATIVE STUDIO",
-    bgPreview: "#F2F4F1",
-    fgPreview: "#1C1D20",
-    accentPreview: "#FFC928",
-    secondaryPreview: "#4E50DE",
+    name: "SIGNAL STUDIO — ACID POP",
+    tagline: "Warm vanilla atelier, deep ink, hot pink, acid lime & electric violet",
+    pill: "ACID POP",
+    bgPreview: "#FFF0D1",
+    fgPreview: "#1B1020",
+    accentPreview: "#FF4FA3",
+    secondaryPreview: "#C6FF00",
   },
 ];
 

@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { Search, ArrowUpRight, Filter } from "lucide-react";
 import { projectsData } from "@/data/projects";
+import { useTheme } from "@/context/ThemeContext";
 
 const CATEGORIES = [
   "ALL",
@@ -15,6 +16,7 @@ const CATEGORIES = [
 ] as const;
 
 export function ProjectsCatalogView() {
+  const { theme } = useTheme();
   const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -45,20 +47,29 @@ export function ProjectsCatalogView() {
               <Filter className="w-3.5 h-3.5" />
               <span>CATEGORY:</span>
             </span>
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 text-xs font-bold border-2 transition-all cursor-pointer ${
-                  selectedCategory === cat
-                    ? "bg-black text-[#F4F1EA] border-black shadow-[2px_2px_0px_0px_rgba(255,59,0,1)]"
-                    : "bg-[#F4F1EA] text-black border-black/20 hover:border-black"
-                }`}
-              >
-                {cat.toUpperCase()}
-              </button>
-            ))}
+            {CATEGORIES.map((cat) => {
+              const isSelected = selectedCategory === cat;
+              let btnClass = isSelected
+                ? "bg-black text-[#F4F1EA] border-black shadow-[2px_2px_0px_0px_rgba(255,59,0,1)]"
+                : "bg-[#F4F1EA] text-black border-black/20 hover:border-black";
+
+              if (theme === "signal-studio") {
+                btnClass = isSelected
+                  ? "bg-[#FF4FA3] text-[#1B1020] border-[#1B1020] shadow-[3px_3px_0px_0px_#C6FF00] font-black"
+                  : "bg-[#FFF0D1] text-[#1B1020] border-[#1B1020]/30 hover:border-[#1B1020] hover:bg-[#C6FF00]";
+              }
+
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3 py-1.5 text-xs font-bold border-2 transition-all cursor-pointer ${btnClass}`}
+                >
+                  {cat.toUpperCase()}
+                </button>
+              );
+            })}
           </div>
 
           {/* Search Input */}

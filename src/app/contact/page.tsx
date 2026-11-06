@@ -5,8 +5,10 @@ import { Copy, Check, Send, Terminal, MapPin, Clock } from "lucide-react";
 import confetti from "canvas-confetti";
 import { profileData } from "@/data/profile";
 import { contactDetails, socialsData } from "@/data/socials";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function ContactPage() {
+  const { theme } = useTheme();
   const [copied, setCopied] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -23,6 +25,13 @@ export default function ContactPage() {
   } | null>(null);
   const [formError, setFormError] = useState("");
 
+  const confettiColors =
+    theme === "signal-studio"
+      ? ["#FF4FA3", "#C6FF00", "#6938FF", "#00E5D4", "#FF7139", "#1B1020"]
+      : theme === "crimson-noir"
+      ? ["#D41514", "#CDCBCA", "#FFFFFF", "#141418"]
+      : ["#FF3B00", "#CCFF00", "#0D0D0D"];
+
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(contactDetails.primaryEmail);
     setCopied(true);
@@ -31,7 +40,7 @@ export default function ContactPage() {
         particleCount: 30,
         spread: 50,
         origin: { y: 0.8 },
-        colors: ["#FF3B00", "#CCFF00", "#0D0D0D"],
+        colors: confettiColors,
       });
     } catch {
       // noop
@@ -65,7 +74,7 @@ export default function ContactPage() {
           particleCount: 50,
           spread: 70,
           origin: { y: 0.7 },
-          colors: ["#FF3B00", "#CCFF00", "#0D0D0D"],
+          colors: confettiColors,
         });
       } catch {
         // noop

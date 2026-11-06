@@ -46,16 +46,16 @@ export function OmMonogram({
     coordText = "text-[#CDCBCA]";
     coordAccent = "text-[#D41514]";
   } else if (theme === "signal-studio") {
-    chassisFill = "#1C1D20";
-    chassisStroke = "#1C1D20";
-    chassisRadius = 8;
-    cutOrange = "#FFC928";
-    cutYellow = "#4E50DE";
-    letterColor = "#F2F4F1";
-    wireColor = "#33353D";
-    centerNode = "#FFC928";
-    coordText = "text-[#1C1D20]";
-    coordAccent = "text-[#4E50DE]";
+    chassisFill = "#1B1020";
+    chassisStroke = "#6938FF";
+    chassisRadius = 4;
+    cutOrange = "#FF4FA3";
+    cutYellow = "#C6FF00";
+    letterColor = "#FFF0D1";
+    wireColor = "#392044";
+    centerNode = "#00E5D4";
+    coordText = "text-[#1B1020]";
+    coordAccent = "text-[#FF4FA3]";
   }
 
   return (

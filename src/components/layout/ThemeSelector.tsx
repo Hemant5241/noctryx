@@ -64,12 +64,12 @@ export function ThemeSelector({ compact = false, className = "" }: ThemeSelector
     dropdownTagClass = "text-[#FF453A]";
     footerNoteClass = "border-t border-[#202028] text-[#9A9896]";
   } else if (theme === "signal-studio") {
-    triggerBtnClass = "border-2 border-[#1C1D20] bg-[#FFFFFF] text-[#1C1D20] hover:bg-[#FFC928] hover:text-[#1C1D20] shadow-[2px_2px_0px_0px_#1C1D20] rounded-sm font-black";
-    triggerIconClass = "text-[#4E50DE]";
-    dropdownClass = "border-2 border-[#1C1D20] bg-[#FFFFFF] text-[#1C1D20] shadow-[6px_6px_0px_0px_#1C1D20] rounded-md";
-    dropdownTitleClass = "border-b border-[#1C1D20]/15 text-[#535660]";
-    dropdownTagClass = "text-[#4E50DE]";
-    footerNoteClass = "border-t border-[#1C1D20]/15 text-[#535660]";
+    triggerBtnClass = "border-2 border-[#1B1020] bg-[#FFFAEC] text-[#1B1020] hover:bg-[#C6FF00] hover:text-[#1B1020] shadow-[3px_3px_0px_0px_#6938FF] rounded-sm font-black";
+    triggerIconClass = "text-[#FF4FA3]";
+    dropdownClass = "border-3 border-[#1B1020] bg-[#FFFAEC] text-[#1B1020] shadow-[8px_8px_0px_0px_#6938FF,12px_12px_0px_0px_#FF4FA3] rounded-md";
+    dropdownTitleClass = "border-b-2 border-[#1B1020]/20 text-[#543D5B]";
+    dropdownTagClass = "text-[#6938FF] font-black";
+    footerNoteClass = "border-t border-[#1B1020]/20 text-[#543D5B]";
   }
 
   return (
@@ -147,11 +147,11 @@ export function ThemeSelector({ compact = false, className = "" }: ThemeSelector
               taglineClass = isSelected ? "text-[#DCDAD8]" : "text-[#9E9C9A]";
             } else if (t.id === "signal-studio") {
               cardClass = isSelected
-                ? "bg-[#1C1D20] text-[#F2F4F1] border-2 border-[#1C1D20] shadow-[3px_3px_0px_0px_#4E50DE] rounded-md"
-                : "bg-[#FFFFFF] text-[#1C1D20] border-2 border-[#1C1D20]/30 hover:border-[#1C1D20] rounded-md";
-              checkColor = "text-[#FFC928]";
-              badgeClass = "text-[#1C1D20] bg-[#FFC928] border border-[#1C1D20] rounded-full font-black";
-              taglineClass = isSelected ? "text-[#C2C5D0]" : "text-[#535660]";
+                ? "bg-[#1B1020] text-[#FFF0D1] border-2 border-[#6938FF] shadow-[4px_4px_0px_0px_#FF4FA3] rounded-sm"
+                : "bg-[#FFF0D1] text-[#1B1020] border-2 border-[#1B1020]/30 hover:border-[#1B1020] hover:bg-white rounded-sm";
+              checkColor = "text-[#C6FF00]";
+              badgeClass = "text-[#1B1020] bg-[#C6FF00] border border-[#1B1020] rounded-sm font-black";
+              taglineClass = isSelected ? "text-[#D5C5D8]" : "text-[#543D5B]";
             }
 
             return (

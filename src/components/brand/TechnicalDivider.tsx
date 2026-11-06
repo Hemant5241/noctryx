@@ -30,10 +30,10 @@ export function TechnicalDivider({
     lineClass = "border-t border-[#262630]";
     codeBadgeClass = "border border-[#2a2a34] px-1.5 py-0.2 bg-[#101014] text-[#D41514] rounded-[2px]";
   } else if (theme === "signal-studio") {
-    symbol = "[ ⊕ ]";
-    symbolColor = "text-[#4E50DE]";
-    lineClass = "border-t-2 border-dashed border-[#1C1D20]/30";
-    codeBadgeClass = "border-2 border-[#1C1D20] px-2.5 py-0.5 bg-[#FFC928] text-[#1C1D20] rounded-full font-black shadow-[2px_2px_0px_0px_#1C1D20]";
+    symbol = "[ ✦ ACID.POP ]";
+    symbolColor = "text-[#FF4FA3]";
+    lineClass = "border-t-2 border-dashed border-[#6938FF]/40";
+    codeBadgeClass = "border-2 border-[#1B1020] px-2.5 py-0.5 bg-[#C6FF00] text-[#1B1020] rounded-sm font-black shadow-[3px_3px_0px_0px_#FF4FA3]";
   }
 
   return (

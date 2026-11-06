@@ -155,12 +155,12 @@ export function NeuralVisualizer() {
         nodeFill = "#CDCBCA";
         labelFill = "#CDCBCA";
       } else if (theme === "signal-studio") {
-        gridStroke = "rgba(28, 29, 32, 0.05)";
-        edgeStrokeNormal = "rgba(28, 29, 32, ";
-        anchorFill = "#FFC928";
-        anchorStroke = "#1C1D20";
-        nodeFill = "#1C1D20";
-        labelFill = "#1C1D20";
+        gridStroke = "rgba(105, 56, 255, 0.08)";
+        edgeStrokeNormal = "rgba(105, 56, 255, ";
+        anchorFill = "#FF4FA3";
+        anchorStroke = "#1B1020";
+        nodeFill = "#1B1020";
+        labelFill = "#1B1020";
       }
 
       // Draw subtle coordinate background grid
@@ -208,14 +208,14 @@ export function NeuralVisualizer() {
                 ctx.strokeStyle = `rgba(255, 69, 58, ${alpha * 0.95})`;
                 ctx.lineWidth = 1.8;
               } else if (theme === "signal-studio") {
-                ctx.strokeStyle = `rgba(78, 80, 222, ${alpha * 0.95})`;
-                ctx.lineWidth = 2;
+                ctx.strokeStyle = `rgba(0, 229, 212, ${alpha * 0.95})`;
+                ctx.lineWidth = 2.2;
               } else {
                 ctx.strokeStyle = `rgba(255, 59, 0, ${alpha * 0.85})`;
                 ctx.lineWidth = 1.5;
               }
             } else {
-              const baseAlpha = theme === "crimson-noir" ? alpha * 0.32 : theme === "signal-studio" ? alpha * 0.26 : alpha * 0.22;
+              const baseAlpha = theme === "crimson-noir" ? alpha * 0.32 : theme === "signal-studio" ? alpha * 0.28 : alpha * 0.22;
               ctx.strokeStyle = `${edgeStrokeNormal}${baseAlpha})`;
               ctx.lineWidth = 0.8;
             }
@@ -261,14 +261,21 @@ export function NeuralVisualizer() {
           ctx.lineWidth = 1.2;
           ctx.stroke();
         } else if (theme === "signal-studio" && node.isAnchor) {
-          // Studio architectural crosshairs
+          // Atelier diamond glyph and acid ring
           ctx.beginPath();
-          ctx.moveTo(node.x - 7, node.y);
-          ctx.lineTo(node.x + 7, node.y);
-          ctx.moveTo(node.x, node.y - 7);
-          ctx.lineTo(node.x, node.y + 7);
-          ctx.strokeStyle = "#4E50DE";
-          ctx.lineWidth = 1.5;
+          ctx.moveTo(node.x - 8, node.y);
+          ctx.lineTo(node.x, node.y - 8);
+          ctx.lineTo(node.x + 8, node.y);
+          ctx.lineTo(node.x, node.y + 8);
+          ctx.closePath();
+          ctx.strokeStyle = "#FF4FA3";
+          ctx.lineWidth = 1.8;
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, node.radius * 2.2, 0, Math.PI * 2);
+          ctx.strokeStyle = "rgba(198, 255, 0, 0.7)";
+          ctx.lineWidth = 1.2;
           ctx.stroke();
         }
 
@@ -295,14 +302,17 @@ export function NeuralVisualizer() {
         } else {
           // Non-anchor nodes
           if (theme === "signal-studio" && i % 4 === 0) {
-            // Studio secondary hub node in indigo
-            ctx.fillStyle = "#4E50DE";
+            // Studio secondary hub node in Toxic Turquoise with Electric Violet halo
+            ctx.fillStyle = "#00E5D4";
             ctx.fill();
             ctx.beginPath();
             ctx.arc(node.x, node.y, node.radius * 1.6, 0, Math.PI * 2);
-            ctx.strokeStyle = "rgba(78, 80, 222, 0.4)";
-            ctx.lineWidth = 1;
+            ctx.strokeStyle = "rgba(105, 56, 255, 0.4)";
+            ctx.lineWidth = 1.2;
             ctx.stroke();
+          } else if (theme === "signal-studio" && i % 3 === 0) {
+            ctx.fillStyle = "#FF7139";
+            ctx.fill();
           } else {
             ctx.fillStyle = nodeFill;
             ctx.fill();
@@ -346,12 +356,12 @@ export function NeuralVisualizer() {
     strongColor = "text-white";
     subColor = "text-[#9A9896]";
   } else if (theme === "signal-studio") {
-    hudBadgeClass = "bg-[#FFFFFF]/95 border-2 border-[#1C1D20] text-[#1C1D20] shadow-[2px_2px_0px_0px_#1C1D20] rounded-sm";
-    hudBottomClass = "bg-[#FFFFFF]/95 border-2 border-[#1C1D20] text-[#1C1D20] shadow-[3px_3px_0px_0px_#1C1D20] rounded-sm";
-    hudAccentColor = "text-[#4E50DE]";
-    hudDotColor = "bg-[#FFC928]";
-    strongColor = "text-[#1C1D20]";
-    subColor = "text-[#535660]";
+    hudBadgeClass = "bg-[#FFFAEC]/95 border-2 border-[#1B1020] text-[#1B1020] shadow-[3px_3px_0px_0px_#6938FF] rounded-sm font-black";
+    hudBottomClass = "bg-[#FFFAEC]/95 border-2 border-[#1B1020] text-[#1B1020] shadow-[4px_4px_0px_0px_#FF4FA3] rounded-sm font-bold";
+    hudAccentColor = "text-[#FF4FA3]";
+    hudDotColor = "bg-[#C6FF00]";
+    strongColor = "text-[#1B1020]";
+    subColor = "text-[#543D5B]";
   }
 
   return (

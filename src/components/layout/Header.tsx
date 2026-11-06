@@ -38,16 +38,16 @@ export function Header() {
     commandIconClass = "text-[#FF453A]";
     commandTagClass = "bg-[#D41514]/15 text-[#FF453A] border border-[#D41514]/30";
   } else if (theme === "signal-studio") {
-    headerClass = "bg-[#1C1D20] border-[#1C1D20] text-[#F2F4F1] shadow-[0_4px_0px_0px_#4E50DE]";
-    topStripClass = "bg-[#242529] border-[#373940] text-[#C2C5D0]";
-    brandTitleClass = "text-[#F2F4F1]";
-    brandSubClass = "text-[#C2C5D0]";
-    badgeClass = "bg-[#FFC928] text-[#1C1D20] font-black";
-    navLinkClass = "text-[#F2F4F1] hover:border-[#4E50DE] hover:bg-[#4E50DE] hover:text-white rounded-sm";
-    navNumClass = "text-[#FFC928]";
-    commandBtnClass = "border-2 border-[#1C1D20] bg-[#FFC928] text-[#1C1D20] hover:bg-[#4E50DE] hover:text-white shadow-[2px_2px_0px_0px_#1C1D20] rounded-sm font-black";
-    commandIconClass = "text-[#1C1D20]";
-    commandTagClass = "bg-[#1C1D20]/20 text-[#1C1D20] font-mono";
+    headerClass = "bg-[#1B1020] border-[#6938FF] text-[#FFF0D1] shadow-[0_4px_0px_0px_#FF4FA3]";
+    topStripClass = "bg-[#24162B] border-[#3F2746] text-[#D5C5D8]";
+    brandTitleClass = "text-[#FFF0D1]";
+    brandSubClass = "text-[#00E5D4]";
+    badgeClass = "bg-[#C6FF00] text-[#1B1020] font-black border border-[#1B1020]";
+    navLinkClass = "text-[#FFF0D1] hover:border-[#FF4FA3] hover:bg-[#FF4FA3] hover:text-[#1B1020] rounded-sm font-black";
+    navNumClass = "text-[#C6FF00]";
+    commandBtnClass = "border-2 border-[#1B1020] bg-[#FF4FA3] text-[#1B1020] hover:bg-[#C6FF00] hover:text-[#1B1020] shadow-[3px_3px_0px_0px_#C6FF00] rounded-sm font-black";
+    commandIconClass = "text-[#1B1020]";
+    commandTagClass = "bg-[#1B1020]/20 text-[#1B1020] font-mono";
   }
 
   return (

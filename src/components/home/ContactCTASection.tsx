@@ -6,21 +6,30 @@ import { Mail, Copy, Check, ArrowUpRight, Terminal } from "lucide-react";
 import confetti from "canvas-confetti";
 import { profileData } from "@/data/profile";
 import { contactDetails, socialsData } from "@/data/socials";
+import { useTheme } from "@/context/ThemeContext";
 
 export function ContactCTASection() {
+  const { theme } = useTheme();
   const [copied, setCopied] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(contactDetails.primaryEmail);
     setCopied(true);
 
-    // Playful brutalist celebration feedback
+    const confettiColors =
+      theme === "signal-studio"
+        ? ["#FF4FA3", "#C6FF00", "#6938FF", "#00E5D4", "#FF7139", "#1B1020"]
+        : theme === "crimson-noir"
+        ? ["#D41514", "#CDCBCA", "#FFFFFF", "#141418"]
+        : ["#FF3B00", "#CCFF00", "#0D0D0D"];
+
+    // Playful celebration feedback
     try {
       confetti({
         particleCount: 35,
         spread: 60,
         origin: { y: 0.8 },
-        colors: ["#FF3B00", "#CCFF00", "#0D0D0D"],
+        colors: confettiColors,
       });
     } catch {
       // noop

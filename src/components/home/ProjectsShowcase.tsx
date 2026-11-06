@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Layers, Search, Eye, Bot, LineChart, BookOpen, ShieldCheck } from "lucide-react";
 import { projectsData, ProjectData } from "@/data/projects";
+import { useTheme } from "@/context/ThemeContext";
 
 export function ProjectsShowcase() {
   return (
@@ -60,20 +61,75 @@ export function ProjectsShowcase() {
 }
 
 function ProjectCard({ project, index }: { project: ProjectData; index: number }) {
-  // Alternate asymmetric layout: even vs odd
+  const { theme } = useTheme();
   const isEven = index % 2 === 0;
 
+  const popBlocks = [
+    {
+      headerBg: "bg-[#6938FF] text-[#FFF0D1] border-[#1B1020]",
+      badgeBg: "bg-[#C6FF00] text-[#1B1020] border-[#1B1020]",
+      specBadge: "bg-[#1B1020] text-[#FFF0D1]",
+      hoverShadow: "hover:shadow-[10px_10px_0px_0px_#6938FF]",
+    },
+    {
+      headerBg: "bg-[#FF4FA3] text-[#1B1020] border-[#1B1020]",
+      badgeBg: "bg-[#00E5D4] text-[#1B1020] border-[#1B1020]",
+      specBadge: "bg-[#1B1020] text-[#FFF0D1]",
+      hoverShadow: "hover:shadow-[10px_10px_0px_0px_#FF4FA3]",
+    },
+    {
+      headerBg: "bg-[#00E5D4] text-[#1B1020] border-[#1B1020]",
+      badgeBg: "bg-[#FF4FA3] text-[#1B1020] border-[#1B1020]",
+      specBadge: "bg-[#1B1020] text-[#FFF0D1]",
+      hoverShadow: "hover:shadow-[10px_10px_0px_0px_#00E5D4]",
+    },
+    {
+      headerBg: "bg-[#FF7139] text-[#1B1020] border-[#1B1020]",
+      badgeBg: "bg-[#FFF0D1] text-[#1B1020] border-[#1B1020]",
+      specBadge: "bg-[#1B1020] text-[#FFF0D1]",
+      hoverShadow: "hover:shadow-[10px_10px_0px_0px_#FF7139]",
+    },
+    {
+      headerBg: "bg-[#C6FF00] text-[#1B1020] border-[#1B1020]",
+      badgeBg: "bg-[#6938FF] text-[#FFF0D1] border-[#1B1020]",
+      specBadge: "bg-[#1B1020] text-[#FFF0D1]",
+      hoverShadow: "hover:shadow-[10px_10px_0px_0px_#C6FF00]",
+    },
+  ];
+
+  const pop = popBlocks[index % popBlocks.length];
+
   return (
-    <div className="border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner overflow-hidden transition-all hover:shadow-[12px_12px_0px_0px_rgba(255,59,0,1)]">
+    <div
+      className={`border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner overflow-hidden transition-all ${
+        theme === "signal-studio"
+          ? `${pop.hoverShadow} hover:-translate-y-0.5`
+          : "hover:shadow-[12px_12px_0px_0px_rgba(255,59,0,1)]"
+      }`}
+    >
       {/* Top Specification Header */}
-      <div className="flex flex-wrap items-center justify-between gap-2 px-6 py-3 border-b-2 border-black bg-[#F4F1EA] text-xs font-bold">
+      <div
+        className={`flex flex-wrap items-center justify-between gap-2 px-6 py-3 border-b-2 text-xs font-bold ${
+          theme === "signal-studio" ? pop.headerBg : "border-black bg-[#F4F1EA]"
+        }`}
+      >
         <div className="flex items-center gap-3">
-          <span className="px-2 py-0.5 bg-black text-[#F4F1EA] font-mono text-[11px]">
+          <span
+            className={`px-2 py-0.5 font-mono text-[11px] font-bold ${
+              theme === "signal-studio" ? pop.specBadge : "bg-black text-[#F4F1EA]"
+            }`}
+          >
             SPEC {project.number}
           </span>
-          <span className="text-black uppercase tracking-wider">{project.conceptTag}</span>
+          <span className="uppercase tracking-wider font-bold">{project.conceptTag}</span>
         </div>
-        <div className="flex items-center gap-2 text-[10px] text-[#FF3B00] bg-[#FF3B00]/10 px-2 py-0.5 border border-[#FF3B00]/30 font-bold">
+        <div
+          className={`flex items-center gap-2 text-[10px] px-2 py-0.5 border font-bold ${
+            theme === "signal-studio"
+              ? pop.badgeBg
+              : "text-[#FF3B00] bg-[#FF3B00]/10 border-[#FF3B00]/30"
+          }`}
+        >
           <span>{project.badge}</span>
         </div>
       </div>
