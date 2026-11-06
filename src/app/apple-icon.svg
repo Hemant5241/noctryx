@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <rect width="180" height="180" fill="#0D0D0D"/>
+  <!-- Corner Cuts -->
+  <line x1="0" y1="36" x2="36" y2="0" stroke="#FF3B00" stroke-width="8"/>
+  <line x1="144" y1="180" x2="180" y2="144" stroke="#CCFF00" stroke-width="8"/>
+  
+  <!-- Geometric 'O' -->
+  <rect x="30" y="36" width="50" height="108" fill="none" stroke="#F4F1EA" stroke-width="12"/>
+  <rect x="50" y="84" width="10" height="10" fill="#FF3B00"/>
+  
+  <!-- Geometric 'M' -->
+  <rect x="100" y="36" width="12" height="108" fill="#F4F1EA"/>
+  <rect x="148" y="36" width="12" height="108" fill="#F4F1EA"/>
+  <polygon points="106,36 130,96 118,100 98,52" fill="#FF3B00"/>
+  <polygon points="154,36 130,96 142,100 162,52" fill="#CCFF00"/>
+  <circle cx="130" cy="96" r="6" fill="#F4F1EA"/>
+</svg>

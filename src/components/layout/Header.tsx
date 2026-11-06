@@ -6,6 +6,7 @@ import { Menu } from "lucide-react";
 import { LiveClock } from "./LiveClock";
 import { SystemStatusBadge } from "./SystemStatusBadge";
 import { CommandMenu } from "./CommandMenu";
+import { OmMonogram } from "@/components/brand/OmMonogram";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,9 +34,10 @@ export function Header() {
             href="/"
             className="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3B00]"
           >
-            <div className="w-10 h-10 sm:w-11 sm:h-11 bg-black text-[#F4F1EA] flex items-center justify-center font-mono font-black text-lg border-2 border-black group-hover:bg-[#FF3B00] group-hover:text-black transition-all">
-              OS
-            </div>
+            <OmMonogram
+              size={42}
+              className="border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-[3px_3px_0px_0px_rgba(255,59,0,1)] transition-all"
+            />
             <div>
               <div className="font-mono font-black text-base sm:text-lg tracking-tight text-black flex items-center gap-2">
                 <span>OM SHINDE</span>

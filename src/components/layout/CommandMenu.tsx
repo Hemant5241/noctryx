@@ -5,6 +5,7 @@ import Link from "next/link";
 import { X, ArrowUpRight, Terminal, Layers, Compass, Mail, User } from "lucide-react";
 import { projectsData } from "@/data/projects";
 import { socialsData } from "@/data/socials";
+import { OmMonogram } from "@/components/brand/OmMonogram";
 
 interface CommandMenuProps {
   isOpen: boolean;
@@ -54,7 +55,7 @@ export function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
         {/* Top telemetry bar */}
         <div className="flex items-center justify-between border-b-2 border-[#262626] pb-4 mb-8">
           <div className="flex items-center gap-3">
-            <span className="h-3 w-3 bg-[#FF3B00] inline-block animate-pulse"></span>
+            <OmMonogram size={36} className="border border-[#FF3B00]" />
             <div>
               <h2 id="command-menu-title" className="text-sm font-bold tracking-widest text-[#F4F1EA]">
                 SYSTEM DIRECTORY // COMMAND OVERLAY

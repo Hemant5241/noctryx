@@ -3,6 +3,7 @@ import { Camera, BookOpen } from "lucide-react";
 import { profileData } from "@/data/profile";
 import { experienceData, educationData } from "@/data/experience";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
+import { OmMonogram } from "@/components/brand/OmMonogram";
 
 export const metadata: Metadata = {
   title: "About // Engineering Philosophy // Om Shinde",
@@ -66,9 +67,10 @@ export default function AboutPage() {
 
               {/* Center Placeholders Message */}
               <div className="relative z-10 text-center space-y-2 p-4 border border-[#262626] bg-black/80">
-                <div className="w-12 h-12 border-2 border-[#FF3B00] mx-auto flex items-center justify-center text-[#FF3B00] font-black text-xl mb-2">
-                  OS
-                </div>
+                <OmMonogram
+                  size={56}
+                  className="mx-auto border-2 border-[#FF3B00] shadow-[0_0_12px_rgba(255,59,0,0.5)] mb-2"
+                />
                 <p className="text-xs font-bold text-[#F4F1EA] uppercase tracking-wide">
                   REPLACEABLE PORTRAIT PLACEHOLDER
                 </p>

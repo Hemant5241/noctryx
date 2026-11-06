@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowUp, Terminal, ShieldAlert, Compass } from "lucide-react";
 import { profileData } from "@/data/profile";
 import { socialsData } from "@/data/socials";
+import { OmMonogram } from "@/components/brand/OmMonogram";
 
 export function Footer() {
   const scrollToTop = () => {
@@ -35,10 +36,17 @@ export function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        {/* Massive Typographic Wordmark */}
+        {/* Massive Typographic Wordmark & Stamped Monogram */}
         <div className="mb-16 select-none border-b-2 border-[#262626] pb-12">
-          <div className="text-[12vw] sm:text-[10vw] font-black tracking-tighter leading-none text-[#F4F1EA] hover:text-[#CCFF00] transition-colors duration-300">
-            OM SHINDE
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            <div className="text-[12vw] sm:text-[10vw] font-black tracking-tighter leading-none text-[#F4F1EA] hover:text-[#CCFF00] transition-colors duration-300">
+              OM SHINDE
+            </div>
+            <OmMonogram
+              size={88}
+              className="border-2 border-[#FF3B00] shadow-[6px_6px_0px_0px_rgba(255,59,0,1)] shrink-0"
+              showCoordinates
+            />
           </div>
           <div className="flex flex-wrap items-center justify-between gap-4 mt-4 text-xs sm:text-sm text-[#A39F94] font-bold">
             <span className="tracking-widest uppercase">

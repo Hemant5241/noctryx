@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowDownRight, ArrowUpRight, Cpu } from "lucide-react";
 import { profileData } from "@/data/profile";
 import { NeuralVisualizer } from "./NeuralVisualizer";
+import { OmMonogram } from "@/components/brand/OmMonogram";
 
 export function HeroSection() {
   return (
@@ -29,9 +30,15 @@ export function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-12 sm:mb-16">
           {/* Left Column: Typographic Title & Positioning */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-black text-[#F4F1EA] font-mono text-xs font-bold tracking-widest uppercase border border-black shadow-[2px_2px_0px_0px_rgba(255,59,0,1)]">
-              <Cpu className="w-3.5 h-3.5 text-[#FF3B00]" />
-              <span>{profileData.role}</span>
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-black text-[#F4F1EA] font-mono text-xs font-bold tracking-widest uppercase border border-black shadow-[2px_2px_0px_0px_rgba(255,59,0,1)]">
+                <Cpu className="w-3.5 h-3.5 text-[#FF3B00]" />
+                <span>{profileData.role}</span>
+              </div>
+              <div className="hidden sm:inline-flex items-center gap-2 px-2.5 py-1 bg-white border border-black/30 font-mono text-[10px] font-bold text-black/70 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+                <OmMonogram size={16} />
+                <span>BRAND MARK: OM//SYS</span>
+              </div>
             </div>
 
             <h1 className="font-mono font-black text-5xl sm:text-7xl xl:text-8xl tracking-tighter leading-[0.92] text-black uppercase">
