@@ -26,9 +26,9 @@ export function ManifestoSection() {
             {"// OPERATING THESIS"}
           </p>
           <blockquote className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.08] text-[#F4F1EA] uppercase break-words">
-            &ldquo;I DO NOT JUST EXPERIMENT WITH AI. I ENGINEER RESILIENT SYSTEMS THAT TURN{" "}
+            &ldquo;I ENGINEER RESILIENT FULL-STACK SYSTEMS THAT TURN{" "}
             <span className="text-[#FF3B00] underline decoration-[#CCFF00] decoration-2 sm:decoration-4 underline-offset-4 sm:underline-offset-8">
-              RAW INTELLIGENCE
+              TECHNICAL COMPLEXITY
             </span>{" "}
             INTO DETERMINISTIC UTILITY.&rdquo;
           </blockquote>
@@ -41,12 +41,11 @@ export function ManifestoSection() {
               <Zap className="w-5 h-5" />
             </div>
             <h3 className="text-lg font-bold text-[#F4F1EA] mb-3 tracking-tight">
-              01. PRODUCTION OVER PROTOTYPES
+              01. PERFORMANCE OVER COMPLEXITY
             </h3>
             <p className="text-xs text-[#A39F94] leading-relaxed">
-              Jupyter notebooks prove concepts; production systems deliver impact. I design inference
-              pipelines with memory pooling, quantized representations, and low-latency vector indexes
-              capable of sustained high-concurrency throughput.
+              Modern web applications demand responsiveness and architectural discipline. I design performant
+              systems with clean component state, modular API integration, and low-latency interaction loops.
             </p>
           </div>
 
@@ -55,12 +54,11 @@ export function ManifestoSection() {
               <ShieldCheck className="w-5 h-5" />
             </div>
             <h3 className="text-lg font-bold text-[#F4F1EA] mb-3 tracking-tight">
-              02. VERIFIABLE GROUNDING
+              02. STRICT CONTRACTS & TYPE SAFETY
             </h3>
             <p className="text-xs text-[#A39F94] leading-relaxed">
-              Hallucination is unacceptable in critical workflows. Every LLM synthesis and agent tool
-              call must be strictly constrained by schema contracts, natural language inference (NLI)
-              citation verification, and deterministic error boundaries.
+              Fragile data structures create cascading runtime failures. Every interface, API payload, and user
+              interaction is governed by strict TypeScript contracts, schema validation, and predictable error boundaries.
             </p>
           </div>
 
@@ -69,12 +67,11 @@ export function ManifestoSection() {
               <Flame className="w-5 h-5" />
             </div>
             <h3 className="text-lg font-bold text-[#F4F1EA] mb-3 tracking-tight">
-              03. BRUTAL SIMPLICITY
+              03. INTENTIONAL SIMPLICITY
             </h3>
             <p className="text-xs text-[#A39F94] leading-relaxed">
-              Complex agent graphs fail when their state machines become opaque. I build modular,
-              observable architectures with structured telemetry, cyclical recovery loops, and clear
-              separation of cognitive tasks from deterministic execution.
+              Applications fail when abstraction layers become obscure. I prioritize clean, observable codebases
+              with clear component lifecycles, structured state flows, and straightforward engineering solutions.
             </p>
           </div>
         </div>

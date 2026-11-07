@@ -125,7 +125,7 @@ export function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                   SYSTEM DIRECTORY // COMMAND OVERLAY
                 </h2>
                 <p className={`text-[10px] sm:text-[11px] ${isSignal ? "text-[#00E5D4] font-bold" : "opacity-70"}`}>
-                  HEMANT BHOSALE — AI SYSTEMS ENGINEER
+                  HEMANT BHOSALE — FULL STACK DEVELOPER
                 </p>
               </div>
             </div>

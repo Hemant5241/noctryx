@@ -56,9 +56,9 @@ export function Header() {
         {/* Top industrial telemetry strip */}
         <div className={`hidden lg:flex items-center justify-between px-6 py-1 border-b text-[10px] font-mono tracking-wider ${topStripClass}`}>
           <div className="flex items-center gap-4">
-            <span>SYS_ID: HB-AI-SYSTEMS</span>
+            <span>SYS_ID: HB-DEV-SYSTEMS</span>
             <span>{"//"}</span>
-            <span>SPEC: NEURAL ARCHITECTURES & VECTOR SYSTEMS</span>
+            <span>SPEC: FULL-STACK ARCHITECTURES & INTERACTIVE DEMOS</span>
           </div>
           <div className="flex items-center gap-4">
             <LiveClock />
@@ -81,11 +81,11 @@ export function Header() {
               <div className={`font-mono font-black text-sm sm:text-base md:text-lg tracking-tight flex items-center gap-1.5 sm:gap-2 ${brandTitleClass}`}>
                 <span>HEMANT BHOSALE</span>
                 <span className={`hidden sm:inline-block text-[10px] font-bold px-1.5 py-0.5 tracking-widest ${badgeClass}`}>
-                  AI.ENG
+                  DEV
                 </span>
               </div>
               <p className={`font-mono text-[9px] sm:text-[10px] tracking-widest uppercase ${brandSubClass}`}>
-                RESEARCH & SYSTEMS
+                FULL STACK DEVELOPER
               </p>
             </div>
           </Link>

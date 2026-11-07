@@ -6,7 +6,7 @@ import { ContactCTASection } from "@/components/home/ContactCTASection";
 export const metadata: Metadata = {
   title: "Projects & Case Studies // Hemant Bhosale",
   description:
-    "Architectural case studies and demonstration systems in Dense Vector Retrieval, Real-time Computer Vision, Autonomous Agent Workflows, Temporal Forecasting, and Enterprise RAG.",
+    "Interactive case studies and technical demonstrations in Semantic Search, Computer Vision, Agentic Workflows, Time-Series Forecasting, and Grounded Knowledge Retrieval.",
 };
 
 export default function ProjectsPage() {
@@ -17,7 +17,7 @@ export default function ProjectsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-xs font-bold text-[#FF3B00] tracking-widest mb-3">
             <Layers className="w-4 h-4" />
-            <span>CASE STUDIES // 05 ARCHITECTURES</span>
+            <span>CASE STUDIES // 05 TECHNICAL CONCEPTS</span>
           </div>
 
           <h1 className="text-3xl xs:text-4xl sm:text-6xl font-black text-black tracking-tight uppercase leading-none mb-4 break-words">
@@ -25,9 +25,8 @@ export default function ProjectsPage() {
           </h1>
 
           <p className="text-xs sm:text-sm md:text-base font-sans text-black/80 max-w-2xl leading-relaxed">
-            Exploration of 5 full-stack artificial intelligence architectures designed for
-            low-latency dense retrieval, edge computer vision inference, autonomous multi-agent
-            execution graphs, and verified knowledge synthesis.
+            Exploration of 5 interactive technical concepts and architectural demonstrations designed to showcase
+            full-stack systems engineering, responsive user interfaces, and modular backend patterns.
           </p>
         </div>
       </section>

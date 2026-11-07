@@ -1,6 +1,6 @@
-# HEMANT BHOSALE — EXPERIMENTAL AI SYSTEMS ENGINEER PORTFOLIO
+# HEMANT BHOSALE — FULL STACK DEVELOPER PORTFOLIO
 
-A bespoke, high-performance personal portfolio website built for **Hemant Bhosale**, an AI Systems Engineer and Research Architect specializing in autonomous agent workflows, neural vector search, edge computer vision, and low-latency inference systems.
+A bespoke, high-performance personal portfolio website built for **Hemant Bhosale**, a Full Stack Developer specializing in responsive web applications, modern React/Next.js architectures, TypeScript, and interactive technical showcases.
 
 Designed with an unapologetic **Brutalist UI** visual language, industrial Swiss typography, visible coordinate grids, paper-white and deep-black contrast, aggressive electric orange (`#FF3B00`), and acid yellow (`#CCFF00`).
 

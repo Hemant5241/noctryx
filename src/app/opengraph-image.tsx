@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Hemant Bhosale // AI Systems Engineer";
+export const alt = "Hemant Bhosale // Full Stack Developer";
 export const size = {
   width: 1200,
   height: 630,
@@ -59,7 +59,7 @@ export default async function Image() {
                 letterSpacing: "0.1em",
               }}
             >
-              HEMANT BHOSALE // AI SYSTEMS ARCHITECT
+              HEMANT BHOSALE // FULL STACK DEVELOPER
             </div>
           </div>
 
@@ -90,7 +90,7 @@ export default async function Image() {
               letterSpacing: "-0.03em",
             }}
           >
-            ENGINEERING
+            FULL STACK
           </div>
           <div
             style={{
@@ -103,7 +103,7 @@ export default async function Image() {
               marginBottom: "16px",
             }}
           >
-            INTELLIGENT SYSTEMS.
+            WEB & SYSTEMS DEVELOPMENT.
           </div>
           <div
             style={{
@@ -114,7 +114,7 @@ export default async function Image() {
               fontWeight: 600,
             }}
           >
-            Where probabilistic models meet deterministic reliability.
+            Engineering responsive applications and interactive technical showcases.
           </div>
         </div>
 
@@ -135,7 +135,7 @@ export default async function Image() {
             LAT: 18.5204° N // LON: 73.8567° E [INDIA]
           </div>
           <div style={{ color: "#0D0D0D", display: "flex" }}>
-            <span>5 ARCHITECTURAL DEMONSTRATIONS</span>
+            <span>5 TECHNICAL DEMONSTRATIONS</span>
           </div>
         </div>
       </div>

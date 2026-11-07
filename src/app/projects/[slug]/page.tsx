@@ -127,10 +127,10 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
           <ShieldAlert className="w-5 h-5 text-[#FF3B00] shrink-0 mt-0.5" />
           <div className="text-xs text-black/80">
             <strong className="text-black uppercase">
-              PORTFOLIO DEMONSTRATION & ARCHITECTURAL CASE STUDY:
+              TECHNICAL DEMONSTRATION & ARCHITECTURAL CASE STUDY:
             </strong>{" "}
-            This project is an architectural demonstration and engineering showcase designed to showcase
-            end-to-end systems design, pipeline modeling, and deployment strategies. Performance
+            This project is an architectural demonstration and engineering showcase designed to evaluate
+            end-to-end systems design, pipeline patterns, and interactive user experiences. Performance
             metrics are illustrative simulated benchmarks on synthetic datasets. The interactive module below runs an
             in-browser simulation.
           </div>

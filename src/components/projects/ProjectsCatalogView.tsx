@@ -192,7 +192,7 @@ export function ProjectsCatalogView() {
       {/* Comparative Technical Specification Matrix */}
       <div className="p-4 sm:p-6 md:p-10 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] sm:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
         <div className="text-xs font-bold text-[#FF3B00] uppercase tracking-wider mb-2">
-          COMPARATIVE SPECIFICATION MATRIX // 05 ARCHITECTURES
+          COMPARATIVE SPECIFICATION MATRIX // 05 TECHNICAL CONCEPTS
         </div>
         <h3 className="text-lg sm:text-xl md:text-2xl font-black text-black uppercase mb-4 sm:mb-6">
           ENGINEERING BENCHMARK COMPARISON

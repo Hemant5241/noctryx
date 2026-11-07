@@ -9,7 +9,7 @@ import { GitHubActivitySection } from "@/components/github/GitHubActivitySection
 export const metadata: Metadata = {
   title: "About // Engineering Philosophy // Hemant Bhosale",
   description:
-    "Background, operating philosophy, technical interests, and architectural methodologies of AI Systems Engineer Hemant Bhosale.",
+    "Background, operating philosophy, technical interests, and architectural methodologies of Full Stack Developer Hemant Bhosale.",
 };
 
 export default function AboutPage() {
@@ -29,11 +29,11 @@ export default function AboutPage() {
 
           <h1 className="text-3xl xs:text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-black tracking-tight uppercase leading-[0.95] mb-4 sm:mb-6 break-words">
             ENGINEERING <br />
-            <span className="text-[#FF3B00]">BEYOND</span> NOTEBOOKS.
+            <span className="text-[#FF3B00]">DELIBERATE</span> SOFTWARE.
           </h1>
 
           <p className="font-sans text-base sm:text-xl font-bold text-black/80 max-w-3xl leading-snug">
-            Bridging probabilistic statistical modeling with deterministic systems reliability.
+            Building modern web applications with focus on performance, accessibility, and architectural clarity.
           </p>
         </div>
       </section>
@@ -84,7 +84,7 @@ export default function AboutPage() {
               {/* Bottom HUD */}
               <div className="flex items-center justify-between text-[10px] text-[#A39F94] relative z-10 border-t border-[#262626] pt-2" aria-hidden="true">
                 <span>COORD: {profileData.location.coordinates}</span>
-                <span className="text-[#FF3B00]">HB_AI_PORTRAIT.RAW</span>
+                <span className="text-[#FF3B00]">HB_PORTRAIT.RAW</span>
               </div>
             </div>
 
@@ -103,7 +103,7 @@ export default function AboutPage() {
                 01 // BACKGROUND & MISSION
               </div>
               <h2 className="text-2xl sm:text-3xl font-black text-black uppercase">
-                SYSTEMS ARCHITECT // APPLIED RESEARCHER
+                FULL STACK DEVELOPER // WEB ENGINEER
               </h2>
               <p className="font-sans text-sm sm:text-base text-black/80 leading-relaxed">
                 {profileData.shortBio}
@@ -134,26 +134,26 @@ export default function AboutPage() {
             <div className="space-y-4 border-t-2 border-black pt-6">
               <div className="text-xs font-bold text-[#FF3B00] uppercase tracking-wider flex items-center gap-2">
                 <BookOpen className="w-4 h-4" />
-                <span>03 // ACTIVE RESEARCH & COMPUTATIONAL INTERESTS</span>
+                <span>03 // ACTIVE TECHNICAL EXPLORATIONS</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
                   {
-                    title: "Hardware-Aware Sparse Attention",
-                    notes: "FlashAttention-3, Flash-Decoding, and tiled SRAM memory access patterns.",
+                    title: "Modern React & Server Components",
+                    notes: "Streaming SSR, partial prerendering (PPR), and zero-bundle-size server logic.",
                   },
                   {
-                    title: "State Space Models (SSMs)",
-                    notes: "Mamba and hybrid linear RNN-transformer architectures for long context.",
+                    title: "High-Performance Client State",
+                    notes: "Fine-grained reactivity, Canvas rendering, and requestAnimationFrame pipelines.",
                   },
                   {
-                    title: "Speculative Decoding Pipelines",
-                    notes: "Draft-model generation with verification for lower generation latency.",
+                    title: "Type-Safe API Contracts",
+                    notes: "End-to-end schema validation, REST/GraphQL design, and strict TypeScript contracts.",
                   },
                   {
-                    title: "Autonomous Tool Boundaries",
-                    notes: "Formal schema contracts, sandbox runtimes, and self-healing error recovery.",
+                    title: "Accessible & Responsive Systems",
+                    notes: "WCAG AAA compliance, cross-theme color tokens, and fluid typography across viewports.",
                   },
                 ].map((interest, idx) => (
                   <div key={idx} className="p-3 border border-black bg-white">

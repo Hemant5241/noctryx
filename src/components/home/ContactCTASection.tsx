@@ -63,11 +63,11 @@ export function ContactCTASection() {
             </span>
             <h2 className="text-3xl xs:text-4xl sm:text-6xl lg:text-7xl font-black text-[#F4F1EA] tracking-tighter uppercase leading-[0.95] break-words">
               LET&apos;S BUILD <br />
-              <span className="text-[#CCFF00]">SOMETHING</span> INTELLIGENT.
+              <span className="text-[#CCFF00]">SOMETHING</span> EXCEPTIONAL.
             </h2>
             <p className="font-sans text-sm sm:text-base text-[#A39F94] mt-4 sm:mt-6 max-w-2xl leading-relaxed">
-              Available for full-time engineering roles, research collaborations, and mission-critical
-              AI systems projects requiring low-latency architectures, autonomous agents, and grounded RAG.
+              Available for full-time engineering roles, technical collaborations, and full-stack web
+              development projects requiring performant architectures, clean UI, and robust APIs.
             </p>
           </div>
 

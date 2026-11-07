@@ -3,8 +3,8 @@
  * TECHNICAL SKILLS MATRIX — HEMANT BHOSALE PORTFOLIO
  * =============================================================================
  * 
- * Centralized skill taxonomy across AI/ML engineering, systems architecture,
- * backend development, and foundational tooling.
+ * Centralized skill taxonomy across full-stack engineering, interactive UI,
+ * backend systems, and technical computing.
  * =============================================================================
  */
 

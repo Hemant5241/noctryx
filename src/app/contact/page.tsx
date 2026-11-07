@@ -103,7 +103,7 @@ export default function ContactPage() {
           </h1>
 
           <p className="font-sans text-sm sm:text-lg md:text-xl font-bold text-black/80 max-w-2xl leading-relaxed mb-6">
-            Interested in high-throughput AI engineering, agentic architecture, or research collaborations?
+            Interested in full-stack web engineering, modern application development, or interactive technical collaborations?
             Dispatch a simulated packet through the terminal or reach out directly via verified channels.
           </p>
 
@@ -282,7 +282,7 @@ export default function ContactPage() {
                       type="text"
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      placeholder="e.g. AI Systems Architect Role — Q4 Pipeline"
+                      placeholder="e.g. Full Stack Developer Role — Q4 Pipeline"
                       className="w-full p-3 border-2 border-black bg-[#F4F1EA] text-xs font-bold text-black focus:outline-none focus:bg-white focus-visible:ring-2 focus-visible:ring-[#FF3B00]"
                     />
                   </div>

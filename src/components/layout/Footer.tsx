@@ -54,10 +54,10 @@ export function Footer() {
           </div>
           <div className="flex flex-wrap items-center justify-between gap-4 mt-4 text-xs sm:text-sm text-[#A39F94] font-bold">
             <span className="tracking-widest uppercase">
-              {"// AI SYSTEMS ARCHITECT & RESEARCH ENGINEER"}
+              {"// FULL STACK DEVELOPER & SOFTWARE ENGINEER"}
             </span>
             <span className="text-[#FF3B00]">
-              EXPERIMENTATION → PRODUCTION ENGINEERING
+              CLEAN CODE → RELIABLE PRODUCTION SYSTEMS
             </span>
           </div>
         </div>
@@ -71,9 +71,9 @@ export function Footer() {
               <span>CORE ARCHITECTURAL INTENT</span>
             </div>
             <p className="text-xs sm:text-sm text-[#A39F94] leading-relaxed">
-              Engineering deterministic, reliable machine learning infrastructure where autonomous
-              agents, dense vector search, and high-performance inference intersect. Built for low
-              latency, strict grounding, and high availability.
+              Engineering scalable full-stack applications with clean component architecture,
+              responsive layouts, and robust backend services. Built for reliability, performance,
+              and accessibility.
             </p>
             <div className="p-3 border border-[#262626] bg-[#141414] text-[11px] text-[#A39F94]">
               <span className="text-[#CCFF00] font-bold">STATUS: </span>
@@ -146,9 +146,9 @@ export function Footer() {
               PORTFOLIO SHOWCASE & METRICS TRANSPARENCY NOTICE:
             </p>
             <p>
-              Portfolio Showcase: Hemant Bhosale. The 5 AI case studies presented in this portfolio represent architectural demonstration
-              concepts and engineering showcases. All performance benchmarks, latency numbers, and throughput metrics are simulated
-              illustrative specifications designed to demonstrate AI systems engineering capabilities. Repository maintenance and developer attribution are strictly decoupled from the portfolio showcase.
+              Portfolio Showcase: Hemant Bhosale. The 5 technical case studies presented in this portfolio represent architectural demonstration
+              concepts and interactive engineering showcases. All performance benchmarks, latency numbers, and throughput metrics are simulated
+              illustrative specifications designed to demonstrate full-stack engineering and systems design patterns. Repository maintenance and developer attribution are strictly decoupled from the portfolio showcase.
             </p>
           </div>
         </div>

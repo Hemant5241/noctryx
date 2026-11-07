@@ -58,25 +58,25 @@ export function HeroSection() {
             </div>
 
             <h1 className="font-mono font-black text-3xl xs:text-4xl sm:text-6xl md:text-7xl xl:text-8xl tracking-tighter leading-[0.95] text-black uppercase break-words">
-              ARCHITECTING <br />
+              ENGINEERING <br />
               {theme === "signal-studio" ? (
                 <span className="relative inline-block bg-[#6938FF] text-[#C6FF00] px-2.5 py-0.5 sm:px-4 sm:py-1 border-2 sm:border-3 border-[#1B1020] shadow-[4px_4px_0px_0px_#FF4FA3] sm:shadow-[6px_6px_0px_0px_#FF4FA3] -rotate-1 rounded-sm my-1 sm:my-1.5 transition-transform hover:rotate-0 hover:scale-105">
-                  <span className="relative z-10 font-black tracking-tight">INTELLIGENT</span>
+                  <span className="relative z-10 font-black tracking-tight">RESPONSIVE</span>
                 </span>
               ) : theme === "crimson-noir" ? (
                 <span className="relative inline-block text-[#FF3838] px-2 sm:px-2.5 py-0.5 border border-[#CDCBCA]/30 bg-[#161214] shadow-[0_0_20px_rgba(212,21,20,0.35)] rounded-sm my-1">
                   <span className="relative z-10 font-black drop-shadow-[0_0_8px_rgba(255,56,56,0.6)]">
-                    INTELLIGENT
+                    RESPONSIVE
                   </span>
                 </span>
               ) : (
                 <span className="relative inline-block text-[#FF3B00]">
-                  <span className="relative z-10">INTELLIGENT</span>
+                  <span className="relative z-10">RESPONSIVE</span>
                   <span className="absolute bottom-0 sm:bottom-1 left-0 w-full h-2 sm:h-3.5 bg-[#CCFF00] z-0 -rotate-0.5"></span>
                 </span>
               )}{" "}
               <br />
-              SYSTEMS.
+              APPLICATIONS.
             </h1>
 
             <p className="font-sans text-base sm:text-xl text-black/80 font-medium leading-relaxed max-w-2xl">

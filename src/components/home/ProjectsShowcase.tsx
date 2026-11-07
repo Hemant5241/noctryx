@@ -14,18 +14,18 @@ export function ProjectsShowcase() {
           <div>
             <div className="flex items-center gap-2 text-xs font-bold text-[#FF3B00] tracking-widest mb-1 sm:mb-2">
               <Layers className="w-4 h-4" />
-              <span>03 {"//"} FEATURED ARCHITECTURES</span>
+              <span>03 {"//"} FEATURED TECHNICAL SHOWCASES</span>
             </div>
             <h2 className="text-3xl xs:text-4xl sm:text-6xl font-black text-black tracking-tight uppercase leading-none">
-              CASE STUDIES [05]
+              TECHNICAL CASE STUDIES [05]
             </h2>
           </div>
           <div className="text-left sm:text-right">
             <span className="text-[10px] sm:text-[11px] text-[#FF3B00] font-bold block">
-              {"// ARCHITECTURAL DEMONSTRATIONS"}
+              {"// TECHNICAL DEMONSTRATIONS"}
             </span>
             <span className="text-[11px] sm:text-xs text-black/60">
-              SIMULATED PRODUCTION SPECIFICATIONS
+              BENCHMARK SPECIFICATIONS
             </span>
           </div>
         </div>
@@ -41,10 +41,10 @@ export function ProjectsShowcase() {
         <div className="mt-12 sm:mt-20 p-5 sm:p-8 border-2 border-black bg-black text-[#F4F1EA] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 shadow-[5px_5px_0px_0px_rgba(255,59,0,1)] sm:shadow-[8px_8px_0px_0px_rgba(255,59,0,1)]">
           <div>
             <h3 className="text-lg sm:text-2xl font-black tracking-tight text-[#F4F1EA] uppercase">
-              LOOKING FOR DEEP ARCHITECTURAL BREAKDOWNS?
+              LOOKING FOR DETAILED ARCHITECTURAL SPECIFICATIONS?
             </h3>
             <p className="text-xs text-[#A39F94] mt-1">
-              Explore the full system specifications, data pipelines, and benchmark logs.
+              Explore the system specifications, data pipelines, and interactive simulators.
             </p>
           </div>
           <Link

@@ -6,7 +6,7 @@
  * IMPORTANT VERIFICATION DISCLAIMER:
  * The five projects listed below are rigorous architectural demonstration
  * concepts and case studies conceived for this portfolio to demonstrate systems
- * design, technical competency, and AI engineering methodologies.
+ * design, technical competency, and full-stack engineering methodologies.
  * All metrics, benchmark figures, and deployment numbers are illustrative
  * simulated indicators and must NOT be cited as verified commercial client claims.
  * =============================================================================
@@ -41,7 +41,6 @@ export interface ProjectData {
   demoSimulationNote: string;
   links: {
     demo?: string;
-    githubPlaceholder?: string;
   };
 }
 
@@ -101,9 +100,7 @@ export const projectsData: ProjectData[] = [
     accentColor: "#FF3B00",
     badge: "DEMO CASE STUDY // ARCHITECTURE SPEC 01",
     demoSimulationNote: "Interactive search query latency and vector space reduction simulated in browser.",
-    links: {
-      githubPlaceholder: "https://github.com/placeholder-demo/neural-search-engine",
-    },
+    links: {},
   },
   {
     id: "proj-02",
@@ -160,9 +157,7 @@ export const projectsData: ProjectData[] = [
     accentColor: "#CCFF00",
     badge: "DEMO CASE STUDY // ARCHITECTURE SPEC 02",
     demoSimulationNote: "Interactive bounding box visualizer and confidence heatmap simulated in browser.",
-    links: {
-      githubPlaceholder: "https://github.com/placeholder-demo/vision-ai",
-    },
+    links: {},
   },
   {
     id: "proj-03",
@@ -219,9 +214,7 @@ export const projectsData: ProjectData[] = [
     accentColor: "#FF3B00",
     badge: "DEMO CASE STUDY // ARCHITECTURE SPEC 03",
     demoSimulationNote: "Interactive agent state DAG and step-by-step reasoning inspector simulated in browser.",
-    links: {
-      githubPlaceholder: "https://github.com/placeholder-demo/agentic-workflow",
-    },
+    links: {},
   },
   {
     id: "proj-04",
@@ -278,9 +271,7 @@ export const projectsData: ProjectData[] = [
     accentColor: "#CCFF00",
     badge: "DEMO CASE STUDY // ARCHITECTURE SPEC 04",
     demoSimulationNote: "Interactive real-time forecast curve and statistical anomaly thresholds simulated in browser.",
-    links: {
-      githubPlaceholder: "https://github.com/placeholder-demo/predictive-intelligence",
-    },
+    links: {},
   },
   {
     id: "proj-05",
@@ -337,8 +328,6 @@ export const projectsData: ProjectData[] = [
     accentColor: "#FF3B00",
     badge: "DEMO CASE STUDY // ARCHITECTURE SPEC 05",
     demoSimulationNote: "Interactive chunking and citation grounding explorer simulated in browser.",
-    links: {
-      githubPlaceholder: "https://github.com/placeholder-demo/llm-knowledge-system",
-    },
+    links: {},
   },
 ];

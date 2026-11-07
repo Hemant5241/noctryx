@@ -35,11 +35,11 @@ export function SkillsSection() {
               <span>02 {"//"} TECHNICAL MATRIX</span>
             </div>
             <h2 className="text-2xl xs:text-3xl sm:text-5xl font-black text-black tracking-tight uppercase leading-none">
-              COMPUTATIONAL STACK
+              TECHNICAL TOOLKIT
             </h2>
           </div>
           <div className="text-[10px] sm:text-[11px] text-black/60 font-bold uppercase">
-            SPECIALIZED AI CAPABILITIES
+            FULL-STACK & COMPUTATIONAL STACK
           </div>
         </div>
 

@@ -17,10 +17,10 @@ export function TimelineSection() {
           <div>
             <div className="flex items-center gap-2 text-xs font-bold text-[#FF3B00] tracking-widest mb-1 sm:mb-2">
               <Briefcase className="w-4 h-4" />
-              <span>04 {"//"} TIMELINE ARCHITECTURE</span>
+              <span>04 {"//"} PROFESSIONAL TRAJECTORY</span>
             </div>
             <h2 className="text-3xl xs:text-4xl sm:text-6xl font-black text-black tracking-tight uppercase leading-none">
-              CAREER & STUDIES
+              CAREER & EDUCATION
             </h2>
           </div>
 
