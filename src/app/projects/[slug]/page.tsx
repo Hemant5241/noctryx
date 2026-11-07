@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   if (!project) return {};
 
   return {
-    title: `${project.title} // Technical Case Study // Om Shinde`,
+    title: `${project.title} // Technical Case Study // Hemant Bhosale`,
     description: project.shortSummary,
   };
 }
@@ -129,7 +129,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
             <strong className="text-black uppercase">
               PORTFOLIO DEMONSTRATION & ARCHITECTURAL CASE STUDY:
             </strong>{" "}
-            This project is an architectural demonstration conceived by Om Shinde to showcase
+            This project is an architectural demonstration and engineering showcase designed to showcase
             end-to-end systems design, pipeline modeling, and deployment strategies. Performance
             metrics are illustrative simulated benchmarks on synthetic datasets. The interactive module below runs an
             in-browser simulation.

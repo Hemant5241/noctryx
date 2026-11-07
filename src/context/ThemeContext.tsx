@@ -56,12 +56,13 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-const STORAGE_KEY = "om_theme";
+const STORAGE_KEY = "hb_theme";
+const LEGACY_STORAGE_KEY = "om_theme";
 
 function getStoredTheme(): Theme {
   if (typeof window === "undefined") return "original";
   try {
-    const saved = localStorage.getItem(STORAGE_KEY);
+    const saved = localStorage.getItem(STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
     if (saved === "crimson-noir" || saved === "signal-studio" || saved === "original") {
       return saved;
     }

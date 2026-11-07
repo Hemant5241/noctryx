@@ -1,6 +1,6 @@
 /**
  * =============================================================================
- * PROJECTS DATA — OM SHINDE PORTFOLIO
+ * PROJECTS DATA — HEMANT BHOSALE PORTFOLIO
  * =============================================================================
  * 
  * IMPORTANT VERIFICATION DISCLAIMER:

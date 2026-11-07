@@ -7,9 +7,9 @@ import { OmMonogram } from "@/components/brand/OmMonogram";
 import { GitHubActivitySection } from "@/components/github/GitHubActivitySection";
 
 export const metadata: Metadata = {
-  title: "About // Engineering Philosophy // Om Shinde",
+  title: "About // Engineering Philosophy // Hemant Bhosale",
   description:
-    "Background, operating philosophy, technical interests, and architectural methodologies of AI Systems Engineer Om Shinde.",
+    "Background, operating philosophy, technical interests, and architectural methodologies of AI Systems Engineer Hemant Bhosale.",
 };
 
 export default function AboutPage() {
@@ -20,7 +20,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-black/15 pb-3 mb-6 text-xs text-black/60">
             <div className="flex items-center gap-2">
-              <span className="font-bold text-black">OM SHINDE</span>
+              <span className="font-bold text-black">HEMANT BHOSALE</span>
               <span>{"//"}</span>
               <span className="text-[#FF3B00] font-bold">ABOUT & PHILOSOPHY</span>
             </div>
@@ -45,7 +45,7 @@ export default function AboutPage() {
           <div className="lg:col-span-5 space-y-4">
             <div
               role="img"
-              aria-label="Portrait viewfinder placeholder for Om Shinde"
+              aria-label="Portrait viewfinder placeholder for Hemant Bhosale"
               className="relative aspect-square w-full border-3 sm:border-4 border-black bg-[#0D0D0D] p-4 sm:p-6 text-[#F4F1EA] shadow-[6px_6px_0px_0px_rgba(255,59,0,1)] sm:shadow-[10px_10px_0px_0px_rgba(255,59,0,1)] crosshair-corner flex flex-col justify-between overflow-hidden"
             >
               {/* Camera HUD Grid */}
@@ -76,7 +76,7 @@ export default function AboutPage() {
                   REPLACEABLE PORTRAIT PLACEHOLDER
                 </p>
                 <p className="text-[10px] text-[#A39F94] leading-relaxed">
-                  Om Shinde can drop a verified portrait photograph here by placing an image file in the public
+                  Hemant Bhosale can drop a verified portrait photograph here by placing an image file in the public
                   assets directory.
                 </p>
               </div>
@@ -84,14 +84,14 @@ export default function AboutPage() {
               {/* Bottom HUD */}
               <div className="flex items-center justify-between text-[10px] text-[#A39F94] relative z-10 border-t border-[#262626] pt-2" aria-hidden="true">
                 <span>COORD: {profileData.location.coordinates}</span>
-                <span className="text-[#FF3B00]">OM_SHINDE_AI_PORTRAIT.RAW</span>
+                <span className="text-[#FF3B00]">HB_AI_PORTRAIT.RAW</span>
               </div>
             </div>
 
             {/* Verification Disclaimer */}
             <div className="p-3 border-2 border-black bg-white text-[11px] text-black/70">
               <strong className="text-black uppercase">NOTE:</strong> No synthetic or fabricated
-              photograph is passed off as real. This designated HUD area allows quick insertion of Om&apos;s
+              photograph is passed off as real. This designated HUD area allows quick insertion of Hemant&apos;s
               verified photograph.
             </div>
           </div>

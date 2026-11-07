@@ -15,7 +15,7 @@ export function HeroSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
         <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] text-black/60 pb-3 border-b border-black/15">
           <div className="flex items-center gap-2">
-            <span className="font-black text-black">OM SHINDE</span>
+            <span className="font-black text-black">HEMANT BHOSALE</span>
             <span>{"//"}</span>
             <span className="text-[#FF3B00] font-bold">PORTFOLIO INDEX 2026</span>
           </div>
@@ -52,7 +52,7 @@ export function HeroSection() {
               ) : (
                 <div className="hidden sm:inline-flex items-center gap-2 px-2.5 py-1 bg-white border border-black/30 font-mono text-[10px] font-bold text-black/70 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
                   <OmMonogram size={16} />
-                  <span>BRAND MARK: OM//SYS</span>
+                  <span>BRAND MARK: HB//SYS</span>
                 </div>
               )}
             </div>

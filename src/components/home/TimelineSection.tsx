@@ -70,7 +70,7 @@ export function TimelineSection() {
                 EDITABLE DEMONSTRATION STRUCTURE:
               </span>{" "}
               <span className="text-black/70">
-                Timeline entries below are structured placeholders. Om can edit credentials directly in{" "}
+                Timeline entries below are structured placeholders. Verified credentials can be configured directly in{" "}
                 <code className="bg-black/5 px-1 py-0.5 border border-black/20 text-[#FF3B00] font-bold">
                   src/data/experience.ts
                 </code>

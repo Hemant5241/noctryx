@@ -59,7 +59,7 @@ export async function GET(request: NextRequest) {
       {
         headers: {
           Accept: "application/vnd.github.v3+json",
-          "User-Agent": "OmShindePortfolio-PublicVerification/2.0",
+          "User-Agent": "HemantBhosalePortfolio-PublicVerification/2.0",
         },
         next: { revalidate: 3600 }, // Cache public responses for 1 hour to preserve rate limits
       }

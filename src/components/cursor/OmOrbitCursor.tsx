@@ -42,7 +42,7 @@ function resolveTargetType(target: Element | null): CursorTargetType {
 }
 
 /**
- * OM ORBIT: Custom Cursor Experience
+ * HB ORBIT / PRECISION CURSOR: Custom Cursor Experience (Hemant Bhosale Portfolio)
  * Ultra-smooth, zero React re-render custom cursor system.
  *
  * Performance & Architecture:
@@ -347,3 +347,5 @@ export function OmOrbitCursor() {
     </>
   );
 }
+
+export const HbOrbitCursor = OmOrbitCursor;

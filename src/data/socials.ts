@@ -1,10 +1,10 @@
 /**
  * =============================================================================
- * SOCIAL & CONTACT COORDINATES — OM SHINDE PORTFOLIO
+ * SOCIAL & CONTACT COORDINATES — HEMANT BHOSALE PORTFOLIO
  * =============================================================================
  * 
- * Centralized contact links and social channels.
- * Replace placeholder URLs with Om's verified social profiles when available.
+ * Centralized contact links and communication channels.
+ * Replace placeholder URLs with Hemant's verified social profiles when available.
  * =============================================================================
  */
 
@@ -41,19 +41,19 @@ export const socialsData: SocialLink[] = [
     iconName: "Linkedin",
   },
   {
-    id: "email",
-    label: "EMAIL DIRECT",
-    handle: "omshinde.ai.engineer@example.com (Placeholder)",
-    url: "mailto:omshinde.ai.engineer@example.com",
+    id: "terminal-contact",
+    label: "CONTACT TERMINAL",
+    handle: "Dispatch via in-browser console",
+    url: "/contact",
     isPlaceholder: true,
     verificationStatus: "placeholder",
     category: "contact",
-    iconName: "Mail",
+    iconName: "Terminal",
   },
   {
     id: "resume",
     label: "CURRICULUM VITAE",
-    handle: "OM_SHINDE_AI_RESUME.PDF (Specimen)",
+    handle: "TECHNICAL_SPECIMEN_RESUME.PDF",
     url: "#contact",
     isPlaceholder: true,
     verificationStatus: "placeholder",
@@ -63,7 +63,7 @@ export const socialsData: SocialLink[] = [
 ];
 
 export const contactDetails = {
-  primaryEmail: "omshinde.ai.engineer@example.com",
+  primaryEmail: "",
   isEmailVerified: false,
   secondaryContact: "Available via Client-Side Contact Terminal",
   gpgKeyFingerprint: "AWAITING VERIFIED KEY // NO GPG KEY REGISTERED",
@@ -76,16 +76,13 @@ export const contactDetails = {
 /**
  * Verified Public GitHub Configuration
  * 
- * IMPORTANT:
- * Never assume developer / repository owner accounts (such as Hemant5241)
- * are Om Shinde.
- * When Om's verified username is provided, set verifiedUsername below
- * or configure NEXT_PUBLIC_GITHUB_USERNAME in environment variables.
+ * To display live public repositories and open-source commit telemetry,
+ * configure NEXT_PUBLIC_GITHUB_USERNAME in environment variables or verifiedUsername below.
  */
 export const gitHubIntegrationConfig = {
   verifiedUsername: process.env.NEXT_PUBLIC_GITHUB_USERNAME || null,
   isVerified: false,
   requiresManualVerification: true,
   documentationNotice:
-    "To display live public repositories and open-source commit telemetry, provide Om's verified GitHub username in NEXT_PUBLIC_GITHUB_USERNAME or src/data/socials.ts.",
+    "To display live public repositories and open-source commit telemetry, configure NEXT_PUBLIC_GITHUB_USERNAME or src/data/socials.ts.",
 };

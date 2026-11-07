@@ -18,7 +18,7 @@ export default function NotFound() {
             NULL POINTER
           </h1>
           <p className="font-sans text-xs sm:text-sm text-black/70 leading-relaxed max-w-md mx-auto">
-            The target route does not exist in the Om Shinde system architecture.
+            The target route does not exist in the Hemant Bhosale system architecture.
             The requested vector is unindexed or has been relocated.
           </p>
         </div>

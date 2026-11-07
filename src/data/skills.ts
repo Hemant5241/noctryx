@@ -1,6 +1,6 @@
 /**
  * =============================================================================
- * TECHNICAL SKILLS MATRIX — OM SHINDE PORTFOLIO
+ * TECHNICAL SKILLS MATRIX — HEMANT BHOSALE PORTFOLIO
  * =============================================================================
  * 
  * Centralized skill taxonomy across AI/ML engineering, systems architecture,

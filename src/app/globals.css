@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* =============================================================================
- * THREE-THEME DESIGN SYSTEM ARCHITECTURE — OM SHINDE PORTFOLIO
+ * THREE-THEME DESIGN SYSTEM ARCHITECTURE — HEMANT BHOSALE PORTFOLIO
  * =============================================================================
  * Theme 1 — Original (Default):
  *   Warm paper white (#F4F1EA) + Deep black (#0D0D0D) + Electric Orange (#FF3B00) + Acid Yellow (#CCFF00)
@@ -1142,31 +1142,57 @@ dialog::backdrop {
 }
 
 /* Monogram theme accent integration */
-[data-theme="crimson-noir"] .om-monogram-svg line[stroke="#FF3B00"] {
+[data-theme="crimson-noir"] .hb-monogram-svg line[stroke="#FF3B00"],
+[data-theme="crimson-noir"] .hb-monogram-svg path[stroke="#FF3B00"],
+[data-theme="crimson-noir"] .om-monogram-svg line[stroke="#FF3B00"],
+[data-theme="crimson-noir"] .om-monogram-svg path[stroke="#FF3B00"] {
   stroke: var(--accent-orange) !important;
 }
+[data-theme="crimson-noir"] .hb-monogram-svg rect[fill="#FF3B00"],
+[data-theme="crimson-noir"] .hb-monogram-svg polygon[fill="#FF3B00"],
 [data-theme="crimson-noir"] .om-monogram-svg rect[fill="#FF3B00"],
 [data-theme="crimson-noir"] .om-monogram-svg polygon[fill="#FF3B00"] {
   fill: var(--accent-orange) !important;
 }
-[data-theme="crimson-noir"] .om-monogram-svg line[stroke="#CCFF00"] {
+[data-theme="crimson-noir"] .hb-monogram-svg line[stroke="#CCFF00"],
+[data-theme="crimson-noir"] .hb-monogram-svg path[stroke="#CCFF00"],
+[data-theme="crimson-noir"] .om-monogram-svg line[stroke="#CCFF00"],
+[data-theme="crimson-noir"] .om-monogram-svg path[stroke="#CCFF00"] {
   stroke: var(--accent-yellow) !important;
 }
-[data-theme="crimson-noir"] .om-monogram-svg polygon[fill="#CCFF00"] {
+[data-theme="crimson-noir"] .hb-monogram-svg polygon[fill="#CCFF00"],
+[data-theme="crimson-noir"] .hb-monogram-svg rect[fill="#CCFF00"],
+[data-theme="crimson-noir"] .hb-monogram-svg circle[fill="#CCFF00"],
+[data-theme="crimson-noir"] .om-monogram-svg polygon[fill="#CCFF00"],
+[data-theme="crimson-noir"] .om-monogram-svg rect[fill="#CCFF00"],
+[data-theme="crimson-noir"] .om-monogram-svg circle[fill="#CCFF00"] {
   fill: var(--accent-yellow) !important;
 }
 
-[data-theme="signal-studio"] .om-monogram-svg line[stroke="#FF3B00"] {
+[data-theme="signal-studio"] .hb-monogram-svg line[stroke="#FF3B00"],
+[data-theme="signal-studio"] .hb-monogram-svg path[stroke="#FF3B00"],
+[data-theme="signal-studio"] .om-monogram-svg line[stroke="#FF3B00"],
+[data-theme="signal-studio"] .om-monogram-svg path[stroke="#FF3B00"] {
   stroke: var(--accent-orange) !important;
 }
+[data-theme="signal-studio"] .hb-monogram-svg rect[fill="#FF3B00"],
+[data-theme="signal-studio"] .hb-monogram-svg polygon[fill="#FF3B00"],
 [data-theme="signal-studio"] .om-monogram-svg rect[fill="#FF3B00"],
 [data-theme="signal-studio"] .om-monogram-svg polygon[fill="#FF3B00"] {
   fill: var(--accent-orange) !important;
 }
-[data-theme="signal-studio"] .om-monogram-svg line[stroke="#CCFF00"] {
+[data-theme="signal-studio"] .hb-monogram-svg line[stroke="#CCFF00"],
+[data-theme="signal-studio"] .hb-monogram-svg path[stroke="#CCFF00"],
+[data-theme="signal-studio"] .om-monogram-svg line[stroke="#CCFF00"],
+[data-theme="signal-studio"] .om-monogram-svg path[stroke="#CCFF00"] {
   stroke: var(--accent-yellow) !important;
 }
-[data-theme="signal-studio"] .om-monogram-svg polygon[fill="#CCFF00"] {
+[data-theme="signal-studio"] .hb-monogram-svg polygon[fill="#CCFF00"],
+[data-theme="signal-studio"] .hb-monogram-svg rect[fill="#CCFF00"],
+[data-theme="signal-studio"] .hb-monogram-svg circle[fill="#CCFF00"],
+[data-theme="signal-studio"] .om-monogram-svg polygon[fill="#CCFF00"],
+[data-theme="signal-studio"] .om-monogram-svg rect[fill="#CCFF00"],
+[data-theme="signal-studio"] .om-monogram-svg circle[fill="#CCFF00"] {
   fill: var(--accent-yellow) !important;
 }
 

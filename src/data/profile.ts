@@ -1,12 +1,12 @@
 /**
  * =============================================================================
- * PROFILE DATA CONFIGURATION — OM SHINDE
+ * PROFILE DATA CONFIGURATION — HEMANT BHOSALE
  * =============================================================================
  * 
  * IMPORTANT NOTE FOR RECRUITERS & REVIEWERS:
- * This data structure centralizes Om Shinde's portfolio identity.
+ * This data structure centralizes Hemant Bhosale's portfolio identity.
  * Unverified personal specifics are marked as editable placeholders.
- * Om can directly edit this file to personalize all portfolio copy.
+ * Hemant can directly edit this file to personalize all portfolio copy.
  * =============================================================================
  */
 
@@ -42,8 +42,8 @@ export interface ProfileData {
 }
 
 export const profileData: ProfileData = {
-  name: "Om Shinde",
-  wordmark: "OM SHINDE // 01",
+  name: "Hemant Bhosale",
+  wordmark: "HEMANT BHOSALE // 01",
   role: "AI Systems Engineer",
   tagline: "ARCHITECTING ROBUST INTELLIGENCE & EXPERIMENTAL COMPUTING SYSTEMS",
   headline: "Engineering intelligent architectures where statistical models meet deterministic reliability.",

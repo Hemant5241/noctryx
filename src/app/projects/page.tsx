@@ -4,7 +4,7 @@ import { ProjectsCatalogView } from "@/components/projects/ProjectsCatalogView";
 import { ContactCTASection } from "@/components/home/ContactCTASection";
 
 export const metadata: Metadata = {
-  title: "Projects & Case Studies // Om Shinde",
+  title: "Projects & Case Studies // Hemant Bhosale",
   description:
     "Architectural case studies and demonstration systems in Dense Vector Retrieval, Real-time Computer Vision, Autonomous Agent Workflows, Temporal Forecasting, and Enterprise RAG.",
 };

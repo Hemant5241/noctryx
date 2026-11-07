@@ -1,14 +1,14 @@
 /**
  * =============================================================================
- * CAREER & EDUCATION TIMELINE — OM SHINDE PORTFOLIO
+ * CAREER & EDUCATION TIMELINE — HEMANT BHOSALE PORTFOLIO
  * =============================================================================
  * 
  * IMPORTANT VERIFICATION NOTICE:
- * Because verified historical employment and university credentials for Om Shinde
+ * Because verified historical employment and university credentials for Hemant Bhosale
  * have not yet been provided, the entries below are clearly marked as EDITABLE
  * DEMO CONTENT.
  * 
- * Om Shinde can easily replace these entries with his actual background,
+ * Hemant Bhosale can easily replace these entries with his actual background,
  * dates, universities, degrees, and companies.
  * =============================================================================
  */

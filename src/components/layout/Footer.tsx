@@ -42,7 +42,7 @@ export function Footer() {
         <div className="mb-12 sm:mb-16 select-none border-b-2 border-[#262626] pb-8 sm:pb-12">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
             <div className="text-[14vw] xs:text-[12vw] sm:text-[10vw] font-black tracking-tighter leading-none text-[#F4F1EA] hover:text-[#CCFF00] transition-colors duration-300">
-              OM SHINDE
+              HEMANT BHOSALE
             </div>
             <div className="w-14 h-14 sm:w-20 sm:h-20 lg:w-[88px] lg:h-[88px] shrink-0">
               <OmMonogram
@@ -143,12 +143,12 @@ export function Footer() {
           <ShieldAlert className="w-5 h-5 text-[#CCFF00] shrink-0 mt-0.5" />
           <div className="text-[11px] text-[#A39F94] space-y-1">
             <p className="font-bold text-[#F4F1EA]">
-              PORTFOLIO SUBJECT & METRICS TRANSPARENCY NOTICE:
+              PORTFOLIO SHOWCASE & METRICS TRANSPARENCY NOTICE:
             </p>
             <p>
-              Portfolio Subject: Om Shinde. The 5 AI case studies presented in this portfolio represent architectural demonstration
-              concepts. All performance benchmarks, latency numbers, and throughput metrics are simulated
-              illustrative specifications designed to demonstrate AI systems engineering capabilities. Repository maintenance and developer attribution are strictly decoupled from the portfolio subject.
+              Portfolio Showcase: Hemant Bhosale. The 5 AI case studies presented in this portfolio represent architectural demonstration
+              concepts and engineering showcases. All performance benchmarks, latency numbers, and throughput metrics are simulated
+              illustrative specifications designed to demonstrate AI systems engineering capabilities. Repository maintenance and developer attribution are strictly decoupled from the portfolio showcase.
             </p>
           </div>
         </div>
@@ -156,7 +156,7 @@ export function Footer() {
         {/* Copyright & Technical Stamp */}
         <div className="border-t border-[#262626] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-[#6E6A61]">
           <div>
-            © 2026 OM SHINDE. ALL RIGHTS RESERVED.
+            © 2026 HEMANT BHOSALE. ALL RIGHTS RESERVED.
           </div>
           <div className="flex items-center gap-4">
             <span>NEXT.JS 16 // REACT 19</span>

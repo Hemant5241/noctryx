@@ -33,6 +33,7 @@ export default function ContactPage() {
       : ["#FF3B00", "#CCFF00", "#0D0D0D"];
 
   const handleCopyEmail = () => {
+    if (!contactDetails.primaryEmail) return;
     navigator.clipboard.writeText(contactDetails.primaryEmail);
     setCopied(true);
     try {
@@ -89,7 +90,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-black/15 pb-3 mb-6 text-xs text-black/60">
             <div className="flex items-center gap-2">
-              <span className="font-bold text-black">OM SHINDE</span>
+              <span className="font-bold text-black">HEMANT BHOSALE</span>
               <span>{"//"}</span>
               <span className="text-[#FF3B00] font-bold">CONTACT TERMINAL</span>
             </div>
@@ -157,9 +158,11 @@ export default function ContactPage() {
 
                   <div className="p-3 border border-black/20 bg-white text-[11px] text-black/70">
                     <strong className="text-black uppercase">HONEST DISPATCH NOTE:</strong> Because no external mail
-                    server or third-party tracking is attached to this demo portfolio, please send an email directly to{" "}
-                    <strong className="text-black underline">{contactDetails.primaryEmail}</strong> for guaranteed
-                    communication.
+                    server or third-party tracking is attached to this demo portfolio, dispatches are processed client-side. {contactDetails.isEmailVerified && contactDetails.primaryEmail ? (
+                      <>You can also reach out directly to <strong className="text-black underline">{contactDetails.primaryEmail}</strong> for guaranteed communication.</>
+                    ) : (
+                      <>Verified direct email channels can be connected via <code className="bg-black/5 px-1 font-mono font-bold">src/data/socials.ts</code>.</>
+                    )}
                   </div>
 
                   <button
@@ -330,31 +333,42 @@ export default function ContactPage() {
                 For urgent communications, recruitment inquiries, or research discussions:
               </p>
 
-              <div className="p-2.5 sm:p-3 border border-black bg-[#F4F1EA] flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 mb-2">
-                <span className="text-xs font-bold text-black truncate max-w-full">
-                  {contactDetails.primaryEmail}
-                </span>
-                <button
-                  type="button"
-                  onClick={handleCopyEmail}
-                  className="px-2.5 py-1 border border-black bg-white hover:bg-black hover:text-white transition-colors text-[10px] font-bold flex items-center gap-1 shrink-0 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#FF3B00]"
-                  aria-label="Copy Direct Email"
-                >
-                  {copied ? (
-                    <>
-                      <Check className="w-3 h-3 text-[#FF3B00]" />
-                      <span>COPIED</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="w-3 h-3" />
-                      <span>COPY</span>
-                    </>
-                  )}
-                </button>
-              </div>
+              {contactDetails.isEmailVerified && contactDetails.primaryEmail ? (
+                <div className="p-2.5 sm:p-3 border border-black bg-[#F4F1EA] flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 mb-2">
+                  <span className="text-xs font-bold text-black truncate max-w-full">
+                    {contactDetails.primaryEmail}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={handleCopyEmail}
+                    className="px-2.5 py-1 border border-black bg-white hover:bg-black hover:text-white transition-colors text-[10px] font-bold flex items-center gap-1 shrink-0 cursor-pointer focus-visible:ring-2 focus-visible:ring-[#FF3B00]"
+                    aria-label="Copy Direct Email"
+                  >
+                    {copied ? (
+                      <>
+                        <Check className="w-3 h-3 text-[#FF3B00]" />
+                        <span>COPIED</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-3 h-3" />
+                        <span>COPY</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              ) : (
+                <div className="p-2.5 sm:p-3 border border-black bg-[#F4F1EA] flex items-center justify-between gap-2 mb-2">
+                  <span className="text-xs font-bold text-black/70 truncate max-w-full">
+                    DIRECT DISPATCH TERMINAL ACTIVE
+                  </span>
+                  <span className="px-2 py-0.5 border border-black bg-[#CCFF00] text-black text-[10px] font-bold shrink-0">
+                    ONLINE
+                  </span>
+                </div>
+              )}
               <div className="text-[10px] text-black/50 uppercase font-mono mb-4">
-                [DEMONSTRATION PLACEHOLDER // EDITABLE VIA SRC/DATA/SOCIALS.TS]
+                [CONTACT CHANNELS // CONFIGURABLE IN SRC/DATA/SOCIALS.TS]
               </div>
 
               <div className="text-[11px] text-black/60 flex items-center gap-2">

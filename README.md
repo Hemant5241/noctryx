@@ -1,6 +1,6 @@
-# OM SHINDE — EXPERIMENTAL AI SYSTEMS ENGINEER PORTFOLIO
+# HEMANT BHOSALE — EXPERIMENTAL AI SYSTEMS ENGINEER PORTFOLIO
 
-A bespoke, high-performance personal portfolio website built for **Om Shinde**, an AI Systems Engineer and Research Architect specializing in autonomous agent workflows, neural vector search, edge computer vision, and low-latency inference systems.
+A bespoke, high-performance personal portfolio website built for **Hemant Bhosale**, an AI Systems Engineer and Research Architect specializing in autonomous agent workflows, neural vector search, edge computer vision, and low-latency inference systems.
 
 Designed with an unapologetic **Brutalist UI** visual language, industrial Swiss typography, visible coordinate grids, paper-white and deep-black contrast, aggressive electric orange (`#FF3B00`), and acid yellow (`#CCFF00`).
 
@@ -57,7 +57,7 @@ Designed with an unapologetic **Brutalist UI** visual language, industrial Swiss
 
 ---
 
-## 🔧 Personalization Guide for Om Shinde
+## 🔧 Personalization Guide for Hemant Bhosale
 
 All portfolio information is centralized in typed, documented files under `src/data/`:
 

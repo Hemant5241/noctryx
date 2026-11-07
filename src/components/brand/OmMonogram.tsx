@@ -10,9 +10,9 @@ interface OmMonogramProps {
 }
 
 /**
- * Custom Adaptive OM Monogram
- * Precision engineering identity combining a bounded tensor matrix 'O'
- * with a stepped multi-layered neural chevron 'M', framed by industrial
+ * Custom Adaptive HB Monogram (Hemant Bhosale)
+ * Precision engineering identity combining a bounded industrial 'H'
+ * with a stepped multi-layered neural 'B', framed by industrial
  * signal coordinates and registration crosshairs, customized per theme personality.
  */
 export function OmMonogram({
@@ -61,7 +61,7 @@ export function OmMonogram({
   return (
     <div
       className={`inline-flex items-center gap-2 select-none ${className}`}
-      aria-label="OM SHINDE // Engineering Monogram"
+      aria-label="HEMANT BHOSALE // Engineering Monogram"
     >
       <svg
         width={size}
@@ -69,7 +69,7 @@ export function OmMonogram({
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="shrink-0 overflow-visible om-monogram-svg"
+        className="shrink-0 overflow-visible om-monogram-svg hb-monogram-svg"
       >
         {/* Outer Industrial Chassis */}
         <rect
@@ -93,32 +93,48 @@ export function OmMonogram({
         <line x1="80" y1="4" x2="80" y2="96" stroke={wireColor} strokeWidth="1" strokeDasharray="2 2" />
         <line x1="4" y1="50" x2="96" y2="50" stroke={wireColor} strokeWidth="1" strokeDasharray="2 2" />
 
-        {/* Geometric "O" Frame - Outer Square Ring */}
+        {/* Geometric 'H' Form (Left Character) */}
+        {/* Left vertical of H */}
+        <rect x="18" y="20" width="6" height="60" fill={letterColor} />
+        {/* Right vertical of H */}
+        <rect x="38" y="20" width="6" height="60" fill={letterColor} />
+        {/* Crossbar of H */}
+        <rect x="24" y="47" width="14" height="6" fill={letterColor} />
+        {/* Accent Node on Crossbar */}
+        <rect x="28" y="47" width="6" height="6" fill={cutOrange} />
+
+        {/* Geometric 'B' Form (Right Character) */}
+        {/* Left vertical spine of B */}
+        <rect x="56" y="20" width="6" height="60" fill={letterColor} />
+        {/* Top Loop of B */}
+        <rect x="62" y="20" width="14" height="6" fill={letterColor} />
+        <rect x="62" y="47" width="15" height="6" fill={letterColor} />
         <rect
-          x="16"
-          y="18"
-          width="28"
-          height="64"
-          rx={chassisRadius > 0 ? 3 : 0}
-          fill="none"
-          stroke={letterColor}
-          strokeWidth="6"
+          x="74"
+          y="20"
+          width="6"
+          height="30"
+          rx={chassisRadius > 0 ? 2 : 0}
+          fill={letterColor}
         />
-        {/* Core Dot in "O" */}
-        <rect x="27" y="47" width="6" height="6" fill={cutOrange} />
+        {/* Inner accent cutout in top loop */}
+        <rect x="63" y="28" width="8" height="17" fill={cutOrange} />
 
-        {/* Geometric "M" Form - Dual Stepped Columns and Valley */}
-        {/* Left vertical of M */}
-        <rect x="54" y="18" width="6" height="64" fill={letterColor} />
-        {/* Right vertical of M */}
-        <rect x="80" y="18" width="6" height="64" fill={letterColor} />
-        {/* Diagonal left-to-center of M */}
-        <polygon points="58,18 70,50 64,52 54,26" fill={cutOrange} />
-        {/* Diagonal right-to-center of M */}
-        <polygon points="82,18 70,50 76,52 86,26" fill={cutYellow} />
+        {/* Bottom Loop of B */}
+        <rect x="62" y="74" width="16" height="6" fill={letterColor} />
+        <rect
+          x="76"
+          y="47"
+          width="6"
+          height="33"
+          rx={chassisRadius > 0 ? 2 : 0}
+          fill={letterColor}
+        />
+        {/* Inner accent cutout in bottom loop */}
+        <rect x="63" y="55" width="10" height="17" fill={cutYellow} />
 
-        {/* Central Neural Node in M */}
-        <circle cx="70" cy="50" r="3" fill={centerNode} />
+        {/* Central Neural Node (at center grid intersection) */}
+        <circle cx="50" cy="50" r="3" fill={centerNode} />
 
         {/* Technical Coordinate Ticks */}
         <line x1="0" y1="50" x2="4" y2="50" stroke={cutOrange} strokeWidth="2" />
@@ -129,10 +145,13 @@ export function OmMonogram({
 
       {showCoordinates && (
         <div className="font-mono text-[9px] leading-tight opacity-70 hidden sm:block">
-          <div className={`font-bold tracking-widest uppercase ${coordText}`}>SYS.OM//01</div>
+          <div className={`font-bold tracking-widest uppercase ${coordText}`}>SYS.HB//01</div>
           <div className={coordAccent}>18°N 73°E</div>
         </div>
       )}
     </div>
   );
 }
+
+// Export alias for consistency
+export const HbMonogram = OmMonogram;

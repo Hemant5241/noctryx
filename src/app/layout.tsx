@@ -18,11 +18,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://example.com"),
-  title: "Om Shinde // AI Systems Engineer & Architect",
+  title: "Hemant Bhosale // AI Systems Engineer & Architect",
   description:
-    "Engineering portfolio of Om Shinde. AI Systems Engineer specializing in autonomous agent workflows, neural vector search, edge computer vision, and low-latency inference systems.",
+    "Engineering portfolio of Hemant Bhosale. AI Systems Engineer specializing in autonomous agent workflows, neural vector search, edge computer vision, and low-latency inference systems.",
   keywords: [
-    "Om Shinde",
+    "Hemant Bhosale",
     "AI Engineer",
     "Machine Learning Engineer",
     "Agentic AI",
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
     "FastAPI",
     "Next.js",
   ],
-  authors: [{ name: "Om Shinde" }],
+  authors: [{ name: "Hemant Bhosale" }],
   openGraph: {
-    title: "Om Shinde // AI Systems Engineer & Architect",
+    title: "Hemant Bhosale // AI Systems Engineer & Architect",
     description:
       "Engineering intelligent architectures where statistical models meet deterministic reliability.",
     type: "website",
@@ -58,7 +58,7 @@ export default function RootLayout({
         {/* Anti-FOUC Theme Initialization Script */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem("om_theme");if(t==="crimson-noir"||t==="signal-studio"||t==="original"){document.documentElement.setAttribute("data-theme",t);}else{document.documentElement.setAttribute("data-theme","original");}}catch(e){}})();`,
+            __html: `(function(){try{var t=localStorage.getItem("hb_theme")||localStorage.getItem("om_theme");if(t==="crimson-noir"||t==="signal-studio"||t==="original"){document.documentElement.setAttribute("data-theme",t);}else{document.documentElement.setAttribute("data-theme","original");}}catch(e){}})();`,
           }}
         />
       </head>

@@ -136,7 +136,7 @@ export function GitHubActivitySection() {
               <span className="font-black text-black uppercase">
                 IDENTITY SEPARATION POLICY:
               </span>{" "}
-              Developer/maintainer accounts are strictly isolated from Om Shinde&apos;s portfolio.
+              Developer/maintainer accounts are strictly isolated from Hemant Bhosale&apos;s portfolio.
               Only verified public repositories for the configured account are displayed.
             </div>
           </div>
@@ -175,7 +175,7 @@ export function GitHubActivitySection() {
                 </h3>
                 <p className="text-xs sm:text-sm font-sans text-black/80 max-w-2xl leading-relaxed">
                   The public repository module is implemented and connected to GitHub&apos;s REST
-                  API with 1-hour cache revalidation. To display Om Shinde&apos;s verified public
+                  API with 1-hour cache revalidation. To display Hemant Bhosale&apos;s verified public
                   repositories, set the verified handle in{" "}
                   <code className="bg-black/5 px-1.5 py-0.5 border border-black/20 text-[#FF3B00] font-mono text-xs font-bold">
                     src/data/socials.ts

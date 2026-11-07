@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Om Shinde // AI Systems Engineer";
+export const alt = "Hemant Bhosale // AI Systems Engineer";
 export const size = {
   width: 1200,
   height: 630,
@@ -48,7 +48,7 @@ export default async function Image() {
                 marginRight: "16px",
               }}
             >
-              OM
+              HB
             </div>
             <div
               style={{
@@ -59,7 +59,7 @@ export default async function Image() {
                 letterSpacing: "0.1em",
               }}
             >
-              OM SHINDE // AI SYSTEMS ARCHITECT
+              HEMANT BHOSALE // AI SYSTEMS ARCHITECT
             </div>
           </div>
 

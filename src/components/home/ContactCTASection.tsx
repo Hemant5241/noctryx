@@ -73,33 +73,51 @@ export function ContactCTASection() {
 
           {/* Interactive Email Bar & Direct CTA */}
           <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-3 sm:gap-4 mb-8 sm:mb-10">
-            {/* Copy Email Button */}
-            <div className="flex-1 flex flex-col xs:flex-row items-start xs:items-center justify-between border-2 border-[#262626] bg-black p-3 sm:p-4 gap-2">
-              <div className="flex items-center gap-2.5 sm:gap-3 truncate w-full xs:w-auto">
-                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF3B00] shrink-0" />
-                <span className="text-xs sm:text-sm font-bold text-[#F4F1EA] truncate">
-                  {contactDetails.primaryEmail}
-                </span>
+            {/* Copy Email Button / Dispatch Active */}
+            {contactDetails.isEmailVerified && contactDetails.primaryEmail ? (
+              <div className="flex-1 flex flex-col xs:flex-row items-start xs:items-center justify-between border-2 border-[#262626] bg-black p-3 sm:p-4 gap-2">
+                <div className="flex items-center gap-2.5 sm:gap-3 truncate w-full xs:w-auto">
+                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF3B00] shrink-0" />
+                  <span className="text-xs sm:text-sm font-bold text-[#F4F1EA] truncate">
+                    {contactDetails.primaryEmail}
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleCopyEmail}
+                  className="w-full xs:w-auto justify-center px-3 py-1.5 border border-[#FF3B00] bg-[#FF3B00]/10 text-xs font-bold hover:bg-[#FF3B00] hover:text-black transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
+                  aria-label="Copy Email Address"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-[#CCFF00]" />
+                      <span className="text-[#CCFF00]">COPIED</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>COPY EMAIL</span>
+                    </>
+                  )}
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={handleCopyEmail}
-                className="w-full xs:w-auto justify-center px-3 py-1.5 border border-[#FF3B00] bg-[#FF3B00]/10 text-xs font-bold hover:bg-[#FF3B00] hover:text-black transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
-                aria-label="Copy Email Address"
-              >
-                {copied ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-[#CCFF00]" />
-                    <span className="text-[#CCFF00]">COPIED</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5" />
-                    <span>COPY EMAIL</span>
-                  </>
-                )}
-              </button>
-            </div>
+            ) : (
+              <div className="flex-1 flex flex-col xs:flex-row items-start xs:items-center justify-between border-2 border-[#262626] bg-black p-3 sm:p-4 gap-2">
+                <div className="flex items-center gap-2.5 sm:gap-3 truncate w-full xs:w-auto">
+                  <Terminal className="w-4 h-4 sm:w-5 sm:h-5 text-[#CCFF00] shrink-0" />
+                  <span className="text-xs sm:text-sm font-bold text-[#F4F1EA] truncate">
+                    CLIENT DISPATCH TERMINAL // INTERACTIVE
+                  </span>
+                </div>
+                <Link
+                  href="/contact"
+                  className="w-full xs:w-auto justify-center px-3 py-1.5 border border-[#FF3B00] bg-[#FF3B00]/10 text-xs font-bold hover:bg-[#FF3B00] hover:text-black transition-all flex items-center gap-1.5 shrink-0 cursor-pointer text-[#F4F1EA]"
+                >
+                  <ArrowUpRight className="w-3.5 h-3.5 text-[#CCFF00]" />
+                  <span>TRANSMIT DISPATCH</span>
+                </Link>
+              </div>
+            )}
 
             {/* Direct Link to /contact page */}
             <Link
