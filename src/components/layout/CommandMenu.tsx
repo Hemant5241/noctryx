@@ -8,6 +8,7 @@ import { projectsData } from "@/data/projects";
 import { socialsData } from "@/data/socials";
 import { OmMonogram } from "@/components/brand/OmMonogram";
 import { useTheme, THEMES } from "@/context/ThemeContext";
+import { ThemePreviewOption } from "@/components/theme/ThemePreviewOption";
 
 interface CommandMenuProps {
   isOpen: boolean;
@@ -260,34 +261,15 @@ export function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                   <span>VISUAL THEME PRESET</span>
                 </div>
                 <div className="grid grid-cols-3 gap-2">
-                  {THEMES.map((t) => {
-                    const isCurrent = theme === t.id;
-                    const activeClass = isCrimson
-                      ? "bg-[#D41514] text-white border-[#D41514]"
-                      : isSignal
-                      ? "bg-[#FF4FA3] text-[#1B1020] border-[#FF4FA3] font-black shadow-[2px_2px_0px_0px_#C6FF00]"
-                      : "bg-[#FF3B00] text-white border-[#FF3B00]";
-                    const inactiveClass = isSignal
-                      ? "border-[#3F2746] bg-[#24162B] text-[#D5C5D8] hover:text-[#FFF0D1] hover:border-[#FF4FA3]"
-                      : "border-[#262626] bg-[#141414] text-[#A39F94] hover:text-white";
-
-                    return (
-                      <button
-                        key={t.id}
-                        type="button"
-                        onClick={() => setTheme(t.id)}
-                        className={`p-2 border text-left transition-colors cursor-pointer ${
-                          isCurrent ? activeClass : inactiveClass
-                        }`}
-                      >
-                        <div className="text-[9px] font-black uppercase truncate">{t.name.split(" ")[0]}</div>
-                        <div className="flex items-center gap-1 mt-1.5">
-                          <span className="w-2 h-2 border border-black/40" style={{ backgroundColor: t.bgPreview }} />
-                          <span className="w-2 h-2 border border-black/40" style={{ backgroundColor: t.accentPreview }} />
-                        </div>
-                      </button>
-                    );
-                  })}
+                  {THEMES.map((t) => (
+                    <ThemePreviewOption
+                      key={t.id}
+                      themeMeta={t}
+                      isSelected={theme === t.id}
+                      onSelect={() => setTheme(t.id)}
+                      variant="compact"
+                    />
+                  ))}
                 </div>
               </div>
 

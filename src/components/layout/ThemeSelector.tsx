@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Palette, Check, ChevronDown } from "lucide-react";
+import { Palette, ChevronDown } from "lucide-react";
 import { useTheme, THEMES, Theme } from "@/context/ThemeContext";
+import { ThemePreviewOption } from "@/components/theme/ThemePreviewOption";
 
 interface ThemeSelectorProps {
   compact?: boolean;
@@ -122,91 +123,15 @@ export function ThemeSelector({ compact = false, className = "" }: ThemeSelector
             <span className={dropdownTagClass}>[03 THEMES]</span>
           </div>
 
-          {THEMES.map((t) => {
-            const isSelected = t.id === theme;
-
-            // Distinctive styling per theme personality
-            let cardClass = "";
-            let checkColor = "text-[#CCFF00]";
-            let badgeClass = "";
-            let taglineClass = "text-black/70";
-
-            if (t.id === "original") {
-              cardClass = isSelected
-                ? "bg-[#0D0D0D] text-[#F4F1EA] border-2 border-black shadow-[3px_3px_0px_0px_rgba(255,59,0,1)]"
-                : "bg-[#F4F1EA] text-[#0D0D0D] border-2 border-black/25 hover:border-black hover:bg-white";
-              checkColor = "text-[#CCFF00]";
-              badgeClass = "text-[#FF3B00] border border-[#FF3B00]/40 bg-[#FF3B00]/10";
-              taglineClass = isSelected ? "text-[#A39F94]" : "text-black/70";
-            } else if (t.id === "crimson-noir") {
-              cardClass = isSelected
-                ? "bg-[#141418] text-[#FFFFFF] border border-[#D41514] shadow-[0_0_18px_rgba(212,21,20,0.35)]"
-                : "bg-[#0C0C0E] text-[#CDCBCA] border border-[#26262c] hover:border-[#D41514]/60 hover:bg-[#121216]";
-              checkColor = "text-[#FF453A]";
-              badgeClass = "text-[#FF453A] border border-[#D41514]/50 bg-[#D41514]/15 shadow-[0_0_8px_rgba(212,21,20,0.3)]";
-              taglineClass = isSelected ? "text-[#DCDAD8]" : "text-[#9E9C9A]";
-            } else if (t.id === "signal-studio") {
-              cardClass = isSelected
-                ? "bg-[#1B1020] text-[#FFF0D1] border-2 border-[#6938FF] shadow-[4px_4px_0px_0px_#FF4FA3] rounded-sm"
-                : "bg-[#FFF0D1] text-[#1B1020] border-2 border-[#1B1020]/30 hover:border-[#1B1020] hover:bg-white rounded-sm";
-              checkColor = "text-[#C6FF00]";
-              badgeClass = "text-[#1B1020] bg-[#C6FF00] border border-[#1B1020] rounded-sm font-black";
-              taglineClass = isSelected ? "text-[#D5C5D8]" : "text-[#543D5B]";
-            }
-
-            return (
-              <button
-                key={t.id}
-                type="button"
-                role="option"
-                aria-selected={isSelected}
-                onClick={() => handleSelect(t.id)}
-                className={`w-full text-left p-2.5 transition-all flex items-start justify-between gap-3 cursor-pointer ${cardClass}`}
-              >
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-black uppercase tracking-tight">
-                      {t.name}
-                    </span>
-                    {isSelected && <Check className={`w-3.5 h-3.5 ${checkColor}`} />}
-                  </div>
-                  <div className={`text-[10px] ${taglineClass}`}>
-                    {t.tagline}
-                  </div>
-
-                  {/* Swatch palette row */}
-                  <div className="flex items-center gap-1.5 pt-1">
-                    <span
-                      className="w-3.5 h-3.5 border border-black/40 shadow-xs"
-                      style={{ backgroundColor: t.bgPreview }}
-                      title="Canvas Background"
-                    />
-                    <span
-                      className="w-3.5 h-3.5 border border-black/40 shadow-xs"
-                      style={{ backgroundColor: t.fgPreview }}
-                      title="Primary Ink"
-                    />
-                    <span
-                      className="w-3.5 h-3.5 border border-black/40 shadow-xs"
-                      style={{ backgroundColor: t.accentPreview }}
-                      title="Primary Accent"
-                    />
-                    <span
-                      className="w-3.5 h-3.5 border border-black/40 shadow-xs"
-                      style={{ backgroundColor: t.secondaryPreview }}
-                      title="Secondary Accent"
-                    />
-                  </div>
-                </div>
-
-                <div className="text-[9px] font-mono font-bold shrink-0">
-                  <span className={`px-1.5 py-0.5 tracking-wider ${badgeClass}`}>
-                    {t.pill}
-                  </span>
-                </div>
-              </button>
-            );
-          })}
+          {THEMES.map((t) => (
+            <ThemePreviewOption
+              key={t.id}
+              themeMeta={t}
+              isSelected={t.id === theme}
+              onSelect={() => handleSelect(t.id)}
+              variant="dropdown"
+            />
+          ))}
 
           <div className={`pt-1 px-2 text-[9px] font-mono ${footerNoteClass}`}>
             PERSISTED IN LOCALSTORAGE // ZERO FOUC
