@@ -74,17 +74,17 @@ export function Header() {
             className="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3B00]"
           >
             <OmMonogram
-              size={42}
-              className="border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-[3px_3px_0px_0px_rgba(255,59,0,1)] transition-all"
+              size={38}
+              className="border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-[3px_3px_0px_0px_rgba(255,59,0,1)] transition-all sm:w-[42px] sm:h-[42px]"
             />
             <div>
-              <div className={`font-mono font-black text-base sm:text-lg tracking-tight flex items-center gap-2 ${brandTitleClass}`}>
+              <div className={`font-mono font-black text-sm sm:text-base md:text-lg tracking-tight flex items-center gap-1.5 sm:gap-2 ${brandTitleClass}`}>
                 <span>OM SHINDE</span>
                 <span className={`hidden sm:inline-block text-[10px] font-bold px-1.5 py-0.5 tracking-widest ${badgeClass}`}>
                   AI.ENG
                 </span>
               </div>
-              <p className={`font-mono text-[10px] tracking-widest uppercase ${brandSubClass}`}>
+              <p className={`font-mono text-[9px] sm:text-[10px] tracking-widest uppercase ${brandSubClass}`}>
                 RESEARCH & SYSTEMS
               </p>
             </div>
@@ -113,8 +113,8 @@ export function Header() {
           </nav>
 
           {/* Action triggers */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div className="lg:hidden">
+          <div className="flex items-center gap-1.5 sm:gap-3">
+            <div className="hidden sm:block lg:hidden">
               <LiveClock />
             </div>
 
@@ -125,12 +125,12 @@ export function Header() {
             <button
               type="button"
               onClick={() => setMenuOpen(true)}
-              className={`inline-flex items-center gap-2 font-mono text-xs font-bold px-3 py-2 border-2 transition-all active:translate-x-0.5 active:translate-y-0.5 active:shadow-none focus-visible:ring-2 focus-visible:ring-[#FF3B00] cursor-pointer ${commandBtnClass}`}
+              className={`inline-flex items-center gap-1.5 sm:gap-2 font-mono text-xs font-bold px-2.5 sm:px-3 py-1.5 sm:py-2 border-2 transition-all active:translate-x-0.5 active:translate-y-0.5 active:shadow-none focus-visible:ring-2 focus-visible:ring-[#FF3B00] cursor-pointer ${commandBtnClass}`}
               aria-label="Open System Command Menu"
             >
-              <Menu className={`w-4 h-4 ${commandIconClass}`} />
+              <Menu className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${commandIconClass}`} />
               <span className="tracking-wider">COMMAND</span>
-              <span className={`hidden sm:inline-block text-[10px] px-1 py-0.2 ${commandTagClass}`}>
+              <span className={`hidden sm:inline-block text-[10px] px-1 py-0.5 ${commandTagClass}`}>
                 [MENU]
               </span>
             </button>

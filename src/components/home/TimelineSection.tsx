@@ -10,16 +10,16 @@ export function TimelineSection() {
   const items = activeTab === "experience" ? experienceData : educationData;
 
   return (
-    <section className="w-full border-b-2 border-black bg-[#F4F1EA] py-20 sm:py-28 font-mono">
+    <section className="w-full border-b-2 border-black bg-[#F4F1EA] py-14 sm:py-20 lg:py-28 font-mono">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-wrap items-end justify-between gap-4 border-b-2 border-black pb-6 mb-10">
+        <div className="flex flex-wrap items-end justify-between gap-4 border-b-2 border-black pb-4 sm:pb-6 mb-8 sm:mb-10">
           <div>
-            <div className="flex items-center gap-2 text-xs font-bold text-[#FF3B00] tracking-widest mb-2">
+            <div className="flex items-center gap-2 text-xs font-bold text-[#FF3B00] tracking-widest mb-1 sm:mb-2">
               <Briefcase className="w-4 h-4" />
               <span>04 {"//"} TIMELINE ARCHITECTURE</span>
             </div>
-            <h2 className="text-4xl sm:text-6xl font-black text-black tracking-tight uppercase leading-none">
+            <h2 className="text-3xl xs:text-4xl sm:text-6xl font-black text-black tracking-tight uppercase leading-none">
               CAREER & STUDIES
             </h2>
           </div>
@@ -28,14 +28,14 @@ export function TimelineSection() {
           <div
             role="tablist"
             aria-label="Timeline Categories"
-            className="flex items-center border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+            className="flex items-center w-full sm:w-auto border-2 border-black bg-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] sm:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
           >
             <button
               type="button"
               role="tab"
               aria-selected={activeTab === "experience"}
               onClick={() => setActiveTab("experience")}
-              className={`px-4 py-2 text-xs font-bold transition-colors cursor-pointer flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-[#FF3B00] ${
+              className={`flex-1 sm:flex-initial px-3 sm:px-4 py-2 text-[11px] sm:text-xs font-bold transition-colors cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 focus-visible:ring-2 focus-visible:ring-[#FF3B00] ${
                 activeTab === "experience"
                   ? "bg-black text-[#F4F1EA]"
                   : "bg-white text-black hover:bg-black/5"
@@ -49,7 +49,7 @@ export function TimelineSection() {
               role="tab"
               aria-selected={activeTab === "education"}
               onClick={() => setActiveTab("education")}
-              className={`px-4 py-2 text-xs font-bold transition-colors cursor-pointer flex items-center gap-2 border-l-2 border-black focus-visible:ring-2 focus-visible:ring-[#FF3B00] ${
+              className={`flex-1 sm:flex-initial px-3 sm:px-4 py-2 text-[11px] sm:text-xs font-bold transition-colors cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 border-l-2 border-black focus-visible:ring-2 focus-visible:ring-[#FF3B00] ${
                 activeTab === "education"
                   ? "bg-black text-[#F4F1EA]"
                   : "bg-white text-black hover:bg-black/5"
@@ -62,7 +62,7 @@ export function TimelineSection() {
         </div>
 
         {/* Editable Notice Badge */}
-        <div className="p-4 border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="p-3.5 sm:p-4 border-2 border-black bg-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] sm:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] mb-8 sm:mb-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
           <div className="flex items-center gap-3">
             <Edit3 className="w-5 h-5 text-[#FF3B00] shrink-0" />
             <div className="text-xs">
@@ -83,7 +83,7 @@ export function TimelineSection() {
         </div>
 
         {/* Timeline List */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {items.map((entry) => (
             <TimelineCard key={entry.id} entry={entry} />
           ))}
@@ -95,7 +95,7 @@ export function TimelineSection() {
 
 function TimelineCard({ entry }: { entry: TimelineEntry }) {
   return (
-    <div className="p-6 sm:p-8 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
+    <div className="p-4 sm:p-8 border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
       <div className="flex flex-wrap items-start justify-between gap-4 border-b border-black/15 pb-4 mb-4">
         <div>
           <div className="flex items-center gap-2 text-[10px] font-bold text-[#FF3B00] tracking-wider mb-1">

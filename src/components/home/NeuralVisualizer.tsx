@@ -96,8 +96,23 @@ export function NeuralVisualizer() {
       mouseY = -1000;
     };
 
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const rect = canvas.getBoundingClientRect();
+        mouseX = e.touches[0].clientX - rect.left;
+        mouseY = e.touches[0].clientY - rect.top;
+      }
+    };
+
+    const handleTouchEnd = () => {
+      mouseX = -1000;
+      mouseY = -1000;
+    };
+
     canvas.addEventListener("mousemove", handleMouseMove);
     canvas.addEventListener("mouseleave", handleMouseLeave);
+    canvas.addEventListener("touchmove", handleTouchMove, { passive: true });
+    canvas.addEventListener("touchend", handleTouchEnd, { passive: true });
 
     const handleResize = () => {
       if (!container || !canvas) return;
@@ -336,6 +351,8 @@ export function NeuralVisualizer() {
       cancelAnimationFrame(animationFrameId);
       canvas.removeEventListener("mousemove", handleMouseMove);
       canvas.removeEventListener("mouseleave", handleMouseLeave);
+      canvas.removeEventListener("touchmove", handleTouchMove);
+      canvas.removeEventListener("touchend", handleTouchEnd);
       window.removeEventListener("resize", handleResize);
     };
   }, [isReducedMotion, theme]);
@@ -368,30 +385,32 @@ export function NeuralVisualizer() {
     <div
       ref={containerRef}
       data-neural-visualizer="true"
-      className="relative w-full h-[400px] sm:h-[480px] lg:h-[540px] border-2 border-black bg-white overflow-hidden shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] crosshair-corner"
+      className="relative w-full h-[280px] xs:h-[320px] sm:h-[420px] lg:h-[540px] border-2 border-black bg-white overflow-hidden shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] crosshair-corner"
     >
       {/* Canvas */}
       <canvas
         ref={canvasRef}
-        className="w-full h-full block cursor-crosshair"
+        className="w-full h-full block cursor-crosshair touch-none"
         aria-label="Interactive Neural Tensor Lattice Visualization"
       />
 
       {/* Top Left Status Annotation */}
-      <div className={`absolute top-3 left-3 flex items-center gap-2 font-mono text-[10px] tracking-wider border px-2 py-1 pointer-events-none ${hudBadgeClass}`}>
-        <Activity className={`w-3.5 h-3.5 animate-pulse ${hudAccentColor}`} />
-        <span className="font-bold">TENSOR_GRAPH {"//"} NEURAL_LATTICE</span>
+      <div className={`absolute top-2.5 sm:top-3 left-2.5 sm:left-3 flex items-center gap-1.5 sm:gap-2 font-mono text-[9px] sm:text-[10px] tracking-wider border px-1.5 sm:px-2 py-0.5 sm:py-1 pointer-events-none z-10 ${hudBadgeClass}`}>
+        <Activity className={`w-3 h-3 sm:w-3.5 sm:h-3.5 animate-pulse ${hudAccentColor}`} />
+        <span className="font-bold">TENSOR_GRAPH</span>
+        <span className="hidden sm:inline">{"//"} NEURAL_LATTICE</span>
       </div>
 
       {/* Top Right Reduced Motion or Interactivity Badge */}
-      <div className={`absolute top-3 right-3 flex items-center gap-2 font-mono text-[10px] tracking-wider border px-2 py-1 ${hudBadgeClass}`}>
+      <div className={`absolute top-2.5 sm:top-3 right-2.5 sm:right-3 flex items-center gap-1.5 sm:gap-2 font-mono text-[9px] sm:text-[10px] tracking-wider border px-1.5 sm:px-2 py-0.5 sm:py-1 z-10 ${hudBadgeClass}`}>
         <span className={`h-1.5 w-1.5 rounded-full border border-black/40 ${hudDotColor}`}></span>
-        <span>{isReducedMotion ? "STATIC PROJECTION [REDUCED MOTION]" : "INTERACTIVE EMBEDDINGS"}</span>
+        <span>{isReducedMotion ? "STATIC [REDUCED MOTION]" : "INTERACTIVE"}</span>
+        <span className="hidden sm:inline">{!isReducedMotion && " EMBEDDINGS"}</span>
       </div>
 
       {/* Bottom Telemetry HUD */}
-      <div className={`absolute bottom-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] border px-3 py-1.5 ${hudBottomClass}`}>
-        <div className={`flex items-center gap-3 ${subColor}`}>
+      <div className={`absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2 font-mono text-[9px] sm:text-[10px] border px-2 sm:px-3 py-1 sm:py-1.5 z-10 ${hudBottomClass}`}>
+        <div className={`flex items-center gap-2 sm:gap-3 ${subColor}`}>
           <span>
             NODES: <strong className={strongColor}>{telemetry.nodeCount}</strong>
           </span>
@@ -404,7 +423,7 @@ export function NeuralVisualizer() {
             SIMILARITY_MEAN: <strong className={strongColor}>{telemetry.cosineMean}</strong>
           </span>
         </div>
-        <div className={`flex items-center gap-3 ${subColor}`}>
+        <div className={`flex items-center gap-2 sm:gap-3 ${subColor}`}>
           <span>FPS: {Number.isFinite(telemetry.fps) && telemetry.fps > 0 ? telemetry.fps : "--"}</span>
           <span className={`hidden sm:inline font-bold ${hudAccentColor}`}>DRAG / HOVER TO ROTATE</span>
         </div>

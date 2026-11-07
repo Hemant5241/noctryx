@@ -39,14 +39,14 @@ export function ContactCTASection() {
   };
 
   return (
-    <section className="w-full bg-[#0D0D0D] text-[#F4F1EA] py-24 sm:py-32 font-mono relative overflow-hidden border-b-2 border-black">
+    <section className="w-full bg-[#0D0D0D] text-[#F4F1EA] py-14 sm:py-24 lg:py-32 font-mono relative overflow-hidden border-b-2 border-black">
       {/* Decorative background grid */}
       <div className="absolute inset-0 bg-grid-dark opacity-35 pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="border-4 border-[#FF3B00] bg-[#141414] p-8 sm:p-14 lg:p-20 shadow-[12px_12px_0px_0px_rgba(255,59,0,0.9)] crosshair-corner">
+        <div className="border-3 sm:border-4 border-[#FF3B00] bg-[#141414] p-5 sm:p-10 lg:p-16 shadow-[6px_6px_0px_0px_rgba(255,59,0,0.9)] sm:shadow-[12px_12px_0px_0px_rgba(255,59,0,0.9)] crosshair-corner">
           {/* Top telemetry tag */}
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#262626] pb-4 mb-8 text-xs text-[#A39F94]">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#262626] pb-3 sm:pb-4 mb-6 sm:mb-8 text-xs text-[#A39F94]">
             <div className="flex items-center gap-2 text-[#CCFF00] font-bold">
               <Terminal className="w-4 h-4" />
               <span>DISPATCH CONSOLE {"//"} READY</span>
@@ -57,26 +57,26 @@ export function ContactCTASection() {
           </div>
 
           {/* Headline */}
-          <div className="mb-10 max-w-4xl">
-            <span className="text-xs font-bold text-[#FF3B00] tracking-widest uppercase mb-3 block">
+          <div className="mb-8 sm:mb-10 max-w-4xl">
+            <span className="text-[10px] sm:text-xs font-bold text-[#FF3B00] tracking-widest uppercase mb-2 sm:mb-3 block">
               {"// READY FOR IMPACT"}
             </span>
-            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black text-[#F4F1EA] tracking-tighter uppercase leading-[0.95]">
+            <h2 className="text-3xl xs:text-4xl sm:text-6xl lg:text-7xl font-black text-[#F4F1EA] tracking-tighter uppercase leading-[0.95] break-words">
               LET&apos;S BUILD <br />
               <span className="text-[#CCFF00]">SOMETHING</span> INTELLIGENT.
             </h2>
-            <p className="font-sans text-sm sm:text-base text-[#A39F94] mt-6 max-w-2xl leading-relaxed">
+            <p className="font-sans text-sm sm:text-base text-[#A39F94] mt-4 sm:mt-6 max-w-2xl leading-relaxed">
               Available for full-time engineering roles, research collaborations, and mission-critical
               AI systems projects requiring low-latency architectures, autonomous agents, and grounded RAG.
             </p>
           </div>
 
           {/* Interactive Email Bar & Direct CTA */}
-          <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-4 mb-10">
+          <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-3 sm:gap-4 mb-8 sm:mb-10">
             {/* Copy Email Button */}
-            <div className="flex-1 flex items-center justify-between border-2 border-[#262626] bg-black p-3.5 sm:p-4">
-              <div className="flex items-center gap-3 truncate mr-2">
-                <Mail className="w-5 h-5 text-[#FF3B00] shrink-0" />
+            <div className="flex-1 flex flex-col xs:flex-row items-start xs:items-center justify-between border-2 border-[#262626] bg-black p-3 sm:p-4 gap-2">
+              <div className="flex items-center gap-2.5 sm:gap-3 truncate w-full xs:w-auto">
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF3B00] shrink-0" />
                 <span className="text-xs sm:text-sm font-bold text-[#F4F1EA] truncate">
                   {contactDetails.primaryEmail}
                 </span>
@@ -84,7 +84,7 @@ export function ContactCTASection() {
               <button
                 type="button"
                 onClick={handleCopyEmail}
-                className="px-3 py-1.5 border border-[#FF3B00] bg-[#FF3B00]/10 text-xs font-bold hover:bg-[#FF3B00] hover:text-black transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
+                className="w-full xs:w-auto justify-center px-3 py-1.5 border border-[#FF3B00] bg-[#FF3B00]/10 text-xs font-bold hover:bg-[#FF3B00] hover:text-black transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
                 aria-label="Copy Email Address"
               >
                 {copied ? (

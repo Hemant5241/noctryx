@@ -140,21 +140,21 @@ export function AgenticWorkflowDemo() {
   return (
     <div className="w-full border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner font-mono text-xs">
       {/* Header bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-4 border-b-2 border-black bg-[#0D0D0D] text-[#F4F1EA]">
+      <div className="flex flex-wrap items-center justify-between gap-2 p-3 sm:p-4 border-b-2 border-black bg-[#0D0D0D] text-[#F4F1EA]">
         <div className="flex items-center gap-2">
           <Bot className="w-4 h-4 text-[#FF3B00]" />
-          <span className="font-bold text-sm tracking-wide">
+          <span className="font-bold text-xs sm:text-sm tracking-wide">
             AGENTIC DAG ORCHESTRATION // STATE RUNTIME
           </span>
         </div>
-        <div className="flex items-center gap-3 text-[10px] text-[#A39F94]">
+        <div className="flex items-center gap-2 sm:gap-3 text-[10px] text-[#A39F94]">
           <span className="text-[#CCFF00] font-bold">STATE: CONVERGENT</span>
           <span>{"//"}</span>
           <span className="text-[#FF3B00] font-bold">RECURSION: BOUNDED [MAX 5]</span>
         </div>
       </div>
 
-      <div className="p-6 sm:p-8 space-y-6">
+      <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
         {/* Goal Selector */}
         <div>
           <label className="text-[10px] text-black/60 font-bold uppercase block mb-2">
@@ -169,7 +169,7 @@ export function AgenticWorkflowDemo() {
                   setSelectedGoalIdx(idx);
                   handleReset();
                 }}
-                className={`p-3 text-left border transition-all cursor-pointer ${
+                className={`p-2.5 sm:p-3 text-left border transition-all cursor-pointer ${
                   selectedGoalIdx === idx
                     ? "bg-black text-[#F4F1EA] border-black shadow-[3px_3px_0px_0px_rgba(255,59,0,1)]"
                     : "bg-[#F4F1EA] text-black border-black/30 hover:border-black"
@@ -185,13 +185,13 @@ export function AgenticWorkflowDemo() {
         </div>
 
         {/* Action Controls */}
-        <div className="flex flex-wrap items-center justify-between gap-3 p-3 border border-black/20 bg-[#F4F1EA]/60">
-          <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 p-3 border border-black/20 bg-[#F4F1EA]/60">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
               onClick={handleStepForward}
               disabled={activeStepIndex >= activeGoal.steps.length - 1}
-              className="px-3 py-1.5 bg-black text-[#F4F1EA] font-bold text-xs hover:bg-[#FF3B00] disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer flex items-center gap-1.5"
+              className="px-2.5 sm:px-3 py-1.5 bg-black text-[#F4F1EA] font-bold text-xs hover:bg-[#FF3B00] disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer flex items-center gap-1.5"
             >
               <SkipForward className="w-3.5 h-3.5" />
               <span>STEP NEXT NODE</span>
@@ -200,7 +200,7 @@ export function AgenticWorkflowDemo() {
               type="button"
               onClick={handleRunAll}
               disabled={activeStepIndex >= activeGoal.steps.length - 1}
-              className="px-3 py-1.5 bg-[#FF3B00] text-white font-bold text-xs hover:bg-black disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer flex items-center gap-1.5"
+              className="px-2.5 sm:px-3 py-1.5 bg-[#FF3B00] text-white font-bold text-xs hover:bg-black disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer flex items-center gap-1.5"
             >
               <Play className="w-3.5 h-3.5" />
               <span>AUTO EXECUTE ALL</span>
@@ -208,7 +208,7 @@ export function AgenticWorkflowDemo() {
             <button
               type="button"
               onClick={handleReset}
-              className="px-3 py-1.5 border border-black bg-white text-black font-bold text-xs hover:bg-black hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
+              className="px-2.5 sm:px-3 py-1.5 border border-black bg-white text-black font-bold text-xs hover:bg-black hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>RESET</span>
@@ -226,7 +226,7 @@ export function AgenticWorkflowDemo() {
             DIRECTED ACYCLIC GRAPH // ACTIVE EXECUTION NODES:
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
             {activeGoal.steps.map((step, idx) => {
               const isPast = idx <= activeStepIndex;
               const isCurrent = idx === activeStepIndex;

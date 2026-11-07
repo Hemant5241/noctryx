@@ -135,21 +135,21 @@ export function VisionAiDemo() {
   return (
     <div className="w-full border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner font-mono text-xs">
       {/* Header bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-4 border-b-2 border-black bg-[#0D0D0D] text-[#F4F1EA]">
+      <div className="flex flex-wrap items-center justify-between gap-2 p-3 sm:p-4 border-b-2 border-black bg-[#0D0D0D] text-[#F4F1EA]">
         <div className="flex items-center gap-2">
           <Eye className="w-4 h-4 text-[#CCFF00]" />
-          <span className="font-bold text-sm tracking-wide">
+          <span className="font-bold text-xs sm:text-sm tracking-wide">
             VISION AI EDGE INFERENCE RUNTIME // SIMULATOR
           </span>
         </div>
-        <div className="flex items-center gap-3 text-[10px] text-[#A39F94]">
+        <div className="flex items-center gap-2 sm:gap-3 text-[10px] text-[#A39F94]">
           <span className="text-[#CCFF00] font-bold">RATE: {engineSpecs.fps}</span>
           <span>{"//"}</span>
           <span className="text-[#FF3B00] font-bold">LATENCY: {engineSpecs.latency}</span>
         </div>
       </div>
 
-      <div className="p-6 sm:p-8 space-y-6">
+      <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
         {/* Scenario Selection Tabs */}
         <div>
           <label className="text-[10px] text-black/60 font-bold uppercase block mb-2">
@@ -164,7 +164,7 @@ export function VisionAiDemo() {
                   setSelectedScenarioId(s.id);
                   setSelectedObject(null);
                 }}
-                className={`p-2.5 text-left border transition-all cursor-pointer ${
+                className={`p-2 sm:p-2.5 text-left border transition-all cursor-pointer ${
                   selectedScenarioId === s.id
                     ? "bg-black text-[#F4F1EA] border-black shadow-[3px_3px_0px_0px_rgba(255,59,0,1)]"
                     : "bg-[#F4F1EA] text-black border-black/30 hover:border-black"
@@ -178,17 +178,17 @@ export function VisionAiDemo() {
         </div>
 
         {/* Viewfinder Canvas Simulation */}
-        <div className="relative w-full h-[360px] sm:h-[440px] bg-[#0D0D0D] border-2 border-black overflow-hidden shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] select-none">
+        <div className="relative w-full h-[280px] xs:h-[340px] sm:h-[440px] bg-[#0D0D0D] border-2 border-black overflow-hidden shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] select-none">
           {/* Simulated scanning line animation */}
           <div className="absolute inset-0 bg-grid-dark opacity-30 pointer-events-none"></div>
 
           {/* Top telemetry overlay inside viewfinder */}
-          <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-[10px] text-[#F4F1EA] bg-black/80 border border-[#262626] px-3 py-1.5 z-20">
+          <div className="absolute top-2 sm:top-3 left-2 sm:left-3 right-2 sm:right-3 flex flex-wrap items-center justify-between gap-1 text-[9px] sm:text-[10px] text-[#F4F1EA] bg-black/85 border border-[#262626] px-2 sm:px-3 py-1 sm:py-1.5 z-20">
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 rounded-full bg-[#FF3B00] animate-ping"></span>
               <span className="font-bold">INFERENCE ENGINE: {engineSpecs.precision}</span>
             </div>
-            <div className="flex items-center gap-3 text-[#A39F94]">
+            <div className="flex items-center gap-2 sm:gap-3 text-[#A39F94]">
               <span>DETECTIONS: {activeObjects.length}</span>
               <span>{"//"}</span>
               <span>VRAM: {engineSpecs.vram}</span>

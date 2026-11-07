@@ -39,11 +39,11 @@ export function ProjectsCatalogView() {
   return (
     <div className="space-y-12">
       {/* Search & Filter Bar */}
-      <div className="p-6 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
-        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-6">
+      <div className="p-4 sm:p-6 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
+        <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 sm:gap-6">
           {/* Category Tabs */}
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-xs text-black/50 font-bold mr-2 flex items-center gap-1">
+            <span className="text-xs text-black/50 font-bold mr-1 sm:mr-2 flex items-center gap-1">
               <Filter className="w-3.5 h-3.5" />
               <span>CATEGORY:</span>
             </span>
@@ -64,7 +64,7 @@ export function ProjectsCatalogView() {
                   key={cat}
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3 py-1.5 text-xs font-bold border-2 transition-all cursor-pointer ${btnClass}`}
+                  className={`px-2.5 sm:px-3 py-1 sm:py-1.5 text-[11px] sm:text-xs font-bold border-2 transition-all cursor-pointer ${btnClass}`}
                 >
                   {cat.toUpperCase()}
                 </button>
@@ -73,7 +73,7 @@ export function ProjectsCatalogView() {
           </div>
 
           {/* Search Input */}
-          <div className="relative min-w-[280px]">
+          <div className="relative w-full lg:w-auto lg:min-w-[280px]">
             <div className="flex items-center border-2 border-black bg-[#F4F1EA] px-3 py-1.5">
               <Search className="w-4 h-4 text-[#FF3B00] mr-2 shrink-0" />
               <input
@@ -190,62 +190,126 @@ export function ProjectsCatalogView() {
       </div>
 
       {/* Comparative Technical Specification Matrix */}
-      <div className="p-6 sm:p-10 border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner overflow-x-auto">
+      <div className="p-4 sm:p-6 md:p-10 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] sm:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
         <div className="text-xs font-bold text-[#FF3B00] uppercase tracking-wider mb-2">
           COMPARATIVE SPECIFICATION MATRIX // 05 ARCHITECTURES
         </div>
-        <h3 className="text-xl sm:text-2xl font-black text-black uppercase mb-6">
+        <h3 className="text-lg sm:text-xl md:text-2xl font-black text-black uppercase mb-4 sm:mb-6">
           ENGINEERING BENCHMARK COMPARISON
         </h3>
 
-        <table className="w-full text-left font-mono text-xs border-collapse min-w-[640px]">
-          <thead>
-            <tr className="border-b-2 border-black bg-[#F4F1EA]">
-              <th className="p-3 font-black text-black">SPEC #</th>
-              <th className="p-3 font-black text-black">ARCHITECTURE</th>
-              <th className="p-3 font-black text-black">PRIMARY ENGINE</th>
-              <th className="p-3 font-black text-black">SIMULATED BENCHMARK TARGET</th>
-              <th className="p-3 font-black text-black">RELIABILITY GUARD</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-black/20 hover:bg-[#F4F1EA]/60">
-              <td className="p-3 font-bold text-[#FF3B00]">SPEC 01</td>
-              <td className="p-3 font-bold">Neural Search Engine</td>
-              <td className="p-3">Qdrant HNSW + PyTorch</td>
-              <td className="p-3 text-[#CCFF00] bg-black font-bold">~14.2ms [Simulated]</td>
-              <td className="p-3">PQ8 Vector Compression</td>
-            </tr>
-            <tr className="border-b border-black/20 hover:bg-[#F4F1EA]/60">
-              <td className="p-3 font-bold text-[#FF3B00]">SPEC 02</td>
-              <td className="p-3 font-bold">Vision AI Pipeline</td>
-              <td className="p-3">TensorRT INT8 + ONNX</td>
-              <td className="p-3 text-[#CCFF00] bg-black font-bold">~8.6ms [Synthetic Stream]</td>
-              <td className="p-3">ByteTrack Kalman State</td>
-            </tr>
-            <tr className="border-b border-black/20 hover:bg-[#F4F1EA]/60">
-              <td className="p-3 font-bold text-[#FF3B00]">SPEC 03</td>
-              <td className="p-3 font-bold">Agentic Workflow</td>
-              <td className="p-3">LangGraph + Pydantic</td>
-              <td className="p-3 text-[#CCFF00] bg-black font-bold">Async DAG Simulation</td>
-              <td className="p-3">Cyclical Self-Healing</td>
-            </tr>
-            <tr className="border-b border-black/20 hover:bg-[#F4F1EA]/60">
-              <td className="p-3 font-bold text-[#FF3B00]">SPEC 04</td>
-              <td className="p-3 font-bold">Predictive Intelligence</td>
-              <td className="p-3">Temporal Transformer</td>
-              <td className="p-3 text-[#CCFF00] bg-black font-bold">~32ms [Synthetic Series]</td>
-              <td className="p-3">Wasserstein Drift Alerting</td>
-            </tr>
-            <tr className="border-b border-black/20 hover:bg-[#F4F1EA]/60">
-              <td className="p-3 font-bold text-[#FF3B00]">SPEC 05</td>
-              <td className="p-3 font-bold">LLM Knowledge System</td>
-              <td className="p-3">LlamaIndex + ChromaDB</td>
-              <td className="p-3 text-[#CCFF00] bg-black font-bold">Streamed Chunks [Demo]</td>
-              <td className="p-3">NLI Sentence Verification</td>
-            </tr>
-          </tbody>
-        </table>
+        {/* Mobile Stacked Card View (< 768px) */}
+        <div className="md:hidden space-y-3">
+          {[
+            {
+              spec: "SPEC 01",
+              title: "Neural Search Engine",
+              engine: "Qdrant HNSW + PyTorch",
+              benchmark: "~14.2ms [Simulated]",
+              guard: "PQ8 Vector Compression",
+            },
+            {
+              spec: "SPEC 02",
+              title: "Vision AI Pipeline",
+              engine: "TensorRT INT8 + ONNX",
+              benchmark: "~8.6ms [Synthetic Stream]",
+              guard: "ByteTrack Kalman State",
+            },
+            {
+              spec: "SPEC 03",
+              title: "Agentic Workflow",
+              engine: "LangGraph + Pydantic",
+              benchmark: "Async DAG Simulation",
+              guard: "Cyclical Self-Healing",
+            },
+            {
+              spec: "SPEC 04",
+              title: "Predictive Intelligence",
+              engine: "Temporal Transformer",
+              benchmark: "~32ms [Synthetic Series]",
+              guard: "Wasserstein Drift Alerting",
+            },
+            {
+              spec: "SPEC 05",
+              title: "LLM Knowledge System",
+              engine: "LlamaIndex + ChromaDB",
+              benchmark: "Streamed Chunks [Demo]",
+              guard: "NLI Sentence Verification",
+            },
+          ].map((row) => (
+            <div key={row.spec} className="p-3.5 border-2 border-black bg-[#F4F1EA]/60 space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-black text-[#FF3B00]">{row.spec}</span>
+                <span className="text-[10px] text-[#CCFF00] bg-black font-bold px-1.5 py-0.5">
+                  {row.benchmark}
+                </span>
+              </div>
+              <div className="font-black text-sm text-black">{row.title}</div>
+              <div className="text-xs space-y-1 pt-1 border-t border-black/15">
+                <div className="flex justify-between">
+                  <span className="text-black/60 font-bold text-[10px]">ENGINE:</span>
+                  <span className="font-bold text-black">{row.engine}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-black/60 font-bold text-[10px]">GUARD:</span>
+                  <span className="text-black/80">{row.guard}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop Table View (>= 768px) */}
+        <div className="hidden md:block overflow-x-auto">
+          <table className="w-full text-left font-mono text-xs border-collapse min-w-[640px]">
+            <thead>
+              <tr className="border-b-2 border-black bg-[#F4F1EA]">
+                <th className="p-3 font-black text-black">SPEC #</th>
+                <th className="p-3 font-black text-black">ARCHITECTURE</th>
+                <th className="p-3 font-black text-black">PRIMARY ENGINE</th>
+                <th className="p-3 font-black text-black">SIMULATED BENCHMARK TARGET</th>
+                <th className="p-3 font-black text-black">RELIABILITY GUARD</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-black/20 hover:bg-[#F4F1EA]/60">
+                <td className="p-3 font-bold text-[#FF3B00]">SPEC 01</td>
+                <td className="p-3 font-bold">Neural Search Engine</td>
+                <td className="p-3">Qdrant HNSW + PyTorch</td>
+                <td className="p-3 text-[#CCFF00] bg-black font-bold">~14.2ms [Simulated]</td>
+                <td className="p-3">PQ8 Vector Compression</td>
+              </tr>
+              <tr className="border-b border-black/20 hover:bg-[#F4F1EA]/60">
+                <td className="p-3 font-bold text-[#FF3B00]">SPEC 02</td>
+                <td className="p-3 font-bold">Vision AI Pipeline</td>
+                <td className="p-3">TensorRT INT8 + ONNX</td>
+                <td className="p-3 text-[#CCFF00] bg-black font-bold">~8.6ms [Synthetic Stream]</td>
+                <td className="p-3">ByteTrack Kalman State</td>
+              </tr>
+              <tr className="border-b border-black/20 hover:bg-[#F4F1EA]/60">
+                <td className="p-3 font-bold text-[#FF3B00]">SPEC 03</td>
+                <td className="p-3 font-bold">Agentic Workflow</td>
+                <td className="p-3">LangGraph + Pydantic</td>
+                <td className="p-3 text-[#CCFF00] bg-black font-bold">Async DAG Simulation</td>
+                <td className="p-3">Cyclical Self-Healing</td>
+              </tr>
+              <tr className="border-b border-black/20 hover:bg-[#F4F1EA]/60">
+                <td className="p-3 font-bold text-[#FF3B00]">SPEC 04</td>
+                <td className="p-3 font-bold">Predictive Intelligence</td>
+                <td className="p-3">Temporal Transformer</td>
+                <td className="p-3 text-[#CCFF00] bg-black font-bold">~32ms [Synthetic Series]</td>
+                <td className="p-3">Wasserstein Drift Alerting</td>
+              </tr>
+              <tr className="border-b border-black/20 hover:bg-[#F4F1EA]/60">
+                <td className="p-3 font-bold text-[#FF3B00]">SPEC 05</td>
+                <td className="p-3 font-bold">LLM Knowledge System</td>
+                <td className="p-3">LlamaIndex + ChromaDB</td>
+                <td className="p-3 text-[#CCFF00] bg-black font-bold">Streamed Chunks [Demo]</td>
+                <td className="p-3">NLI Sentence Verification</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div className="mt-4 text-[10px] text-black/60 font-mono">
           * NOTE: All performance figures reflect simulated benchmark targets measured on synthetic datasets and do not represent contractual commercial client SLAs.
         </div>

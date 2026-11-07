@@ -16,7 +16,7 @@ export default function AboutPage() {
   return (
     <div className="w-full bg-[#F4F1EA] text-[#0D0D0D] font-mono">
       {/* Header section */}
-      <section className="border-b-2 border-black bg-grid-paper py-16 sm:py-24">
+      <section className="border-b-2 border-black bg-grid-paper py-12 sm:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-black/15 pb-3 mb-6 text-xs text-black/60">
             <div className="flex items-center gap-2">
@@ -27,26 +27,26 @@ export default function AboutPage() {
             <div>STATUS: {profileData.availability.statusText}</div>
           </div>
 
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-black tracking-tight uppercase leading-[0.9] mb-6">
+          <h1 className="text-3xl xs:text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black text-black tracking-tight uppercase leading-[0.95] mb-4 sm:mb-6 break-words">
             ENGINEERING <br />
             <span className="text-[#FF3B00]">BEYOND</span> NOTEBOOKS.
           </h1>
 
-          <p className="font-sans text-lg sm:text-2xl font-bold text-black/80 max-w-3xl leading-snug">
+          <p className="font-sans text-base sm:text-xl font-bold text-black/80 max-w-3xl leading-snug">
             Bridging probabilistic statistical modeling with deterministic systems reliability.
           </p>
         </div>
       </section>
 
       {/* Main Narrative & Viewfinder Portrait Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-start">
           {/* Left Column: Portrait Viewfinder Placeholder */}
           <div className="lg:col-span-5 space-y-4">
             <div
               role="img"
               aria-label="Portrait viewfinder placeholder for Om Shinde"
-              className="relative aspect-square w-full border-4 border-black bg-[#0D0D0D] p-6 text-[#F4F1EA] shadow-[10px_10px_0px_0px_rgba(255,59,0,1)] crosshair-corner flex flex-col justify-between overflow-hidden"
+              className="relative aspect-square w-full border-3 sm:border-4 border-black bg-[#0D0D0D] p-4 sm:p-6 text-[#F4F1EA] shadow-[6px_6px_0px_0px_rgba(255,59,0,1)] sm:shadow-[10px_10px_0px_0px_rgba(255,59,0,1)] crosshair-corner flex flex-col justify-between overflow-hidden"
             >
               {/* Camera HUD Grid */}
               <div className="absolute inset-0 bg-dots-pattern opacity-25 pointer-events-none" aria-hidden="true"></div>
@@ -203,7 +203,7 @@ export default function AboutPage() {
                     <p className="text-xs font-sans text-black/80 leading-relaxed mb-3">{exp.summary}</p>
                     <div className="flex flex-wrap gap-1">
                       {exp.technologies.map((t, idx) => (
-                        <span key={idx} className="text-[9px] px-1.5 py-0.2 border border-black/20 bg-[#F4F1EA] text-black">
+                        <span key={idx} className="text-[9px] px-1.5 py-0.5 border border-black/20 bg-[#F4F1EA] text-black">
                           {t}
                         </span>
                       ))}
@@ -229,7 +229,7 @@ export default function AboutPage() {
                     <p className="text-xs font-sans text-black/80 leading-relaxed mb-3">{edu.summary}</p>
                     <div className="flex flex-wrap gap-1">
                       {edu.technologies.map((t, idx) => (
-                        <span key={idx} className="text-[9px] px-1.5 py-0.2 border border-black/20 bg-[#F4F1EA] text-black">
+                        <span key={idx} className="text-[9px] px-1.5 py-0.5 border border-black/20 bg-[#F4F1EA] text-black">
                           {t}
                         </span>
                       ))}

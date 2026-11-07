@@ -57,14 +57,14 @@ export function HeroSection() {
               )}
             </div>
 
-            <h1 className="font-mono font-black text-5xl sm:text-7xl xl:text-8xl tracking-tighter leading-[0.92] text-black uppercase">
+            <h1 className="font-mono font-black text-3xl xs:text-4xl sm:text-6xl md:text-7xl xl:text-8xl tracking-tighter leading-[0.95] text-black uppercase break-words">
               ARCHITECTING <br />
               {theme === "signal-studio" ? (
-                <span className="relative inline-block bg-[#6938FF] text-[#C6FF00] px-4 py-1 border-3 border-[#1B1020] shadow-[6px_6px_0px_0px_#FF4FA3] -rotate-1 rounded-sm my-1.5 transition-transform hover:rotate-0 hover:scale-105">
+                <span className="relative inline-block bg-[#6938FF] text-[#C6FF00] px-2.5 py-0.5 sm:px-4 sm:py-1 border-2 sm:border-3 border-[#1B1020] shadow-[4px_4px_0px_0px_#FF4FA3] sm:shadow-[6px_6px_0px_0px_#FF4FA3] -rotate-1 rounded-sm my-1 sm:my-1.5 transition-transform hover:rotate-0 hover:scale-105">
                   <span className="relative z-10 font-black tracking-tight">INTELLIGENT</span>
                 </span>
               ) : theme === "crimson-noir" ? (
-                <span className="relative inline-block text-[#FF3838] px-2.5 py-0.5 border border-[#CDCBCA]/30 bg-[#161214] shadow-[0_0_20px_rgba(212,21,20,0.35)] rounded-sm my-1">
+                <span className="relative inline-block text-[#FF3838] px-2 sm:px-2.5 py-0.5 border border-[#CDCBCA]/30 bg-[#161214] shadow-[0_0_20px_rgba(212,21,20,0.35)] rounded-sm my-1">
                   <span className="relative z-10 font-black drop-shadow-[0_0_8px_rgba(255,56,56,0.6)]">
                     INTELLIGENT
                   </span>
@@ -72,14 +72,14 @@ export function HeroSection() {
               ) : (
                 <span className="relative inline-block text-[#FF3B00]">
                   <span className="relative z-10">INTELLIGENT</span>
-                  <span className="absolute bottom-0 sm:bottom-1 left-0 w-full h-2.5 sm:h-3.5 bg-[#CCFF00] z-0 -rotate-0.5"></span>
+                  <span className="absolute bottom-0 sm:bottom-1 left-0 w-full h-2 sm:h-3.5 bg-[#CCFF00] z-0 -rotate-0.5"></span>
                 </span>
               )}{" "}
               <br />
               SYSTEMS.
             </h1>
 
-            <p className="font-sans text-lg sm:text-xl text-black/80 font-medium leading-relaxed max-w-2xl">
+            <p className="font-sans text-base sm:text-xl text-black/80 font-medium leading-relaxed max-w-2xl">
               {profileData.headline}
             </p>
 
@@ -88,13 +88,13 @@ export function HeroSection() {
             </p>
 
             {/* CTA Action Row */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
-              <Link href="/projects" className="brutalist-button brutalist-button-primary">
+            <div className="pt-2 flex flex-col xs:flex-row items-stretch xs:items-center gap-3 sm:gap-4">
+              <Link href="/projects" className="brutalist-button brutalist-button-primary w-full xs:w-auto text-center justify-center">
                 <span>EXPLORE PROJECTS [05]</span>
                 <ArrowDownRight className="w-4 h-4 ml-2" />
               </Link>
 
-              <Link href="/contact" className="brutalist-button">
+              <Link href="/contact" className="brutalist-button w-full xs:w-auto text-center justify-center">
                 <span>ESTABLISH CONTACT</span>
                 <ArrowUpRight className="w-4 h-4 ml-2 text-[#FF3B00]" />
               </Link>
@@ -108,22 +108,22 @@ export function HeroSection() {
         </div>
 
         {/* Industrial Stats Strip */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-6 border-t-2 border-black font-mono">
+        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 pt-6 border-t-2 border-black font-mono">
           {profileData.stats.map((stat, idx) => (
             <div
               key={idx}
-              className="p-4 sm:p-5 border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
+              className="p-3.5 sm:p-5 border-2 border-black bg-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] sm:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] relative"
             >
               <div className="flex items-center justify-between text-[10px] text-black/60 font-bold tracking-wider mb-1">
                 <span>{stat.label}</span>
                 {stat.isSimulated && (
-                  <span className="text-[#FF3B00] text-[9px] bg-[#FF3B00]/10 px-1 py-0.2 border border-[#FF3B00]/30">
+                  <span className="text-[#FF3B00] text-[9px] bg-[#FF3B00]/10 px-1 py-0.5 border border-[#FF3B00]/30">
                     SIMULATED
                   </span>
                 )}
               </div>
               <div className="flex items-baseline gap-1 my-1">
-                <span className="text-3xl sm:text-4xl font-black text-black tracking-tight">
+                <span className="text-2xl sm:text-4xl font-black text-black tracking-tight">
                   {stat.value}
                 </span>
                 {stat.unit && (

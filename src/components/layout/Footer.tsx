@@ -15,40 +15,42 @@ export function Footer() {
   return (
     <footer className="w-full bg-[#0D0D0D] text-[#F4F1EA] border-t-4 border-black relative overflow-hidden font-mono">
       {/* Decorative top coordinate band */}
-      <div className="border-b border-[#262626] px-4 sm:px-8 py-3 flex flex-wrap items-center justify-between gap-4 text-[11px] text-[#A39F94]">
-        <div className="flex items-center gap-3">
-          <span className="h-2 w-2 rounded-full bg-[#FF3B00] animate-ping"></span>
+      <div className="border-b border-[#262626] px-4 sm:px-8 py-3 flex flex-wrap items-center justify-between gap-3 sm:gap-4 text-[11px] text-[#A39F94]">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <span className="h-2 w-2 rounded-full bg-[#FF3B00] animate-ping shrink-0"></span>
           <span className="font-bold text-[#F4F1EA]">SYS_TELEMETRY: ACTIVE</span>
           <span className="hidden sm:inline text-[#6E6A61]">{"//"}</span>
           <span className="hidden sm:inline">COORDINATES: {profileData.location.coordinates}</span>
         </div>
-        <div className="flex items-center gap-4 text-[10px]">
+        <div className="flex items-center gap-2 sm:gap-4 text-[10px]">
           <ThemeSelector compact />
-          <span>TIMEZONE: {profileData.location.timezone}</span>
+          <span className="hidden md:inline">TIMEZONE: {profileData.location.timezone}</span>
           <button
             onClick={scrollToTop}
             type="button"
-            className="flex items-center gap-1.5 px-2.5 py-1 border border-[#262626] hover:border-[#FF3B00] hover:text-[#FF3B00] transition-colors"
+            className="flex items-center gap-1.5 px-2.5 py-1 border border-[#262626] hover:border-[#FF3B00] hover:text-[#FF3B00] transition-colors cursor-pointer"
             aria-label="Scroll back to top"
           >
-            <span>RETURN TO TOP</span>
-            <ArrowUp className="w-3.5 h-3.5" />
+            <span className="text-[9px] sm:text-[10px]">TOP</span>
+            <ArrowUp className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
           </button>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-24">
         {/* Massive Typographic Wordmark & Stamped Monogram */}
-        <div className="mb-16 select-none border-b-2 border-[#262626] pb-12">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-            <div className="text-[12vw] sm:text-[10vw] font-black tracking-tighter leading-none text-[#F4F1EA] hover:text-[#CCFF00] transition-colors duration-300">
+        <div className="mb-12 sm:mb-16 select-none border-b-2 border-[#262626] pb-8 sm:pb-12">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
+            <div className="text-[14vw] xs:text-[12vw] sm:text-[10vw] font-black tracking-tighter leading-none text-[#F4F1EA] hover:text-[#CCFF00] transition-colors duration-300">
               OM SHINDE
             </div>
-            <OmMonogram
-              size={88}
-              className="border-2 border-[#FF3B00] shadow-[6px_6px_0px_0px_rgba(255,59,0,1)] shrink-0"
-              showCoordinates
-            />
+            <div className="w-14 h-14 sm:w-20 sm:h-20 lg:w-[88px] lg:h-[88px] shrink-0">
+              <OmMonogram
+                size="100%"
+                className="w-full h-full border-2 border-[#FF3B00] shadow-[4px_4px_0px_0px_rgba(255,59,0,1)] sm:shadow-[6px_6px_0px_0px_rgba(255,59,0,1)]"
+                showCoordinates
+              />
+            </div>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-4 mt-4 text-xs sm:text-sm text-[#A39F94] font-bold">
             <span className="tracking-widest uppercase">

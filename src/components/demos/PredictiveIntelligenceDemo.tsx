@@ -79,21 +79,21 @@ export function PredictiveIntelligenceDemo() {
   return (
     <div className="w-full border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner font-mono text-xs">
       {/* Header bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-4 border-b-2 border-black bg-[#0D0D0D] text-[#F4F1EA]">
+      <div className="flex flex-wrap items-center justify-between gap-2 p-3 sm:p-4 border-b-2 border-black bg-[#0D0D0D] text-[#F4F1EA]">
         <div className="flex items-center gap-2">
           <LineChart className="w-4 h-4 text-[#CCFF00]" />
-          <span className="font-bold text-sm tracking-wide">
+          <span className="font-bold text-xs sm:text-sm tracking-wide">
             TEMPORAL QUANTILE FORECASTER // REAL-TIME MODEL
           </span>
         </div>
-        <div className="flex items-center gap-3 text-[10px] text-[#A39F94]">
+        <div className="flex items-center gap-2 sm:gap-3 text-[10px] text-[#A39F94]">
           <span className="text-[#CCFF00] font-bold">MAE: 0.042</span>
           <span>{"//"}</span>
           <span className="text-[#FF3B00] font-bold">ANOMALY F1: 0.938</span>
         </div>
       </div>
 
-      <div className="p-6 sm:p-8 space-y-6">
+      <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
         {/* Dataset Selection */}
         <div>
           <label className="text-[10px] text-black/60 font-bold uppercase block mb-2">
@@ -108,7 +108,7 @@ export function PredictiveIntelligenceDemo() {
                   setSelectedDatasetId(d.id);
                   handleReset();
                 }}
-                className={`p-3 text-left border transition-all cursor-pointer ${
+                className={`p-2.5 sm:p-3 text-left border transition-all cursor-pointer ${
                   selectedDatasetId === d.id
                     ? "bg-black text-[#F4F1EA] border-black shadow-[3px_3px_0px_0px_rgba(255,59,0,1)]"
                     : "bg-[#F4F1EA] text-black border-black/30 hover:border-black"
@@ -124,22 +124,22 @@ export function PredictiveIntelligenceDemo() {
         </div>
 
         {/* Controls Strip */}
-        <div className="flex flex-wrap items-center justify-between gap-3 p-3 border border-black/20 bg-[#F4F1EA]/60">
-          <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 p-3 border border-black/20 bg-[#F4F1EA]/60">
+          <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
               onClick={() => setShowConfidenceBands(!showConfidenceBands)}
-              className={`px-3 py-1.5 text-xs font-bold border border-black transition-colors cursor-pointer ${
+              className={`px-2.5 sm:px-3 py-1.5 text-xs font-bold border border-black transition-colors cursor-pointer ${
                 showConfidenceBands ? "bg-black text-[#F4F1EA]" : "bg-white text-black"
               }`}
             >
-              QUANTILE BANDS [10%-90%]: {showConfidenceBands ? "ON" : "OFF"}
+              QUANTILE BANDS: {showConfidenceBands ? "ON" : "OFF"}
             </button>
 
             <button
               type="button"
               onClick={handleInjectAnomaly}
-              className="px-3 py-1.5 bg-[#FF3B00] text-white text-xs font-bold hover:bg-black transition-colors cursor-pointer flex items-center gap-1.5"
+              className="px-2.5 sm:px-3 py-1.5 bg-[#FF3B00] text-white text-xs font-bold hover:bg-black transition-colors cursor-pointer flex items-center gap-1.5"
             >
               <AlertTriangle className="w-3.5 h-3.5" />
               <span>INJECT SYNTHETIC DRIFT</span>
@@ -149,7 +149,7 @@ export function PredictiveIntelligenceDemo() {
               <button
                 type="button"
                 onClick={handleReset}
-                className="px-3 py-1.5 border border-black bg-white text-black text-xs font-bold hover:bg-black hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
+                className="px-2.5 sm:px-3 py-1.5 border border-black bg-white text-black text-xs font-bold hover:bg-black hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
               >
                 <RefreshCw className="w-3.5 h-3.5" />
                 <span>RESTORE</span>
@@ -163,8 +163,8 @@ export function PredictiveIntelligenceDemo() {
         </div>
 
         {/* Dynamic SVG Visual Chart */}
-        <div className="border-2 border-black bg-[#0D0D0D] p-5 relative select-none">
-          <div className="flex items-center justify-between border-b border-[#262626] pb-2 mb-4 text-[10px] text-[#A39F94]">
+        <div className="border-2 border-black bg-[#0D0D0D] p-3.5 sm:p-5 relative select-none">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#262626] pb-2 mb-4 text-[10px] text-[#A39F94]">
             <div className="flex items-center gap-2">
               <span className="text-[#CCFF00] font-bold">HISTORICAL TELEMETRY</span>
               <span>{"//"}</span>

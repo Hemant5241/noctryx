@@ -85,7 +85,7 @@ export default function ContactPage() {
   return (
     <div className="w-full bg-[#F4F1EA] text-[#0D0D0D] font-mono">
       {/* Header section */}
-      <section className="border-b-2 border-black bg-grid-paper py-16 sm:py-24">
+      <section className="border-b-2 border-black bg-grid-paper py-10 sm:py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-between gap-2 border-b border-black/15 pb-3 mb-6 text-xs text-black/60">
             <div className="flex items-center gap-2">
@@ -96,12 +96,12 @@ export default function ContactPage() {
             <div>STATUS: {profileData.availability.statusText}</div>
           </div>
 
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-black tracking-tight uppercase leading-[0.9] mb-6">
+          <h1 className="text-4xl xs:text-5xl sm:text-7xl lg:text-8xl font-black text-black tracking-tight uppercase leading-[0.9] mb-4 sm:mb-6 break-words">
             ESTABLISH <br />
             <span className="text-[#FF3B00]">CONNECTION.</span>
           </h1>
 
-          <p className="font-sans text-base sm:text-xl font-bold text-black/80 max-w-2xl leading-relaxed mb-6">
+          <p className="font-sans text-sm sm:text-lg md:text-xl font-bold text-black/80 max-w-2xl leading-relaxed mb-6">
             Interested in high-throughput AI engineering, agentic architecture, or research collaborations?
             Dispatch a simulated packet through the terminal or reach out directly via verified channels.
           </p>
@@ -117,11 +117,11 @@ export default function ContactPage() {
       </section>
 
       {/* Main Grid: Terminal Form + Communication Channels */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left Column: Interactive Contact Form */}
           <div className="lg:col-span-7">
-            <div className="p-6 sm:p-10 border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
+            <div className="p-4 sm:p-6 md:p-10 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] sm:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
               <div className="flex items-center justify-between border-b-2 border-black pb-3 mb-6">
                 <div className="flex items-center gap-2 text-xs font-bold text-[#FF3B00]">
                   <Terminal className="w-4 h-4" />
@@ -241,7 +241,7 @@ export default function ContactPage() {
                     <div
                       role="radiogroup"
                       aria-labelledby="inquiry-category-label"
-                      className="grid grid-cols-2 sm:grid-cols-4 gap-2"
+                      className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-2"
                     >
                       {[
                         "Full-Time Role",
@@ -319,19 +319,19 @@ export default function ContactPage() {
           {/* Right Column: Verified Coordinates & Channels */}
           <div className="lg:col-span-5 space-y-6">
             {/* Direct Email Card with One-Click Copy */}
-            <div className="p-6 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
+            <div className="p-4 sm:p-6 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] crosshair-corner">
               <div className="text-xs font-bold text-[#FF3B00] uppercase tracking-wider mb-2">
                 DIRECT INBOX ACCESS
               </div>
-              <h3 className="text-lg font-black text-black uppercase mb-3">
+              <h3 className="text-base sm:text-lg font-black text-black uppercase mb-3">
                 PRIMARY EMAIL CHANNEL
               </h3>
               <p className="text-xs text-black/70 mb-4 font-sans">
                 For urgent communications, recruitment inquiries, or research discussions:
               </p>
 
-              <div className="p-3 border border-black bg-[#F4F1EA] flex items-center justify-between gap-2 mb-2">
-                <span className="text-xs font-bold text-black truncate">
+              <div className="p-2.5 sm:p-3 border border-black bg-[#F4F1EA] flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 mb-2">
+                <span className="text-xs font-bold text-black truncate max-w-full">
                   {contactDetails.primaryEmail}
                 </span>
                 <button
@@ -364,7 +364,7 @@ export default function ContactPage() {
             </div>
 
             {/* Geographic & Availability Telemetry */}
-            <div className="p-6 border-2 border-black bg-[#0D0D0D] text-[#F4F1EA] shadow-[6px_6px_0px_0px_rgba(255,59,0,1)]">
+            <div className="p-4 sm:p-6 border-2 border-black bg-[#0D0D0D] text-[#F4F1EA] shadow-[6px_6px_0px_0px_rgba(255,59,0,1)]">
               <div className="text-[10px] text-[#CCFF00] font-bold uppercase tracking-wider mb-3">
                 GEOGRAPHIC & OPERATING TIMEZONE
               </div>
@@ -388,7 +388,7 @@ export default function ContactPage() {
             </div>
 
             {/* Social channels matrix */}
-            <div className="p-6 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+            <div className="p-4 sm:p-6 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
               <div className="text-xs font-bold text-[#FF3B00] uppercase tracking-wider mb-3">
                 EXTERNAL PROFILES & NETWORKS
               </div>

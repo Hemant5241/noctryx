@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import { GitCommit, Layers, ArrowDown } from "lucide-react";
 
 export type ArchitectureDiagramType =
   | "vector-cascade"
@@ -14,43 +15,364 @@ interface CaseStudyArchitectureDiagramProps {
   projectTitle: string;
 }
 
+interface PipelineStage {
+  step: string;
+  label: string;
+  subtitle: string;
+  details: string[];
+  highlight?: string;
+  tag?: string;
+}
+
+const PIPELINE_SPECIFICATIONS: Record<
+  ArchitectureDiagramType,
+  {
+    badge: string;
+    stages: PipelineStage[];
+    note: string;
+  }
+> = {
+  "vector-cascade": {
+    badge: "5-STAGE LATENCY-OPTIMIZED RETRIEVAL CASCADE",
+    stages: [
+      {
+        step: "01",
+        label: "USER QUERY INGESTION",
+        subtitle: "Token Normalization & Scrubbing",
+        details: ["Token normalize", "Payload filtering & sanitization"],
+        tag: "CLIENT ENTRY",
+      },
+      {
+        step: "02",
+        label: "BI-ENCODER",
+        subtitle: "Dense Vector Space Mapping",
+        details: ["MiniLM 384-Dim", "FP32 Vector Float"],
+        highlight: "Latency < 4.2ms",
+      },
+      {
+        step: "03",
+        label: "HNSW GRAPH & PQ8",
+        subtitle: "Approximate Nearest Neighbor",
+        details: ["M=16, efSearch=128", "PQ8 compression (4.1x memory cut)", "Top-50 vector candidates"],
+        highlight: "Top-50 ANN Filter",
+      },
+      {
+        step: "04",
+        label: "CROSS-ENCODER",
+        subtitle: "Deep Attention Re-ranking",
+        details: ["Full cross-attention evaluation", "Reciprocal rank fusion (RRF)"],
+        highlight: "Score Top-10",
+      },
+      {
+        step: "05",
+        label: "RANKED RESULTS",
+        subtitle: "Deterministic Delivery",
+        details: ["Grounded result payload", "P99 Latency < 15ms"],
+        tag: "OUTPUT SERVED",
+      },
+    ],
+    note: "Parallel BM25 sparse lexical scoring runs concurrently as hybrid fallback.",
+  },
+  "vision-edge": {
+    badge: "SUB-10MS EDGE INFERENCE PIPELINE",
+    stages: [
+      {
+        step: "01",
+        label: "CAMERA STREAM",
+        subtitle: "Hardware Video Ingestion",
+        details: ["1080p60 RTSP Feed", "Hardware NVDEC decoder", "Zero-copy CUDA buffer"],
+        tag: "RTSP STREAM",
+      },
+      {
+        step: "02",
+        label: "CUDA WARP",
+        subtitle: "Hardware Pre-processing",
+        details: ["Bilinear resize 640x640", "BGR to RGB float conversion"],
+        highlight: "Latency: 0.8ms",
+      },
+      {
+        step: "03",
+        label: "TENSORRT INT8",
+        subtitle: "Accelerated Neural Inference",
+        details: ["Entropy calibrated quantization", "FP16 fallback layers", "CUDA unified memory"],
+        highlight: "> 60 FPS Sustained Edge",
+      },
+      {
+        step: "04",
+        label: "BYTETRACK",
+        subtitle: "Spatial Multi-Object Tracker",
+        details: ["Kalman velocity filter", "Low-score box match resiliency", "Trajectory ID stability"],
+      },
+      {
+        step: "05",
+        label: "HUD OVERLAY",
+        subtitle: "Real-time Spatial Telemetry",
+        details: ["Bounding box & class confidence", "Centroid velocity vector"],
+        highlight: "< 9ms Total Pipeline",
+        tag: "TELEMETRY OUT",
+      },
+    ],
+    note: "Entire inference pipeline executes on edge hardware with zero external API calls.",
+  },
+  "agent-dag": {
+    badge: "BOUNDED MULTI-AGENT STATE GRAPH",
+    stages: [
+      {
+        step: "01",
+        label: "TASK INITIATION",
+        subtitle: "User Goal & Scope Contract",
+        details: ["User goal deconstruction", "Strict schema contract enforcement"],
+        tag: "TASK CONTRACT",
+      },
+      {
+        step: "02",
+        label: "PLANNER AGENT",
+        subtitle: "DAG Coordinator & Orchestrator",
+        details: ["DAG deconstruction engine", "LangGraph state machine", "Cycle bound Max N=3"],
+        highlight: "Immutable State Graph",
+      },
+      {
+        step: "03",
+        label: "PARALLEL WORKERS",
+        subtitle: "Isolated Execution Nodes",
+        details: ["Research Agent: Dense vector tools & web APIs", "Code Worker: Docker Wasm sandbox & static eval"],
+        highlight: "Deterministic Workers",
+      },
+      {
+        step: "04",
+        label: "EVALUATOR NODE",
+        subtitle: "Schema & Safety Guardrail",
+        details: ["Schema conformance check", "Critic self-healing feedback loop"],
+        highlight: "Pass / Revise Gate",
+      },
+      {
+        step: "05",
+        label: "VERIFIED OUTPUT",
+        subtitle: "Deterministic Delivery",
+        details: ["Zero execution loops", "Guaranteed JSON schema output"],
+        tag: "VERIFIED ARTIFACT",
+      },
+    ],
+    note: "Critic loop automatically self-heals failing assertions within max 3 iterations.",
+  },
+  "temporal-forecast": {
+    badge: "PROBABILISTIC TIME SERIES ARCHITECTURE",
+    stages: [
+      {
+        step: "01",
+        label: "TELEMETRY INGESTION",
+        subtitle: "Time-Series Stream",
+        details: ["Multivariate lag features", "Fourier seasonality decomposition", "168h rolling history window"],
+        tag: "DATA INGEST",
+      },
+      {
+        step: "02",
+        label: "PATCHTST / TFT",
+        subtitle: "Transformer Forecasting Core",
+        details: ["Channel-independence architecture", "Multi-head self-attention", "Quantile loss pinball"],
+        highlight: "O((L/P)²) Linear Complexity",
+      },
+      {
+        step: "03",
+        label: "CALIBRATION",
+        subtitle: "Uncertainty Quantile Intervals",
+        details: ["q=0.10 Lower uncertainty bound", "q=0.50 Median P50 projection", "q=0.90 Upper stress bound"],
+      },
+      {
+        step: "04",
+        label: "DRIFT MONITOR",
+        subtitle: "Wasserstein Metric Telemetry",
+        details: ["Earth Mover Distance computation", "Covariate shift detection", "7-day sliding window monitor"],
+        highlight: "Automated Retrain Trigger",
+      },
+      {
+        step: "05",
+        label: "ALERT & ACTIONS",
+        subtitle: "Proactive Guardrail Emission",
+        details: ["P90 threshold alerting", "Automated workload scaling"],
+        tag: "FORECAST DISPATCH",
+      },
+    ],
+    note: "Continuous drift computation detects concept decay before error rates elevate.",
+  },
+  "grounded-rag": {
+    badge: "ZERO-HALLUCINATION ENTAILMENT PIPELINE",
+    stages: [
+      {
+        step: "01",
+        label: "HIERARCHICAL INGESTION",
+        subtitle: "Chunk & Context Mapping",
+        details: ["Sentence chunks (128 words)", "Parent windows (512 words)", "Cryptographic metadata hashing"],
+        tag: "DOC INGESTION",
+      },
+      {
+        step: "02",
+        label: "HYBRID RETRIEVAL",
+        subtitle: "Dense + Sparse Fusion",
+        details: ["Chroma dense + BM25 lexical", "Reciprocal Rank Fusion (RRF)", "Window expander (parent block injection)"],
+        highlight: "Max Information Gain",
+      },
+      {
+        step: "03",
+        label: "SYNTHESIS CORE",
+        subtitle: "Constrained Generator",
+        details: ["Strict citation prompt", "Temperature = 0.1", "Sentence-chunk source map"],
+      },
+      {
+        step: "04",
+        label: "CITATION VERIFIER",
+        subtitle: "Natural Language Inference",
+        details: ["Cross-encoder premise evaluation", "Contradiction & hallucination filter"],
+        highlight: "> 98% Faithfulness Guaranteed",
+      },
+      {
+        step: "05",
+        label: "GROUNDED SYNTHESIS",
+        subtitle: "Attributed Response",
+        details: ["100% Verified citations", "Sentence-level evidence bounds"],
+        tag: "PROVEN FACT PAYLOAD",
+      },
+    ],
+    note: "Sentences failing NLI entailment threshold are suppressed before client dispatch.",
+  },
+};
+
 export function CaseStudyArchitectureDiagram({
   type,
   projectTitle,
 }: CaseStudyArchitectureDiagramProps) {
+  const [mobileView, setMobileView] = useState<"flow" | "schematic">("flow");
+  const spec = PIPELINE_SPECIFICATIONS[type];
+
   return (
     <figure
       role="figure"
       aria-label={`System Architecture Flow Diagram for ${projectTitle}`}
-      className="architecture-diagram p-6 sm:p-8 border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner overflow-hidden"
+      className="architecture-diagram p-4 sm:p-6 md:p-8 border-2 border-black bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] sm:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner overflow-hidden font-mono"
     >
       <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-black pb-4 mb-6">
         <div>
           <span className="text-[10px] text-[#FF3B00] font-bold uppercase tracking-wider block">
             ARCHITECTURAL SCHEMATIC //
           </span>
-          <h3 className="text-lg sm:text-xl font-black text-black uppercase tracking-tight">
+          <h3 className="text-base sm:text-lg md:text-xl font-black text-black uppercase tracking-tight break-words">
             SYSTEM TOPOLOGY & DATA EXECUTION GRAPH
           </h3>
         </div>
-        <div className="flex flex-wrap items-center gap-2 text-[10px] font-mono">
-          <span className="px-2 py-0.5 border border-black bg-[#CCFF00] text-black font-bold">
+
+        <div className="flex flex-wrap items-center gap-2 text-[10px]">
+          {/* Mobile View Toggle */}
+          <div className="flex md:hidden border border-black bg-[#F4F1EA]">
+            <button
+              type="button"
+              onClick={() => setMobileView("flow")}
+              className={`px-2 py-1 font-bold cursor-pointer transition-colors flex items-center gap-1 ${
+                mobileView === "flow"
+                  ? "bg-black text-[#F4F1EA]"
+                  : "text-black hover:bg-black/10"
+              }`}
+            >
+              <Layers className="w-3 h-3" />
+              <span>FLOW VIEW</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileView("schematic")}
+              className={`px-2 py-1 font-bold cursor-pointer transition-colors flex items-center gap-1 ${
+                mobileView === "schematic"
+                  ? "bg-black text-[#F4F1EA]"
+                  : "text-black hover:bg-black/10"
+              }`}
+            >
+              <GitCommit className="w-3 h-3" />
+              <span>SCHEMATIC</span>
+            </button>
+          </div>
+
+          <span className="hidden sm:inline-block px-2 py-0.5 border border-black bg-[#CCFF00] text-black font-bold">
             CLIENT SIMULATION
           </span>
-          <span className="px-2 py-0.5 border border-black bg-black text-[#F4F1EA] font-bold">
+          <span className="hidden sm:inline-block px-2 py-0.5 border border-black bg-black text-[#F4F1EA] font-bold">
             CONCEPTUAL BACKEND
           </span>
         </div>
       </div>
 
-      {/* SVG Diagram Canvas */}
-      <div className="w-full overflow-x-auto py-2">
+      {/* Mobile-Adaptive Stacked Flow View (Visible on mobile when flow is active) */}
+      <div className={`${mobileView === "flow" ? "block md:hidden" : "hidden"} space-y-3`}>
+        <div className="p-2 border border-black/20 bg-[#F4F1EA] text-[10px] font-bold text-black/70 flex items-center justify-between">
+          <span>PIPELINE: {spec.badge}</span>
+          <span className="text-[#FF3B00] font-bold">{spec.stages.length} STAGES</span>
+        </div>
+
+        <div className="space-y-2">
+          {spec.stages.map((stg, sIdx) => (
+            <React.Fragment key={stg.step}>
+              <div className="p-3.5 border-2 border-black bg-[#F4F1EA]/50 space-y-2">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="px-1.5 py-0.5 bg-black text-[#F4F1EA] text-[10px] font-bold">
+                      STAGE {stg.step}
+                    </span>
+                    <span className="text-xs font-black text-black uppercase">
+                      {stg.label}
+                    </span>
+                  </div>
+                  {stg.tag && (
+                    <span className="text-[9px] bg-[#CCFF00] text-black font-bold px-1.5 py-0.5 border border-black">
+                      {stg.tag}
+                    </span>
+                  )}
+                  {stg.highlight && (
+                    <span className="text-[9px] bg-white text-[#FF3B00] font-bold px-1.5 py-0.5 border border-[#FF3B00]">
+                      {stg.highlight}
+                    </span>
+                  )}
+                </div>
+
+                <div className="text-[11px] text-black/60 font-semibold">
+                  {stg.subtitle}
+                </div>
+
+                <ul className="space-y-1 text-xs font-sans text-black/80">
+                  {stg.details.map((d, dIdx) => (
+                    <li key={dIdx} className="flex items-start gap-1.5">
+                      <span className="text-[#FF3B00] font-mono text-[10px] shrink-0 font-bold">↳</span>
+                      <span>{d}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {sIdx < spec.stages.length - 1 && (
+                <div className="flex justify-center text-[#FF3B00] py-0.5">
+                  <ArrowDown className="w-4 h-4 animate-bounce" />
+                </div>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+
+        <div className="p-2.5 border border-black/20 bg-white text-[10px] text-black/70">
+          <strong className="text-black uppercase">EXECUTION NOTE:</strong> {spec.note}
+        </div>
+      </div>
+
+      {/* SVG Diagram Canvas (Desktop default, or Mobile when 'schematic' is toggled) */}
+      <div
+        className={`${
+          mobileView === "schematic" ? "block" : "hidden md:block"
+        } w-full overflow-x-auto py-2`}
+      >
         <div className="min-w-[680px]">
           {type === "vector-cascade" && <VectorCascadeSvg />}
           {type === "vision-edge" && <VisionEdgeSvg />}
           {type === "agent-dag" && <AgentDagSvg />}
           {type === "temporal-forecast" && <TemporalForecastSvg />}
           {type === "grounded-rag" && <GroundedRagSvg />}
+        </div>
+        <div className="md:hidden mt-2 text-center text-[10px] text-black/50 font-mono">
+          ← Pan horizontally to inspect full schematic diagram →
         </div>
       </div>
 

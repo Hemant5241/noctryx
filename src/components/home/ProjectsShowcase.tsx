@@ -7,40 +7,40 @@ import { useTheme } from "@/context/ThemeContext";
 
 export function ProjectsShowcase() {
   return (
-    <section className="w-full border-b-2 border-black bg-grid-paper py-20 sm:py-28 font-mono">
+    <section className="w-full border-b-2 border-black bg-grid-paper py-14 sm:py-20 lg:py-28 font-mono">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-wrap items-end justify-between gap-4 border-b-2 border-black pb-6 mb-16">
+        <div className="flex flex-wrap items-end justify-between gap-3 sm:gap-4 border-b-2 border-black pb-4 sm:pb-6 mb-10 sm:mb-16">
           <div>
-            <div className="flex items-center gap-2 text-xs font-bold text-[#FF3B00] tracking-widest mb-2">
+            <div className="flex items-center gap-2 text-xs font-bold text-[#FF3B00] tracking-widest mb-1 sm:mb-2">
               <Layers className="w-4 h-4" />
               <span>03 {"//"} FEATURED ARCHITECTURES</span>
             </div>
-            <h2 className="text-4xl sm:text-6xl font-black text-black tracking-tight uppercase leading-none">
+            <h2 className="text-3xl xs:text-4xl sm:text-6xl font-black text-black tracking-tight uppercase leading-none">
               CASE STUDIES [05]
             </h2>
           </div>
-          <div className="text-right">
-            <span className="text-[11px] text-[#FF3B00] font-bold block">
+          <div className="text-left sm:text-right">
+            <span className="text-[10px] sm:text-[11px] text-[#FF3B00] font-bold block">
               {"// ARCHITECTURAL DEMONSTRATIONS"}
             </span>
-            <span className="text-xs text-black/60">
+            <span className="text-[11px] sm:text-xs text-black/60">
               SIMULATED PRODUCTION SPECIFICATIONS
             </span>
           </div>
         </div>
 
         {/* Asymmetrical Project List */}
-        <div className="space-y-16 lg:space-y-24">
+        <div className="space-y-10 sm:space-y-16 lg:space-y-24">
           {projectsData.map((project, idx) => (
             <ProjectCard key={project.id} project={project} index={idx} />
           ))}
         </div>
 
         {/* View all projects bottom bar */}
-        <div className="mt-20 p-8 border-2 border-black bg-black text-[#F4F1EA] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-[8px_8px_0px_0px_rgba(255,59,0,1)]">
+        <div className="mt-12 sm:mt-20 p-5 sm:p-8 border-2 border-black bg-black text-[#F4F1EA] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 shadow-[5px_5px_0px_0px_rgba(255,59,0,1)] sm:shadow-[8px_8px_0px_0px_rgba(255,59,0,1)]">
           <div>
-            <h3 className="text-xl sm:text-2xl font-black tracking-tight text-[#F4F1EA] uppercase">
+            <h3 className="text-lg sm:text-2xl font-black tracking-tight text-[#F4F1EA] uppercase">
               LOOKING FOR DEEP ARCHITECTURAL BREAKDOWNS?
             </h3>
             <p className="text-xs text-[#A39F94] mt-1">
@@ -49,7 +49,7 @@ export function ProjectsShowcase() {
           </div>
           <Link
             href="/projects"
-            className="brutalist-button brutalist-button-acid shrink-0"
+            className="brutalist-button brutalist-button-acid shrink-0 w-full sm:w-auto text-center justify-center"
           >
             <span>VIEW ALL PROJECTS CATALOG</span>
             <ArrowUpRight className="w-4 h-4 ml-2 text-black" />
@@ -134,17 +134,17 @@ function ProjectCard({ project, index }: { project: ProjectData; index: number }
         </div>
       </div>
 
-      <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 sm:p-10 items-center`}>
+      <div className={`grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 p-4 sm:p-8 lg:p-10 items-center`}>
         {/* Content Column */}
-        <div className={`lg:col-span-7 space-y-6 ${isEven ? "" : "lg:order-2"}`}>
+        <div className={`lg:col-span-7 space-y-4 sm:space-y-6 ${isEven ? "" : "lg:order-2"}`}>
           <div>
-            <div className="text-xs text-black/50 font-bold tracking-widest uppercase mb-1">
+            <div className="text-[10px] sm:text-xs text-black/50 font-bold tracking-widest uppercase mb-1">
               CATEGORY: {project.category}
             </div>
-            <h3 className="text-2xl sm:text-4xl font-black text-black tracking-tight uppercase leading-tight">
+            <h3 className="text-xl xs:text-2xl sm:text-4xl font-black text-black tracking-tight uppercase leading-tight">
               {project.title}
             </h3>
-            <p className="text-sm sm:text-base font-bold text-[#FF3B00] mt-2">
+            <p className="text-xs sm:text-base font-bold text-[#FF3B00] mt-1 sm:mt-2">
               {project.tagline}
             </p>
           </div>
@@ -154,17 +154,17 @@ function ProjectCard({ project, index }: { project: ProjectData; index: number }
           </p>
 
           {/* Key Simulated Metrics */}
-          <div className="grid grid-cols-3 gap-3 pt-2">
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-3 pt-2">
             {project.metrics.map((metric, mIdx) => (
-              <div key={mIdx} className="p-3 border border-black/20 bg-[#F4F1EA]/70">
-                <span className="text-[9px] font-bold text-black/60 block truncate">
+              <div key={mIdx} className="p-2 sm:p-3 border border-black/20 bg-[#F4F1EA]/70">
+                <span className="text-[8px] sm:text-[9px] font-bold text-black/60 block truncate">
                   {metric.label}
                 </span>
-                <span className="text-lg sm:text-xl font-black text-black">
+                <span className="text-sm xs:text-base sm:text-xl font-black text-black">
                   {metric.value}
                 </span>
                 {metric.delta && (
-                  <span className="text-[10px] font-bold text-[#FF3B00] block">
+                  <span className="text-[9px] sm:text-[10px] font-bold text-[#FF3B00] block truncate">
                     {metric.delta}
                   </span>
                 )}
@@ -173,11 +173,11 @@ function ProjectCard({ project, index }: { project: ProjectData; index: number }
           </div>
 
           {/* Tech Stack Badges */}
-          <div className="flex flex-wrap gap-1.5 pt-2">
+          <div className="flex flex-wrap gap-1 sm:gap-1.5 pt-1 sm:pt-2">
             {project.techStack.map((tech, tIdx) => (
               <span
                 key={tIdx}
-                className="text-[10px] font-bold px-2 py-1 border border-black bg-white text-black"
+                className="text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 sm:py-1 border border-black bg-white text-black"
               >
                 {tech}
               </span>
@@ -188,7 +188,7 @@ function ProjectCard({ project, index }: { project: ProjectData; index: number }
           <div className="pt-2">
             <Link
               href={`/projects/${project.slug}`}
-              className="brutalist-button brutalist-button-primary inline-flex"
+              className="brutalist-button brutalist-button-primary inline-flex w-full xs:w-auto text-center justify-center"
             >
               <span>INSPECT CASE STUDY</span>
               <ArrowUpRight className="w-4 h-4 ml-2" />

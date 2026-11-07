@@ -98,26 +98,26 @@ export function LlmKnowledgeSystemDemo() {
   return (
     <div className="w-full border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner font-mono text-xs">
       {/* Header bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-4 border-b-2 border-black bg-[#0D0D0D] text-[#F4F1EA]">
+      <div className="flex flex-wrap items-center justify-between gap-2 p-3 sm:p-4 border-b-2 border-black bg-[#0D0D0D] text-[#F4F1EA]">
         <div className="flex items-center gap-2">
           <BookOpen className="w-4 h-4 text-[#FF3B00]" />
-          <span className="font-bold text-sm tracking-wide">
+          <span className="font-bold text-xs sm:text-sm tracking-wide">
             ENTERPRISE RAG & NLI CITATION GRAPH // SIMULATOR
           </span>
         </div>
-        <div className="flex items-center gap-3 text-[10px] text-[#A39F94]">
+        <div className="flex items-center gap-2 sm:gap-3 text-[10px] text-[#A39F94]">
           <span className="text-[#CCFF00] font-bold">FAITHFULNESS: 98.2%</span>
           <span>{"//"}</span>
           <span className="text-[#FF3B00] font-bold">UNGROUNDED CLAIMS: 0.00%</span>
         </div>
       </div>
 
-      <div className="p-6 sm:p-8 space-y-6">
+      <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
         {/* Knowledge Source Badge */}
-        <div className="p-3 border border-black bg-[#F4F1EA] flex flex-wrap items-center justify-between gap-2">
+        <div className="p-2.5 sm:p-3 border border-black bg-[#F4F1EA] flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <FileText className="w-4 h-4 text-[#FF3B00]" />
-            <span className="font-bold text-black">{selectedSource.title}</span>
+            <span className="font-bold text-xs sm:text-sm text-black">{selectedSource.title}</span>
           </div>
           <span className="text-[10px] text-black/60 font-mono">
             INGESTED: {selectedSource.sourceDoc}
@@ -151,8 +151,8 @@ export function LlmKnowledgeSystemDemo() {
         </div>
 
         {/* Synthesized Answer with Interactive Citation Tags */}
-        <div className="p-5 border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-          <div className="flex items-center justify-between border-b border-black/15 pb-2 mb-3">
+        <div className="p-3.5 sm:p-5 border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+          <div className="flex flex-wrap items-center justify-between gap-1.5 border-b border-black/15 pb-2 mb-3">
             <span className="text-[10px] text-[#FF3B00] font-bold uppercase tracking-wider">
               GROUNDED LLM SYNTHESIS // CLICK CITATION CHIPS TO HIGHLIGHT SOURCE:
             </span>
@@ -161,7 +161,7 @@ export function LlmKnowledgeSystemDemo() {
             </span>
           </div>
 
-          <div className="space-y-2 font-sans text-sm sm:text-base text-black/90 leading-relaxed">
+          <div className="space-y-2 font-sans text-xs sm:text-sm md:text-base text-black/90 leading-relaxed">
             {activeQA.synthesizedAnswer.map((part, pIdx) => {
               const isHighlighted = activeCitationId === part.citationId;
               return (
@@ -198,18 +198,18 @@ export function LlmKnowledgeSystemDemo() {
 
         {/* Document Chunks Inspector */}
         <div>
-          <div className="flex items-center justify-between text-[10px] text-black/60 font-bold uppercase tracking-wider mb-2">
+          <div className="flex flex-wrap items-center justify-between gap-1 text-[10px] text-black/60 font-bold uppercase tracking-wider mb-2">
             <span>INDEXED DOCUMENT CHUNKS [PARENT-CHILD STRUCTURE]:</span>
             <span>TOKEN BUDGET: 512 TOKENS/CHUNK</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {selectedSource.chunks.map((chunk) => {
               const isTargeted = activeCitationId === chunk.id;
               return (
                 <div
                   key={chunk.id}
-                  className={`p-4 border-2 transition-all ${
+                  className={`p-3.5 sm:p-4 border-2 transition-all ${
                     isTargeted
                       ? "border-black bg-[#CCFF00]/20 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ring-2 ring-black"
                       : "border-black/20 bg-[#F4F1EA]/60"
@@ -237,14 +237,14 @@ export function LlmKnowledgeSystemDemo() {
         </div>
 
         {/* Verification Note */}
-        <div className="p-3 border border-black/20 bg-[#F4F1EA] text-[10px] text-black/70 flex items-center justify-between">
+        <div className="p-3 border border-black/20 bg-[#F4F1EA] text-[10px] text-black/70 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
           <span className="flex items-center gap-2">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#FF3B00]" />
+            <ShieldCheck className="w-3.5 h-3.5 text-[#FF3B00] shrink-0" />
             <span>
               TRANSPARENCY: Natural language inference citation verification simulated client-side against static RFC corpus.
             </span>
           </span>
-          <span className="font-bold text-black">STRICT CITATION AUDIT</span>
+          <span className="font-bold text-black shrink-0">STRICT CITATION AUDIT</span>
         </div>
       </div>
     </div>

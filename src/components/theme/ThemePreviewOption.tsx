@@ -291,7 +291,7 @@ export function ThemePreviewOption({
         aria-label={`Theme preset ${themeMeta.name}${
           isSelected ? " (Currently active)" : ""
         }`}
-        className={`p-2.5 text-left transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3B00] relative overflow-hidden select-none ${containerClasses} ${className}`}
+        className={`p-2 sm:p-2.5 text-left transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF3B00] relative overflow-hidden select-none ${containerClasses} ${className}`}
         style={containerStyle}
       >
         {/* Header row: Short name + Selected check */}

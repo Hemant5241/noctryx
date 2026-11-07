@@ -138,14 +138,14 @@ export function NeuralSearchDemo() {
   return (
     <div className="w-full border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] crosshair-corner font-mono text-xs">
       {/* Interactive Terminal Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-4 border-b-2 border-black bg-[#0D0D0D] text-[#F4F1EA]">
+      <div className="flex flex-wrap items-center justify-between gap-2 p-3 sm:p-4 border-b-2 border-black bg-[#0D0D0D] text-[#F4F1EA]">
         <div className="flex items-center gap-2">
           <Search className="w-4 h-4 text-[#FF3B00]" />
-          <span className="font-bold text-sm tracking-wide">
+          <span className="font-bold text-xs sm:text-sm tracking-wide">
             NEURAL RETRIEVAL PLAYGROUND // LIVE SIMULATOR
           </span>
         </div>
-        <div className="flex items-center gap-3 text-[10px] text-[#A39F94]">
+        <div className="flex items-center gap-2 sm:gap-3 text-[10px] text-[#A39F94]">
           <span className="flex items-center gap-1.5">
             <span className="h-2 w-2 rounded-full bg-[#CCFF00] animate-pulse"></span>
             <span>HNSW GRAPH: 1.02M CHUNKS</span>
@@ -155,7 +155,7 @@ export function NeuralSearchDemo() {
         </div>
       </div>
 
-      <div className="p-6 sm:p-8 space-y-6">
+      <div className="p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
         {/* Preset Queries Strip */}
         <div>
           <label className="text-[10px] text-black/60 font-bold tracking-wider uppercase block mb-2">
@@ -277,7 +277,7 @@ export function NeuralSearchDemo() {
             searchResults.map((result, idx) => (
               <div
                 key={result.id}
-                className="p-5 border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:border-[#FF3B00] transition-all"
+                className="p-3.5 sm:p-5 border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:border-[#FF3B00] transition-all"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                   <div className="flex items-center gap-2">
@@ -314,7 +314,7 @@ export function NeuralSearchDemo() {
                   {result.keywords.slice(0, 5).map((kw, kIdx) => (
                     <span
                       key={kIdx}
-                      className="px-1.5 py-0.2 border border-black/20 bg-[#F4F1EA] text-black"
+                      className="px-1.5 py-0.5 border border-black/20 bg-[#F4F1EA] text-black"
                     >
                       {kw}
                     </span>
@@ -326,14 +326,14 @@ export function NeuralSearchDemo() {
         </div>
 
         {/* Verification Note */}
-        <div className="p-3 border border-black/20 bg-[#F4F1EA] text-[10px] text-black/70 flex items-center justify-between">
+        <div className="p-3 border border-black/20 bg-[#F4F1EA] text-[10px] text-black/70 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
           <span className="flex items-center gap-2">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#FF3B00]" />
+            <ShieldCheck className="w-3.5 h-3.5 text-[#FF3B00] shrink-0" />
             <span>
               TRANSPARENCY: All similarity vector calculations executed locally in-browser on synthetic technical corpus.
             </span>
           </span>
-          <span className="font-bold text-black">NO PAID APIS CALLED</span>
+          <span className="font-bold text-black shrink-0">NO PAID APIS CALLED</span>
         </div>
       </div>
     </div>
