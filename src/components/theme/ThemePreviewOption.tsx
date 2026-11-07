@@ -283,7 +283,6 @@ export function ThemePreviewOption({
     return (
       <button
         type="button"
-        role="button"
         onClick={handleClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -318,7 +317,7 @@ export function ThemePreviewOption({
         {/* Pill descriptor */}
         <div className="mb-2">
           <span
-            className={`text-[8px] font-bold px-1 py-0.2 tracking-wider uppercase inline-block ${badgeClass}`}
+            className={`text-[8px] font-bold px-1 py-0.5 tracking-wider uppercase inline-block ${badgeClass}`}
           >
             {config.compactPill}
           </span>

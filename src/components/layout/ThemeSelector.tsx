@@ -116,7 +116,7 @@ export function ThemeSelector({ compact = false, className = "" }: ThemeSelector
         <div
           role="listbox"
           aria-label="Available visual themes"
-          className={`absolute right-0 mt-2 w-76 z-50 p-2 space-y-1.5 focus:outline-none ${dropdownClass}`}
+          className={`absolute right-0 mt-2 w-76 max-w-[calc(100vw-1.5rem)] z-50 p-2 space-y-1.5 focus:outline-none ${dropdownClass}`}
         >
           <div className={`px-2 py-1.5 text-[10px] font-bold uppercase flex items-center justify-between ${dropdownTitleClass}`}>
             <span>SELECT THEME PRESET</span>
