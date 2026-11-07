@@ -1,0 +1,12 @@
+# ==============================================================================
+# NETLIFY DEPLOYMENT CONFIGURATION — HEMANT BHOSALE PORTFOLIO
+# ==============================================================================
+# Next.js 16 (App Router) on Netlify using official Next.js Runtime (OpenNext)
+# ==============================================================================
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
