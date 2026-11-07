@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { LiveClock } from "./LiveClock";
@@ -13,6 +13,18 @@ import { useTheme } from "@/context/ThemeContext";
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { theme } = useTheme();
+
+  // Keyboard shortcut: Cmd+K / Ctrl+K opens Command Menu
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setMenuOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   // Theme-tailored styling for 100% contrast & zero inheritance conflicts
   let headerClass = "bg-[#F4F1EA]/95 border-black text-[#0D0D0D]";
@@ -131,7 +143,7 @@ export function Header() {
               <Menu className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${commandIconClass}`} />
               <span className="tracking-wider">COMMAND</span>
               <span className={`hidden sm:inline-block text-[10px] px-1 py-0.5 ${commandTagClass}`}>
-                [MENU]
+                [CMD+K]
               </span>
             </button>
           </div>

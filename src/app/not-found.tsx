@@ -18,8 +18,8 @@ export default function NotFound() {
             NULL POINTER
           </h1>
           <p className="font-sans text-xs sm:text-sm text-black/70 leading-relaxed max-w-md mx-auto">
-            The target route does not exist in the Hemant Bhosale system architecture.
-            The requested vector is unindexed or has been relocated.
+            The requested URL does not match any route in the Hemant Bhosale portfolio.
+            The page may have been moved or the coordinates are unmapped.
           </p>
         </div>
 

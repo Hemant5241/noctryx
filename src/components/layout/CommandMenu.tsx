@@ -40,6 +40,10 @@ export function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       if (e.key === "Escape") {
         onClose();
       }
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        onClose();
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);

@@ -54,7 +54,7 @@ export const socialsData: SocialLink[] = [
     id: "resume",
     label: "CURRICULUM VITAE",
     handle: "TECHNICAL_SPECIMEN_RESUME.PDF",
-    url: "#contact",
+    url: "/contact",
     isPlaceholder: true,
     verificationStatus: "placeholder",
     category: "research",
